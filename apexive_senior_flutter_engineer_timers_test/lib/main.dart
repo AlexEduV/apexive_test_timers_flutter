@@ -1,3 +1,4 @@
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/my_app_bar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -53,8 +54,22 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        actions: const [
-          IconButton(onPressed: null, icon: Icon(Icons.add, size: 24, color: Colors.white,))
+        titleSpacing: 24,
+        actions: [
+          Ink(
+            height: 48,
+            padding: EdgeInsets.all(8),
+            width: 48,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: const Color(0x29ffffff),
+            ),
+            child: IconButton(
+              onPressed: onAddTimerButtonPressed,
+              icon: const Icon(Icons.add, size: 24, color: Colors.white,),
+              //color: const Color(0x29ffffff),
+            ),
+          )
         ],
       ),
       body: Container(
@@ -89,5 +104,9 @@ class _MyHomePageState extends State<MyHomePage> {
       //   child: const Icon(Icons.add),
       // ),
     );
+  }
+
+  void onAddTimerButtonPressed() {
+
   }
 }
