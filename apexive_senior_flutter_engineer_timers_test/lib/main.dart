@@ -55,19 +55,25 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         titleSpacing: 24,
+
         actions: [
-          Ink(
-            height: 48,
-            padding: EdgeInsets.all(8),
-            width: 48,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: const Color(0x29ffffff),
-            ),
-            child: IconButton(
-              onPressed: onAddTimerButtonPressed,
-              icon: const Icon(Icons.add, size: 24, color: Colors.white,),
-              //color: const Color(0x29ffffff),
+          Container(
+            margin: EdgeInsets.only(top: 8, bottom: 8, right: 16),
+            child: Center(
+              child: Ink(
+                //height: 48,
+                padding: EdgeInsets.all(8),
+                //width: 48,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: const Color(0x29ffffff),
+                ),
+                child: IconButton(
+                  onPressed: onAddTimerButtonPressed,
+                  icon: const Icon(Icons.add, size: 24, color: Colors.white,),
+                  //color: const Color(0x29ffffff),
+                ),
+              ),
             ),
           )
         ],
