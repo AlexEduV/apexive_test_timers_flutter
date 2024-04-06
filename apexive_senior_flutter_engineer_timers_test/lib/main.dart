@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigoAccent,
+      backgroundColor: Colors.indigo,
       body: SafeArea(
         child: Container(
           decoration: const BoxDecoration(
@@ -60,6 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.only(right: 16, left: 16),
             child: Column(
               children: [
+
+                //Top row
                 Padding(
                   padding: const EdgeInsets.only(top: 8, bottom: 8),
                   child: Row(
@@ -101,21 +103,41 @@ class _MyHomePageState extends State<MyHomePage> {
                       )
                     ],
                   ),
-                )
+                ),
+
+                //tab view
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.0),
+                  child: DefaultTabController(
+                    length: 3,
+                    child: TabBar(
+                      indicatorColor: Colors.white,
+                      tabs: [
+                        Tab(text: 'Favorites',),
+                        Tab(text: 'Odoo',),
+                        Tab(text: 'Local',)
+                      ],
+                    )
+                  ),
+                ),
+
+                //Text (number of timers)
+
+
+                //listView
+
+                //bottom navigation
+
               ],
             ),
           )
         ),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _incrementCounter,
-      //   tooltip: 'Increment',
-      //   child: const Icon(Icons.add),
-      // ),
     );
   }
 
   void onAddTimerButtonPressed() {
 
   }
+
 }
