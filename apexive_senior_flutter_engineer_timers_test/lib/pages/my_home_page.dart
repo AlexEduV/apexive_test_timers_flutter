@@ -1,5 +1,5 @@
 
-import 'package:apexive_senior_flutter_engineer_timers_test/model/dataModel.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/pages/create_timer_page.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/app_bar_button.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/timersList/timer_settings_row.dart';

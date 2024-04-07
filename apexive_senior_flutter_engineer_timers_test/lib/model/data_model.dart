@@ -12,7 +12,7 @@ class DataModel {
             deadlineDate: '07/20/2023',
             time: '00:30',
             isFavorite: false,
-            isActive: false
+            isActive: false,
         )
     );
 
