@@ -6,14 +6,16 @@ class DataModel {
   List<Task> getInitTestTasks() {
     List<Task> initList = [];
 
+    Project testProject = Project(
+        projectName: 'SO056 - Booqio V2',
+        markerColor: const Color(0xffFFC629),
+    );
+
     //add one test task
     initList.add(
         Task(
           title: 'iOS App Deployment with odd',
-          project: Project(
-            projectName: 'SO056 - Booqio V2',
-            markerColor: const Color(0xffFFC629),
-          ),
+          project: testProject,
           deadlineDate: '07/20/2023',
           time: '00:30',
           isFavorite: false,
@@ -24,10 +26,7 @@ class DataModel {
     initList.add(
         Task(
           title: 'iOS App Deployment',
-          project: Project(
-              projectName: 'SO056 - Booqio V2',
-              markerColor: const Color(0xffFFC629),
-          ),
+          project: testProject,
           deadlineDate: '07/20/2023',
           time: '00:30',
           isFavorite: true,

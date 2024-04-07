@@ -237,6 +237,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
           GestureDetector(
             onTap: () {
+
+              //TODO: start/stop timer here:
+
+              //update UI
               setState(() {
                 listOfTasks[index].isActive = !listOfTasks[index].isActive;
               });
