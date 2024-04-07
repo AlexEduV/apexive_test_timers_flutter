@@ -6,7 +6,7 @@ class TypographyStyles {
   static const lineHeight = 1.4;
 
   //custom offset from the original design to adjust for the different screen sizes
-  static const fontSizeOffset = -2;
+  static const fontSizeOffset = -3;
 
   dynamic getHeadlineLarge({Color specifiedColor = defaultColor}) {
     return

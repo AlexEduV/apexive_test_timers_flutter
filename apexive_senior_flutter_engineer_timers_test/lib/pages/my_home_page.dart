@@ -221,9 +221,11 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 //time
                 Text('00:30', style: TypographyStyles().getLabelLarge(specifiedColor: Colors.black),),
+                
+                const Padding(padding: EdgeInsets.only(right: 4)),
 
                 //pause icon
-                Icon(Icons.pause, color: Colors.black, size: 24,)
+                const Icon(Icons.pause, color: Colors.black, size: 32,)
               ],
             ),
 
