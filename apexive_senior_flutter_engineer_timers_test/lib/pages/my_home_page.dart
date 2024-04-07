@@ -216,7 +216,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             //width: 104,
             //height: 48,
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.only(left: 16, top: 8, right: 8, bottom: 8),
             child: Row(
               children: [
                 //time
