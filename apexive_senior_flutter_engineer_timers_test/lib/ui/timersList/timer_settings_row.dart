@@ -20,6 +20,7 @@ class TimerSettingsRow extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 4.0),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Icon(icon, size: 24, color: Colors.white),
           
@@ -28,7 +29,7 @@ class TimerSettingsRow extends StatelessWidget {
           Flexible(
             child: Column(
               children: [
-                Text(text, style: textStyle, maxLines: 3),
+                Text(text, style: textStyle),
               ],
             ),
           ),
