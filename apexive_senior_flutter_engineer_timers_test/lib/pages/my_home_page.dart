@@ -148,7 +148,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Text(
-                  'You have 16 Timers',
+                  'You have $listSize Timers',
                   style: TypographyStyles().getLabelLarge(),
                   textAlign: TextAlign.start,
                 ),
@@ -166,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 separatorBuilder:(context, index) {
                   return const Divider(
                     //empty invisible divider
-                    height: 0, thickness: 0, color: Colors.white,);
+                    height: 0, thickness: 0, color: Colors.transparent,);
                  },
             ),
           )
@@ -186,6 +186,7 @@ class _MyHomePageState extends State<MyHomePage> {
         color: const Color(0x14ffffff)
       ),
       padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.only(bottom: 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

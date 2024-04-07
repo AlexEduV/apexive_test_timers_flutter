@@ -7,12 +7,23 @@ class DataModel {
     //add one test task
     initList.add(
         Task(
-            title: 'iOS App Development with odd',
+            title: 'iOS App Deployment with odd',
             projectName: 'SO056 - Booqio V2',
             deadlineDate: '07/20/2023',
             time: '00:30',
             isFavorite: false,
             isActive: false,
+        )
+    );
+
+    initList.add(
+        Task(
+          title: 'iOS App Deployment',
+          projectName: 'SO056 - Booqio V2',
+          deadlineDate: '07/20/2023',
+          time: '00:30',
+          isFavorite: true,
+          isActive: false,
         )
     );
 
