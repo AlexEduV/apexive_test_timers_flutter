@@ -16,7 +16,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
 
   List<Task> tasks = [];
 
-  List<String> projectNames = ['Project'];
+  List<String> projectNames = [];
   List<DropdownMenuItem<String>> projectMenuItems = [];
 
   String _selectedProjectNameValue = 'Project';
@@ -48,8 +48,10 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
             ),);
       }
 
-      //init text value is set to the first of the list
-      _selectedProjectNameValue = projectMenuItems[0].value!;
+      setState(() {
+        //init text value is set to the first of the list
+        _selectedProjectNameValue = projectMenuItems[0].value!;
+      });
 
     });
   }
