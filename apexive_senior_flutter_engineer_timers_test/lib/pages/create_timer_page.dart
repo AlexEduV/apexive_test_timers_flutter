@@ -1,4 +1,5 @@
 import 'package:apexive_senior_flutter_engineer_timers_test/style/typography.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/drop_down_selector.dart';
 import 'package:flutter/material.dart';
 
 import '../model/task.dart';
@@ -102,41 +103,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                 const Padding(padding: EdgeInsets.only(top: 16)),
 
                 //project selector
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 2.0,
-                      color: const Color(0x29ffffff),
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                  child: Row(
-                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: DropdownButton<String>(
-                          items: projectMenuItems,
-                          value: _selectedProjectNameValue,
-                          onChanged: (String? selectedValue) {
-                            if (selectedValue is String) {
-                              setState(() {
-                                _selectedProjectNameValue = selectedValue;
-                              });
-                            }
-                          },
-                          hint: Text('Project', style: TypographyStyles().getBodyLarge(),),
-                          style:  TypographyStyles().getBodyLarge(),
-                          underline: Container(),
-                          icon: const Icon(Icons.expand_more, size: 32, color: Colors.white,),
-                          isExpanded: true,
-                          borderRadius: BorderRadius.circular(8),
-                          dropdownColor: const Color(0xafffffff),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                DropDownSelector(menuItems: projectMenuItems, selectedValue: _selectedProjectNameValue),
 
                 //task selector
 
