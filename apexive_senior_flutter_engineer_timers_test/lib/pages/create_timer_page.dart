@@ -34,29 +34,39 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
             //app bar
             child: Column(
               children: [
-                Row(
-                  children: [
-                    //back button
-                    IconButton(
-                        onPressed: onBackButtonPressed,
-                        icon: const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 8),
-                          child: Icon(Icons.arrow_back_ios, size: 48, color: Colors.white,),
-                        ),),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Stack(
+                    children: [
+                      //back button
+                      IconButton(
+                          onPressed: onBackButtonPressed,
+                          icon: const Icon(Icons.arrow_back_ios, size: 40, color: Colors.white,),),
 
-                    //title in the center
-                    Expanded(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('Create Timer', style: TypographyStyles().getHeadlineSmall(),),
-                          ],
-                        ),
-                    ),
-                  ],
+                      //title in the center
+                      Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Create Timer', style: TypographyStyles().getHeadlineSmall(),),
+                            ],
+                          ),
+                      ),
+                    ],
+                  ),
                 ),
 
+                //project selector
+
+                //task selector
+
+                //Description TextEdit
+
+                //make favorite selector
+
                 const Spacer(),
+
+                //create timer active button
               ],
             ),
           ),
