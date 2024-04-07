@@ -168,6 +168,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       padding: const EdgeInsets.all(16),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           //column with timer specs and border
           Container(
@@ -218,28 +219,24 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
 
-          Column(
-            children: [
-              //pause button
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(64),
-                  color: Colors.white
-                ),
-                //width: 104,
-                //height: 48,
-                padding: const EdgeInsets.all(16),
-                child: Row(
-                  children: [
-                    //time
-                    Text('00:30', style: TypographyStyles().getLabelLarge(specifiedColor: Colors.black),)
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(64),
+              color: Colors.white
+            ),
+            //width: 104,
+            //height: 48,
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              children: [
+                //time
+                Text('00:30', style: TypographyStyles().getLabelLarge(specifiedColor: Colors.black),),
 
-                    //pause icon
-                  ],
-                ),
+                //pause icon
+                Icon(Icons.pause, color: Colors.black, size: 24,)
+              ],
+            ),
 
-              )
-            ],
           )
         ],
 
