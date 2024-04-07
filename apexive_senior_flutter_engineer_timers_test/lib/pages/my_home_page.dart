@@ -292,7 +292,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(64),
-                color: Colors.white,
+                color: listOfTasks[index].isActive ? Colors.white : const Color(0x14ffffff),
               ),
               //width: 104,
               //height: 48,
@@ -300,14 +300,14 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Row(
                 children: [
                   //time
-                  Text(listOfTasks[index].time, style: TypographyStyles().getLabelLarge(specifiedColor: Colors.black),),
+                  Text(listOfTasks[index].time, style: TypographyStyles().getLabelLarge(specifiedColor: listOfTasks[index].isActive ? Colors.black : Colors.white),),
 
                   const Padding(padding: EdgeInsets.only(right: 4),),
 
                   //pause icon
                   Icon(
                     listOfTasks[index].isActive ? Icons.pause_rounded : Icons.play_arrow,
-                    color: Colors.black,
+                    color: listOfTasks[index].isActive ? Colors.black : Colors.white,
                     size: 32,
                   ),
                 ],
