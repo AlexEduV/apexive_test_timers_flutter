@@ -1,6 +1,8 @@
 import 'package:apexive_senior_flutter_engineer_timers_test/style/typography.dart';
 import 'package:flutter/material.dart';
 
+import '../model/task.dart';
+
 class CreateTimerPage extends StatefulWidget {
   const CreateTimerPage({super.key});
 
@@ -11,6 +13,39 @@ class CreateTimerPage extends StatefulWidget {
 }
 
 class _CreateTimerPageState extends State<CreateTimerPage> {
+
+  List<Task> tasks = [];
+
+  List<String> projectNames = [];
+  List<DropdownMenuItem<String>> projectMenuItems = [];
+
+  String _selectedProjectNameValue = 'Project';
+
+  @override
+  void initState() {
+    super.initState();
+
+    //get data using async
+    Future.delayed(Duration.zero, ()
+    {
+      //get data from route
+      tasks = ModalRoute.of(context)?.settings.arguments as List<Task>;
+
+      //get distinct project names from task list
+      for (final task in tasks) {
+        projectNames.add(task.project.projectName);
+      }
+
+      projectNames = projectNames.toSet().toList();
+      for (final projectName in projectNames)
+      {
+        projectMenuItems.add(DropdownMenuItem<String>(value: projectName, child: Text(projectName),));
+      }
+
+      _selectedProjectNameValue = projectMenuItems[0].value!;
+
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,19 +80,28 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                           icon: const Icon(Icons.arrow_back_ios, size: 40, color: Colors.white,),),
 
                       //title in the center
-                      Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text('Create Timer', style: TypographyStyles().getHeadlineSmall(),),
-                            ],
-                          ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Create Timer', style: TypographyStyles().getHeadlineSmall(),),
+                        ],
                       ),
                     ],
                   ),
                 ),
 
                 //project selector
+                DropdownButton<String>(
+                    items: projectMenuItems,
+                    value: _selectedProjectNameValue,
+                    onChanged: (String? selectedValue) {
+                      if (selectedValue is String) {
+                        setState(() {
+                          _selectedProjectNameValue = selectedValue;
+                        });
+                      }
+                    }
+                ),
 
                 //task selector
 

@@ -136,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //debugPrint('AddTimerButtonPressed');
 
     //open createTimerPage
-    Navigator.pushNamed(context, CreateTimerPage.routeName);
+    Navigator.pushNamed(context, CreateTimerPage.routeName, arguments: listOfTasks);
   }
 
   void onSortListButtonPressed() {
@@ -243,13 +243,12 @@ class _MyHomePageState extends State<MyHomePage> {
           GestureDetector(
             onTap: () {
 
-              //TODO: start/stop timer here:
+              //start/stop timer
+              //stop timer if active
               if (listOfTasks[index].timer.isActive) {
-                //stop timer if active
                 listOfTasks[index].timer.cancel();
               }
               else {
-
                 //start a timer
                 int minutes = int.parse(listOfTasks[index].time.substring(0, 2));
                 int seconds = int.parse(listOfTasks[index].time.substring(3, 5));
@@ -276,7 +275,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
                     //update time
                     setState(() {
-                      listOfTasks[index].time = '${minutes.toString().padLeft(2, "0")}:${seconds.toString().padLeft(2, "0")}';
+                      listOfTasks[index].time =
+                        '${minutes.toString().padLeft(2, "0")}'
+                        ':${seconds.toString().padLeft(2, "0")}';
                     });
                   }
                 });

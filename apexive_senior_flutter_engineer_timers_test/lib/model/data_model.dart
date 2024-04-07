@@ -5,6 +5,7 @@ import 'package:apexive_senior_flutter_engineer_timers_test/model/task.dart';
 import 'package:flutter/material.dart';
 
 class DataModel {
+
   List<Task> getInitTestTasks() {
     List<Task> initList = [];
 
