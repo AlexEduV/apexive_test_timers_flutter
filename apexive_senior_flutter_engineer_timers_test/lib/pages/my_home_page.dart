@@ -1,4 +1,5 @@
 
+import 'package:apexive_senior_flutter_engineer_timers_test/model/dataModel.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/pages/create_timer_page.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/app_bar_button.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/timersList/timer_settings_row.dart';
@@ -32,16 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     //testing
     //init one test task
-    listOfTasks.add(
-        Task(
-            title: 'iOS App Development with odd',
-            projectName: 'SO056 - Booqio V2',
-            deadlineDate: '07/20/2023',
-            time: '00:30',
-            isFavorite: false,
-            isActive: false
-        )
-    );
+    listOfTasks = DataModel().getInitTestTasks();
 
     listSize = listOfTasks.length;
   }
