@@ -8,6 +8,7 @@ class TypographyStyles {
     height: 1.4,
     fontFamily: 'Inter',
     color: Colors.white,
+    letterSpacing: 0.1,
   );
 
   static const TextStyle labelLarge = TextStyle(
@@ -16,6 +17,7 @@ class TypographyStyles {
     height: 1.4,
     fontFamily: 'Inter',
     color: Colors.white,
+    letterSpacing: 0.1,
 
   );
 

@@ -1,7 +1,8 @@
 
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/app_bar_button.dart';
 import 'package:flutter/material.dart';
 
-import '../ui/typography.dart';
+import '../style/typography.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -56,31 +57,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8),
                           child: Row(
-                            children: [
+                            children: const [
 
-                              Container(
-                                height: 48,
-                                width: 48,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: const Color(0x29ffffff)
-                                ),
-                                padding: const EdgeInsets.all(8.0),
-                                child: const Icon(Icons.sync_alt, color: Colors.white),
-                              ),
+                              AppBarButton(icon: Icons.sync_alt),
 
-                              const Padding(padding: EdgeInsets.only(right: 8)),
+                              Padding(padding: EdgeInsets.only(right: 8)),
 
-                              Container(
-                                height: 48,
-                                width: 48,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: const Color(0x29ffffff)
-                                ),
-                                padding: const EdgeInsets.all(8.0),
-                                child: const Icon(Icons.add, color: Colors.white,),
-                              )
+                              AppBarButton(icon: Icons.add),
                             ],
                           ),
                         )
@@ -138,16 +121,20 @@ class _MyHomePageState extends State<MyHomePage> {
     if (selectedIndex == 1)
     {
       selectedTabPage = Column(
-        children: const [
+        children: [
 
           //Text (number of timers)
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              'You have 16 Timers',
-              style: TypographyStyles.labelLarge,
-              textAlign: TextAlign.start,
-            ),
+          Row(
+            children: const [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 8.0),
+                child: Text(
+                  'You have 16 Timers',
+                  style: TypographyStyles.labelLarge,
+                  textAlign: TextAlign.start,
+                ),
+              ),
+            ],
           ),
 
           //listView
