@@ -16,7 +16,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
 
   List<Task> tasks = [];
 
-  List<String> projectNames = [];
+  List<String> projectNames = ['Project'];
   List<DropdownMenuItem<String>> projectMenuItems = [];
 
   String _selectedProjectNameValue = 'Project';
@@ -37,11 +37,18 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
       }
 
       projectNames = projectNames.toSet().toList();
+
+      //populate the menu list
       for (final projectName in projectNames)
       {
-        projectMenuItems.add(DropdownMenuItem<String>(value: projectName, child: Text(projectName),));
+        projectMenuItems.add(
+            DropdownMenuItem<String>(
+              value: projectName,
+              child: Text(projectName),
+            ),);
       }
 
+      //init text value is set to the first of the list
       _selectedProjectNameValue = projectMenuItems[0].value!;
 
     });
@@ -91,16 +98,23 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                 ),
 
                 //project selector
-                DropdownButton<String>(
-                    items: projectMenuItems,
-                    value: _selectedProjectNameValue,
-                    onChanged: (String? selectedValue) {
-                      if (selectedValue is String) {
-                        setState(() {
-                          _selectedProjectNameValue = selectedValue;
-                        });
-                      }
-                    }
+                Row(
+                  //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: DropdownButton<String>(
+                          items: projectMenuItems,
+                          value: _selectedProjectNameValue,
+                          onChanged: (String? selectedValue) {
+                            if (selectedValue is String) {
+                              setState(() {
+                                _selectedProjectNameValue = selectedValue;
+                              });
+                            }
+                          }
+                      ),
+                    ),
+                  ],
                 ),
 
                 //task selector
