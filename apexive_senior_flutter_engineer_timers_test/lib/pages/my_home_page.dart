@@ -157,7 +157,67 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _getTimersListTile(BuildContext context, int index) {
     return Container(
-      //height: 40,
+      //decorated container
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        color: const Color(0x14ffffff)
+      ),
+      padding: const EdgeInsets.all(16),
+      child: Row(
+        children: [
+          //column with timer specs and border
+          Container(
+            decoration: const BoxDecoration(
+              border: Border(
+                left: BorderSide(
+                  width: 2,
+                  color: Color(0xffFFC629),
+                )
+              )
+            ),
+            child: Column(
+
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 4.0),
+                  child: Row(
+                    children: [
+                      Icon(Icons.star_border, size: 24, color: Colors.white),
+                      Text('iOS App Deployment', style: TypographyStyles.titleMedium,)
+                    ],
+                  ),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 4.0),
+                  child: Row(
+                    children: [
+                      Icon(Icons.cases_outlined, size: 24, color: Colors.white,),
+                      Text('SO056 - Booqio V2', style: TypographyStyles.bodyMedium)
+                    ],
+                  ),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 4.0),
+                  child: Row(
+                    children: [
+                      Icon(Icons.access_time_rounded, size: 24, color: Colors.white,),
+                      Text('Deadline 07/20/2023', style: TypographyStyles.bodyMedium)
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+
+          Column(
+            //pause button
+          )
+        ],
+
+
+      ),
     );
   }
 }
