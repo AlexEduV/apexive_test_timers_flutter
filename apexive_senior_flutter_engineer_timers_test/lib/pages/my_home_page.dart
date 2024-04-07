@@ -18,6 +18,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   int selectedTabPageIndex = 1;
+  int selectedBottomNavigationIndex = 1;
 
   @override
   void initState() {
@@ -96,16 +97,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
 
                   //Tab Page
-                  Expanded(child: getTabPage(selectedTabPageIndex))
+                  Expanded(child: getTabPage(selectedTabPageIndex),),
 
                   //bottom navigation
-
+                  _getBottomNavigationBar(),
                 ],
               ),
             )
         ),
       ),
-      //bottomNavigationBar: ,
+      //bottomNavigationBar: _getBottomNavigationBar(),
     );
   }
 
@@ -238,5 +239,37 @@ class _MyHomePageState extends State<MyHomePage> {
 
       ),
     );
+  }
+
+  Widget _getBottomNavigationBar()
+  {
+    return BottomNavigationBar(
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'TimeSheets',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.access_time_filled_sharp),
+          label: 'Projects',
+        ),
+        BottomNavigationBarItem(
+          icon: FaIcon(FontAwesomeIcons.chartSimple),
+          label: 'Settings',
+        ),
+      ],
+      currentIndex: selectedBottomNavigationIndex,
+      selectedItemColor: Colors.white,
+      //unselectedItemColor: Colors.grey,
+      onTap: onBottomNavigationItemTapped,
+    );
+  }
+
+  void onBottomNavigationItemTapped(int index){
+    setState(() {
+      selectedBottomNavigationIndex = index;
+    });
   }
 }
