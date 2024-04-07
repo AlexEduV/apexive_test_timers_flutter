@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 
 class AppBarButton extends StatelessWidget {
 
-  //NOTE: Missing onTap implementation
-
-  const AppBarButton({super.key, required this.icon});
+  const AppBarButton({super.key, required this.icon, required this.onTap});
 
   final IconData icon;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +16,11 @@ class AppBarButton extends StatelessWidget {
          borderRadius: BorderRadius.circular(12),
          color: const Color(0x29ffffff)
      ),
-     padding: const EdgeInsets.all(8.0),
-     child: Icon(icon, color: Colors.white),
+     //padding: const EdgeInsets.all(8.0),
+     child: IconButton(
+       icon: Icon(icon, color: Colors.white),
+       onPressed: onTap,
+     ),
    );
 
   }

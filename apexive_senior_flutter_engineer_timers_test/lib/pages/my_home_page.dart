@@ -56,13 +56,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8),
                           child: Row(
-                            children: const [
+                            children: [
 
-                              AppBarButton(icon: Icons.swap_vert_sharp),
+                              AppBarButton(icon: Icons.swap_vert_sharp, onTap: onSortListButtonPressed,),
 
-                              Padding(padding: EdgeInsets.only(right: 8)),
+                              const Padding(padding: EdgeInsets.only(right: 8)),
 
-                              AppBarButton(icon: Icons.add),
+                              AppBarButton(icon: Icons.add, onTap: onAddTimerButtonPressed,),
                             ],
                           ),
                         )
@@ -110,7 +110,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   }
 
-  //void onListSortButtonPressed() {}
+  void onSortListButtonPressed() {
+
+  }
 
   Widget getTabPage(int selectedIndex)
   {
