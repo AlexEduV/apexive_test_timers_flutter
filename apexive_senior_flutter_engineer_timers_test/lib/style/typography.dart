@@ -55,6 +55,18 @@ class TypographyStyles {
       );
   }
 
+  dynamic getBodyLarge({Color specifiedColor = defaultColor}) {
+    return
+      TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        height: lineHeight,
+        fontFamily: 'Inter',
+        color: specifiedColor,
+        letterSpacing: 0.5,
+      );
+  }
+
   dynamic getBodyMedium({Color specifiedColor = defaultColor}) {
     return
       TextStyle(

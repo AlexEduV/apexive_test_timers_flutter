@@ -19,7 +19,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
   List<String> projectNames = [];
   List<DropdownMenuItem<String>> projectMenuItems = [];
 
-  String _selectedProjectNameValue = 'Project';
+  String? _selectedProjectNameValue;
 
   @override
   void initState() {
@@ -50,7 +50,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
 
       setState(() {
         //init text value is set to the first of the list
-        _selectedProjectNameValue = projectMenuItems[0].value!;
+        //_selectedProjectNameValue = projectMenuItems[0].value!;
       });
 
     });
@@ -99,21 +99,26 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                   ),
                 ),
 
+                const Padding(padding: EdgeInsets.only(top: 16)),
+
                 //project selector
                 Row(
                   //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
                       child: DropdownButton<String>(
-                          items: projectMenuItems,
-                          value: _selectedProjectNameValue,
-                          onChanged: (String? selectedValue) {
-                            if (selectedValue is String) {
-                              setState(() {
-                                _selectedProjectNameValue = selectedValue;
-                              });
-                            }
+                        items: projectMenuItems,
+                        value: _selectedProjectNameValue,
+                        onChanged: (String? selectedValue) {
+                          if (selectedValue is String) {
+                            setState(() {
+                              _selectedProjectNameValue = selectedValue;
+                            });
                           }
+                        },
+                        hint: Text('Project', style: TypographyStyles().getBodyLarge(),),
+                        style:  TypographyStyles().getBodyLarge(),
+
                       ),
                     ),
                   ],
