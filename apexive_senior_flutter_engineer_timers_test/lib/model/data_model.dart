@@ -1,4 +1,6 @@
+import 'package:apexive_senior_flutter_engineer_timers_test/model/project.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/model/task.dart';
+import 'package:flutter/material.dart';
 
 class DataModel {
   List<Task> getInitTestTasks() {
@@ -7,19 +9,25 @@ class DataModel {
     //add one test task
     initList.add(
         Task(
-            title: 'iOS App Deployment with odd',
+          title: 'iOS App Deployment with odd',
+          project: Project(
             projectName: 'SO056 - Booqio V2',
-            deadlineDate: '07/20/2023',
-            time: '00:30',
-            isFavorite: false,
-            isActive: false,
+            markerColor: const Color(0xffFFC629),
+          ),
+          deadlineDate: '07/20/2023',
+          time: '00:30',
+          isFavorite: false,
+          isActive: false,
         )
     );
 
     initList.add(
         Task(
           title: 'iOS App Deployment',
-          projectName: 'SO056 - Booqio V2',
+          project: Project(
+              projectName: 'SO056 - Booqio V2',
+              markerColor: const Color(0xffFFC629),
+          ),
           deadlineDate: '07/20/2023',
           time: '00:30',
           isFavorite: true,

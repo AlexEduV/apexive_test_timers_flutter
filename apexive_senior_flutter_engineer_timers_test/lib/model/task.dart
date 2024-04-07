@@ -1,6 +1,8 @@
+import 'package:apexive_senior_flutter_engineer_timers_test/model/project.dart';
+
 class Task {
   final String title;
-  final String projectName;
+  final Project project;
   final String deadlineDate;
   final String time;
   final bool isFavorite;
@@ -8,7 +10,7 @@ class Task {
 
   Task({
     required this.title,
-    required this.projectName,
+    required this.project,
     required this.deadlineDate,
     required this.time,
     required this.isFavorite,

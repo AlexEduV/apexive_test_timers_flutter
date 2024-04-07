@@ -193,11 +193,11 @@ class _MyHomePageState extends State<MyHomePage> {
           //column with timer specs and border
           Expanded(
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border(
                   left: BorderSide(
                     width: 2,
-                    color: Color(0xffFFC629),
+                    color: listOfTasks[index].project.markerColor,
                   )
                 )
               ),
@@ -214,7 +214,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                   //timer project
                   TimerSettingsRow(
-                      text: listOfTasks[index].projectName,
+                      text: listOfTasks[index].project.projectName,
                       textStyle: TypographyStyles().getBodyMedium(),
                       icon: Icons.cases_outlined),
 
