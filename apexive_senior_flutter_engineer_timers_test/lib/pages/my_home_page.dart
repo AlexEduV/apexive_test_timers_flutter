@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Row(
                             children: const [
 
-                              AppBarButton(icon: Icons.sync_alt),
+                              AppBarButton(icon: Icons.swap_vert_sharp),
 
                               Padding(padding: EdgeInsets.only(right: 8)),
 
