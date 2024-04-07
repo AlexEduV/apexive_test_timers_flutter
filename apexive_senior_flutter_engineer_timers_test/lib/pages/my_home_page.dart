@@ -2,7 +2,6 @@
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/app_bar_button.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/timersList/timer_settings_row.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../style/typography.dart';
 
@@ -18,7 +17,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   int selectedTabPageIndex = 1;
-  int selectedBottomNavigationIndex = 1;
+  int selectedBottomNavigationIndex = 0;
 
   @override
   void initState() {
@@ -230,7 +229,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 const Padding(padding: EdgeInsets.only(right: 4)),
 
                 //pause icon
-                const Icon(Icons.pause, color: Colors.black, size: 32,)
+                const Icon(Icons.pause_rounded, color: Colors.black, size: 32,)
               ],
             ),
 
