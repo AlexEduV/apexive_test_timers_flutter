@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
 
                   //Tab Page
-                  getTabPage(selectedTabPageIndex)
+                  Expanded(child: getTabPage(selectedTabPageIndex))
 
                   //bottom navigation
 
@@ -137,14 +137,16 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
 
           //listView
-          ListView.separated(
-              itemBuilder: _getTimersListTile,
-              separatorBuilder:(context, index) {
-                return const Divider(
-                  //empty invisible divider
-                  height: 0, thickness: 0, color: Colors.white,);
-               },
-              itemCount: 1)
+          Expanded(
+            child: ListView.separated(
+                itemBuilder: _getTimersListTile,
+                separatorBuilder:(context, index) {
+                  return const Divider(
+                    //empty invisible divider
+                    height: 0, thickness: 0, color: Colors.white,);
+                 },
+                itemCount: 1),
+          )
 
         ],
       );
@@ -155,7 +157,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _getTimersListTile(BuildContext context, int index) {
     return Container(
-      height: 40,
+      //height: 40,
     );
   }
 }
