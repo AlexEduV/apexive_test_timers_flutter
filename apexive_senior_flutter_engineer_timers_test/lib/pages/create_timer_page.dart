@@ -86,7 +86,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                       //back button
                       IconButton(
                           onPressed: onBackButtonPressed,
-                          icon: const Icon(Icons.arrow_back_ios, size: 40, color: Colors.white,),),
+                          icon: const Icon(Icons.arrow_back_ios, size: 30, color: Colors.white,),),
 
                       //title in the center
                       Row(
@@ -131,7 +131,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                           icon: const Icon(Icons.expand_more, size: 32, color: Colors.white,),
                           isExpanded: true,
                           borderRadius: BorderRadius.circular(8),
-                          dropdownColor: Color(0x1fffffff),
+                          dropdownColor: const Color(0xafffffff),
                         ),
                       ),
                     ],
