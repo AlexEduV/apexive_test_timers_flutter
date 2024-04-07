@@ -37,6 +37,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   child: Stack(
+                    //alignment: Alignment.center,
                     children: [
                       //back button
                       IconButton(

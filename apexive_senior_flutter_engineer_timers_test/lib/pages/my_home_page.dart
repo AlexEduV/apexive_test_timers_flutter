@@ -4,6 +4,7 @@ import 'package:apexive_senior_flutter_engineer_timers_test/ui/app_bar_button.da
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/timersList/timer_settings_row.dart';
 import 'package:flutter/material.dart';
 
+import '../model/task.dart';
 import '../style/typography.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -17,14 +18,32 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  //UI init
   int selectedTabPageIndex = 1;
   int selectedBottomNavigationIndex = 0;
+
+  //persistence init
+  List<Task> listOfTasks = [];
+  int listSize = 0;
 
   @override
   void initState() {
     super.initState();
 
+    //testing
+    //init one test task
+    listOfTasks.add(
+        Task(
+            title: 'iOS App Development with odd',
+            projectName: 'SO056 - Booqio V2',
+            deadlineDate: '07/20/2023',
+            time: '00:30',
+            isFavorite: false,
+            isActive: false
+        )
+    );
 
+    listSize = listOfTasks.length;
   }
 
   @override
@@ -151,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Expanded(
             child: ListView.separated(
                 itemBuilder: _getTimersListTile,
-                itemCount: 1,
+                itemCount: listSize,
                 separatorBuilder:(context, index) {
                   return const Divider(
                     //empty invisible divider
@@ -196,19 +215,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
                   //timer name
                   TimerSettingsRow(
-                      text: 'iOS App Deployment with odd',
+                      text: listOfTasks[index].title,
                       textStyle: TypographyStyles().getTitleMedium(),
-                      icon: Icons.star_border),
+                      icon: listOfTasks[index].isFavorite ? Icons.star : Icons.star_border),
 
                   //timer project
                   TimerSettingsRow(
-                      text: 'SO056 - Booqio V2',
+                      text: listOfTasks[index].projectName,
                       textStyle: TypographyStyles().getBodyMedium(),
                       icon: Icons.cases_outlined),
 
                   //deadline
                   TimerSettingsRow(
-                      text: 'Deadline 07/20/2023',
+                      text: 'Deadline ${listOfTasks[index].deadlineDate}',
                       textStyle: TypographyStyles().getBodyMedium(),
                       icon: Icons.access_time_rounded),
 
@@ -217,26 +236,37 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
 
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(64),
-              color: Colors.white
-            ),
-            //width: 104,
-            //height: 48,
-            padding: const EdgeInsets.only(left: 16, top: 8, right: 8, bottom: 8),
-            child: Row(
-              children: [
-                //time
-                Text('00:30', style: TypographyStyles().getLabelLarge(specifiedColor: Colors.black),),
-                
-                const Padding(padding: EdgeInsets.only(right: 4)),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                listOfTasks[index].isActive = !listOfTasks[index].isActive;
+              });
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(64),
+                color: Colors.white,
+              ),
+              //width: 104,
+              //height: 48,
+              padding: const EdgeInsets.only(left: 16, top: 8, right: 8, bottom: 8),
+              child: Row(
+                children: [
+                  //time
+                  Text(listOfTasks[index].time, style: TypographyStyles().getLabelLarge(specifiedColor: Colors.black),),
 
-                //pause icon
-                const Icon(Icons.pause_rounded, color: Colors.black, size: 32,)
-              ],
-            ),
+                  const Padding(padding: EdgeInsets.only(right: 4),),
 
+                  //pause icon
+                  Icon(
+                    listOfTasks[index].isActive ? Icons.pause_rounded : Icons.play_arrow,
+                    color: Colors.black,
+                    size: 32,
+                  ),
+                ],
+              ),
+
+            ),
           )
         ],
 
