@@ -1,13 +1,16 @@
+import 'dart:async';
+
 import 'package:apexive_senior_flutter_engineer_timers_test/model/project.dart';
 
 class Task {
   final String title;
   final Project project;
   final String deadlineDate;
-  final String time;
+  late String time;
   final bool isFavorite;
   late bool isActive;
   late bool isCompleted;
+  late Timer timer;
 
   Task({
     required this.title,
@@ -17,6 +20,7 @@ class Task {
     required this.isFavorite,
     required this.isActive,
     required this.isCompleted,
+    required this.timer,
   });
 
 }

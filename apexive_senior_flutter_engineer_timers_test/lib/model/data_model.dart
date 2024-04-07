@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:apexive_senior_flutter_engineer_timers_test/model/project.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/model/task.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +23,7 @@ class DataModel {
           isFavorite: false,
           isActive: false,
           isCompleted: false,
+          timer: Timer(Duration.zero, (){}),
         )
     );
 
@@ -33,6 +36,7 @@ class DataModel {
           isFavorite: true,
           isActive: false,
           isCompleted: false,
+          timer: Timer(Duration.zero, (){}),
         )
     );
 

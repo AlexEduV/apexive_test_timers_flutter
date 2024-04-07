@@ -1,4 +1,6 @@
 
+import 'dart:async';
+
 import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/pages/create_timer_page.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/app_bar_button.dart';
@@ -26,6 +28,9 @@ class _MyHomePageState extends State<MyHomePage> {
   //persistence init
   List<Task> listOfTasks = [];
   int listSize = 0;
+
+  //time constants
+  static const oneSecond = Duration(seconds: 1);
 
   @override
   void initState() {
@@ -239,6 +244,44 @@ class _MyHomePageState extends State<MyHomePage> {
             onTap: () {
 
               //TODO: start/stop timer here:
+              if (listOfTasks[index].timer.isActive) {
+                //stop timer if active
+                listOfTasks[index].timer.cancel();
+              }
+              else {
+
+                //start a timer
+                int minutes = int.parse(listOfTasks[index].time.substring(0, 2));
+                int seconds = int.parse(listOfTasks[index].time.substring(3, 5));
+
+                int startingPoint = minutes * 60 + seconds;
+
+                listOfTasks[index].timer = Timer.periodic(oneSecond, (Timer timer) {
+                  if (startingPoint == 0) {
+
+                    //the task is finished
+                    timer.cancel();
+
+                    setState(() {
+                      listOfTasks.removeAt(index);
+                      listSize--;
+                    });
+
+                  }
+                  else {
+                    startingPoint--;
+
+                    minutes = startingPoint ~/ 60;
+                    seconds = startingPoint % 60;
+
+                    //update time
+                    setState(() {
+                      listOfTasks[index].time = '${minutes.toString().padLeft(2, "0")}:${seconds.toString().padLeft(2, "0")}';
+                    });
+                  }
+                });
+
+              }
 
               //update UI
               setState(() {

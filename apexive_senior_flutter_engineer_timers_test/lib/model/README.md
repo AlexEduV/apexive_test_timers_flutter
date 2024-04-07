@@ -6,6 +6,7 @@ Every timer should have these properties:
 4.Timer Time
 5.isFavorite
 6.isActive
+7.isCompleted
 
 the persistence model for this project entails no database usage. Instead, data is to be initialized
 at 0 timers and added/removed during the lifetime of the app. For this reason, the separate model file
