@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(widget.title, style: TypographyStyles.headlineLarge,),
+                        Text(widget.title, style: TypographyStyles().getHeadlineLarge(),),
 
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8),
@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               selectedTabPageIndex = index;
                             });
                           },
-                          labelStyle: TypographyStyles.labelLarge,
+                          labelStyle: TypographyStyles().getLabelLarge(),
                           indicatorColor: Colors.white,
                           tabs: const [
                             Tab(text: 'Favorites',),
@@ -126,17 +126,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
           //Text (number of timers)
           Row(
-            children: const [
+            children: [
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 8.0),
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Text(
                   'You have 16 Timers',
-                  style: TypographyStyles.labelLarge,
+                  style: TypographyStyles().getLabelLarge(),
                   textAlign: TextAlign.start,
                 ),
               ),
             ],
           ),
+
+          const Padding(padding: EdgeInsets.only(top: 16)),
 
           //listView
           Expanded(
@@ -178,34 +180,37 @@ class _MyHomePageState extends State<MyHomePage> {
               )
             ),
             child: Column(
-
               children: [
+
+                //timer name
                 Padding(
                   padding: const EdgeInsets.only(bottom: 4.0),
                   child: Row(
                     children: [
-                      Icon(Icons.star_border, size: 24, color: Colors.white),
-                      Text('iOS App Deployment', style: TypographyStyles.titleMedium,)
+                      const Icon(Icons.star_border, size: 24, color: Colors.white),
+                      Text('iOS App Deployment', style: TypographyStyles().getTitleMedium(),)
                     ],
                   ),
                 ),
 
+                //timer project
                 Padding(
                   padding: const EdgeInsets.only(bottom: 4.0),
                   child: Row(
                     children: [
-                      Icon(Icons.cases_outlined, size: 24, color: Colors.white,),
-                      Text('SO056 - Booqio V2', style: TypographyStyles.bodyMedium)
+                      const Icon(Icons.cases_outlined, size: 24, color: Colors.white,),
+                      Text('SO056 - Booqio V2', style: TypographyStyles().getBodyMedium(),),
                     ],
                   ),
                 ),
 
+                //deadline
                 Padding(
                   padding: const EdgeInsets.only(bottom: 4.0),
                   child: Row(
                     children: [
-                      Icon(Icons.access_time_rounded, size: 24, color: Colors.white,),
-                      Text('Deadline 07/20/2023', style: TypographyStyles.bodyMedium)
+                      const Icon(Icons.access_time_rounded, size: 24, color: Colors.white,),
+                      Text('Deadline 07/20/2023', style: TypographyStyles().getBodyMedium(),)
                     ],
                   ),
                 )
@@ -214,7 +219,27 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
 
           Column(
-            //pause button
+            children: [
+              //pause button
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(64),
+                  color: Colors.white
+                ),
+                //width: 104,
+                //height: 48,
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                  children: [
+                    //time
+                    Text('00:30', style: TypographyStyles().getLabelLarge(specifiedColor: Colors.black),)
+
+                    //pause icon
+                  ],
+                ),
+
+              )
+            ],
           )
         ],
 

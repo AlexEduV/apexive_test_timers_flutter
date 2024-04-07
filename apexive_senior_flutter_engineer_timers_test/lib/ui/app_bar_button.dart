@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class AppBarButton extends StatelessWidget {
 
-  const AppBarButton({super.key, required this.icon, required this.onTap});
-
   final IconData icon;
   final Function() onTap;
+
+  const AppBarButton({super.key, required this.icon, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
