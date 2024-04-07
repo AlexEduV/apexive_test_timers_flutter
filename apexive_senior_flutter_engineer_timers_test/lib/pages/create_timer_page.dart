@@ -103,7 +103,11 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                 const Padding(padding: EdgeInsets.only(top: 16)),
 
                 //project selector
-                DropDownSelector(menuItems: projectMenuItems, selectedValue: _selectedProjectNameValue),
+                DropDownSelector(
+                  menuItems: projectMenuItems,
+                  selectedValue: _selectedProjectNameValue,
+                  hintText: 'Project',
+                ),
 
                 //task selector
 

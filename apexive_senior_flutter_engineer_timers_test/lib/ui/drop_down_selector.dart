@@ -10,11 +10,13 @@ class DropDownSelector extends StatefulWidget {
   final List<DropdownMenuItem<String>> menuItems;
 
   final String? selectedValue;
+  final String hintText;
 
   const DropDownSelector({
     super.key,
     required this.menuItems,
     required this.selectedValue,
+    required this.hintText,
   });
 
   @override
@@ -57,7 +59,7 @@ class _DropDownSelectorState extends State<DropDownSelector> {
                   });
                 }
               },
-              hint: Text('Project', style: TypographyStyles().getBodyLarge(),),
+              hint: Text(widget.hintText, style: TypographyStyles().getBodyLarge(),),
               style:  TypographyStyles().getBodyLarge(),
               underline: Container(),
               icon: const Icon(Icons.expand_more, size: 32, color: Colors.white,),
