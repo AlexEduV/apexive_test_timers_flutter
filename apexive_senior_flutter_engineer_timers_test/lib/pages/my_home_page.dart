@@ -1,6 +1,8 @@
 
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/app_bar_button.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/timersList/timer_settings_row.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../style/typography.dart';
 
@@ -180,41 +182,29 @@ class _MyHomePageState extends State<MyHomePage> {
                 )
               )
             ),
+            padding: const EdgeInsets.only(left: 8),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
 
                 //timer name
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 4.0),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.star_border, size: 24, color: Colors.white),
-                      Text('iOS App Deployment', style: TypographyStyles().getTitleMedium(),)
-                    ],
-                  ),
-                ),
+                TimerSettingsRow(
+                    text: 'iOS App Deployment',
+                    textStyle: TypographyStyles().getTitleMedium(),
+                    icon: Icons.star_border),
 
                 //timer project
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 4.0),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.cases_outlined, size: 24, color: Colors.white,),
-                      Text('SO056 - Booqio V2', style: TypographyStyles().getBodyMedium(),),
-                    ],
-                  ),
-                ),
+                TimerSettingsRow(
+                    text: 'SO056 - Booqio V2',
+                    textStyle: TypographyStyles().getBodyMedium(),
+                    icon: Icons.cases_outlined),
 
                 //deadline
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 4.0),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.access_time_rounded, size: 24, color: Colors.white,),
-                      Text('Deadline 07/20/2023', style: TypographyStyles().getBodyMedium(),)
-                    ],
-                  ),
-                )
+                TimerSettingsRow(
+                    text: 'Deadline 07/20/2023',
+                    textStyle: TypographyStyles().getBodyMedium(),
+                    icon: Icons.access_time_rounded),
+
               ],
             ),
           ),
