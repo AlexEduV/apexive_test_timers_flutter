@@ -20,6 +20,7 @@ class DataModel {
           time: '00:30',
           isFavorite: false,
           isActive: false,
+          isCompleted: false,
         )
     );
 
@@ -31,6 +32,7 @@ class DataModel {
           time: '00:30',
           isFavorite: true,
           isActive: false,
+          isCompleted: false,
         )
     );
 

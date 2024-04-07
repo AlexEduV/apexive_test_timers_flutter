@@ -7,6 +7,7 @@ class Task {
   final String time;
   final bool isFavorite;
   late bool isActive;
+  late bool isCompleted;
 
   Task({
     required this.title,
@@ -15,6 +16,7 @@ class Task {
     required this.time,
     required this.isFavorite,
     required this.isActive,
+    required this.isCompleted,
   });
 
 }
