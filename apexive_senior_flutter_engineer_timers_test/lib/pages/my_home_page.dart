@@ -72,7 +72,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Row(
                             children: [
 
-                              AppBarButton(icon: Icons.swap_vert_sharp, onTap: onSortListButtonPressed,),
+                              Visibility(
+                                visible: listSize > 0,
+                                child: AppBarButton(
+                                  icon: Icons.swap_vert_sharp,
+                                  onTap: onSortListButtonPressed,
+                                ),
+                              ),
 
                               const Padding(padding: EdgeInsets.only(right: 8)),
 
