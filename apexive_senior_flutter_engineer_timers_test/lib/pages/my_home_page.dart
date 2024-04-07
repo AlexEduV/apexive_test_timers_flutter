@@ -50,7 +50,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     padding: const EdgeInsets.only(top: 8, bottom: 8),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(widget.title, style: TypographyStyles.headlineLarge,),
 
@@ -138,6 +137,14 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
 
           //listView
+          ListView.separated(
+              itemBuilder: _getTimersListTile,
+              separatorBuilder:(context, index) {
+                return const Divider(
+                  //empty invisible divider
+                  height: 0, thickness: 0, color: Colors.white,);
+               },
+              itemCount: 1)
 
         ],
       );
@@ -146,4 +153,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return selectedTabPage;
   }
 
+  Widget _getTimersListTile(BuildContext context, int index) {
+    return Container(
+      height: 40,
+    );
+  }
 }
