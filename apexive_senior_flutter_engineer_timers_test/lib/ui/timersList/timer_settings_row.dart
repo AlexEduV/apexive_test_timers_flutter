@@ -25,7 +25,13 @@ class TimerSettingsRow extends StatelessWidget {
           
           const Padding(padding: EdgeInsets.only(right: 4.0),),
           
-          Text(text, style: textStyle,),
+          Flexible(
+            child: Column(
+              children: [
+                Text(text, style: textStyle, maxLines: 3),
+              ],
+            ),
+          ),
         ],
       ),
     );

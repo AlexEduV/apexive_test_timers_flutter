@@ -105,6 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
             )
         ),
       ),
+      //bottomNavigationBar: ,
     );
   }
 
@@ -146,12 +147,13 @@ class _MyHomePageState extends State<MyHomePage> {
           Expanded(
             child: ListView.separated(
                 itemBuilder: _getTimersListTile,
+                itemCount: 1,
                 separatorBuilder:(context, index) {
                   return const Divider(
                     //empty invisible divider
                     height: 0, thickness: 0, color: Colors.white,);
                  },
-                itemCount: 1),
+            ),
           )
 
         ],
@@ -173,39 +175,41 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           //column with timer specs and border
-          Container(
-            decoration: const BoxDecoration(
-              border: Border(
-                left: BorderSide(
-                  width: 2,
-                  color: Color(0xffFFC629),
+          Expanded(
+            child: Container(
+              decoration: const BoxDecoration(
+                border: Border(
+                  left: BorderSide(
+                    width: 2,
+                    color: Color(0xffFFC629),
+                  )
                 )
-              )
-            ),
-            padding: const EdgeInsets.only(left: 8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              ),
+              padding: const EdgeInsets.only(left: 8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
 
-                //timer name
-                TimerSettingsRow(
-                    text: 'iOS App Deployment',
-                    textStyle: TypographyStyles().getTitleMedium(),
-                    icon: Icons.star_border),
+                  //timer name
+                  TimerSettingsRow(
+                      text: 'iOS App Deployment with odd',
+                      textStyle: TypographyStyles().getTitleMedium(),
+                      icon: Icons.star_border),
 
-                //timer project
-                TimerSettingsRow(
-                    text: 'SO056 - Booqio V2',
-                    textStyle: TypographyStyles().getBodyMedium(),
-                    icon: Icons.cases_outlined),
+                  //timer project
+                  TimerSettingsRow(
+                      text: 'SO056 - Booqio V2',
+                      textStyle: TypographyStyles().getBodyMedium(),
+                      icon: Icons.cases_outlined),
 
-                //deadline
-                TimerSettingsRow(
-                    text: 'Deadline 07/20/2023',
-                    textStyle: TypographyStyles().getBodyMedium(),
-                    icon: Icons.access_time_rounded),
+                  //deadline
+                  TimerSettingsRow(
+                      text: 'Deadline 07/20/2023',
+                      textStyle: TypographyStyles().getBodyMedium(),
+                      icon: Icons.access_time_rounded),
 
-              ],
+                ],
+              ),
             ),
           ),
 
@@ -231,7 +235,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
           )
         ],
-
 
       ),
     );
