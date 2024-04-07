@@ -111,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void onAddTimerButtonPressed() {
-    debugPrint('AddTimerButtonPressed');
+    //debugPrint('AddTimerButtonPressed');
 
     //open createTimerPage
     Navigator.pushNamed(context, CreateTimerPage.routeName);

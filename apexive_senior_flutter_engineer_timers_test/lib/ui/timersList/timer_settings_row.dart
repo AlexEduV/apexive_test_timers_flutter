@@ -36,7 +36,5 @@ class TimerSettingsRow extends StatelessWidget {
         ],
       ),
     );
-
   }
-
 }
