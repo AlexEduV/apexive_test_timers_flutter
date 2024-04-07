@@ -14,6 +14,15 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  int selectedTabPageIndex = 1;
+
+  @override
+  void initState() {
+    super.initState();
+
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,7 +96,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         length: 3,
                         child: TabBar(
                           onTap: (int index) {
-
+                            setState(() {
+                              selectedTabPageIndex = index;
+                            });
                           },
                           labelStyle: TypographyStyles.labelLarge,
                           indicatorColor: Colors.white,
@@ -100,10 +111,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
 
-                  //Text (number of timers)
-
-
-                  //listView
+                  //Tab Page
+                  getTabPage(selectedTabPageIndex)
 
                   //bottom navigation
 
@@ -119,6 +128,35 @@ class _MyHomePageState extends State<MyHomePage> {
 
   }
 
-  //on
+  //void onListSortButtonPressed() {}
+
+  Widget getTabPage(int selectedIndex)
+  {
+    Widget selectedTabPage = Container();
+
+    //Odoo Tab
+    if (selectedIndex == 1)
+    {
+      selectedTabPage = Column(
+        children: const [
+
+          //Text (number of timers)
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              'You have 16 Timers',
+              style: TypographyStyles.labelLarge,
+              textAlign: TextAlign.start,
+            ),
+          ),
+
+          //listView
+
+        ],
+      );
+    }
+
+    return selectedTabPage;
+  }
 
 }
