@@ -102,26 +102,36 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                 const Padding(padding: EdgeInsets.only(top: 16)),
 
                 //project selector
-                Row(
-                  //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: DropdownButton<String>(
-                        items: projectMenuItems,
-                        value: _selectedProjectNameValue,
-                        onChanged: (String? selectedValue) {
-                          if (selectedValue is String) {
-                            setState(() {
-                              _selectedProjectNameValue = selectedValue;
-                            });
-                          }
-                        },
-                        hint: Text('Project', style: TypographyStyles().getBodyLarge(),),
-                        style:  TypographyStyles().getBodyLarge(),
-
-                      ),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 2.0,
+                      color: const Color(0x29ffffff),
                     ),
-                  ],
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  child: Row(
+                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: DropdownButton<String>(
+                          items: projectMenuItems,
+                          value: _selectedProjectNameValue,
+                          onChanged: (String? selectedValue) {
+                            if (selectedValue is String) {
+                              setState(() {
+                                _selectedProjectNameValue = selectedValue;
+                              });
+                            }
+                          },
+                          hint: Text('Project', style: TypographyStyles().getBodyLarge(),),
+                          style:  TypographyStyles().getBodyLarge(),
+                          underline: Container(),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
 
                 //task selector
