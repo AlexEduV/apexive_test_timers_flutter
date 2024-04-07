@@ -248,21 +248,26 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Colors.transparent,
       items: const [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
+          activeIcon: Icon(Icons.access_time_filled_sharp),
+          icon: Icon(Icons.access_time_rounded),
+
           label: 'TimeSheets',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.access_time_filled_sharp),
+          activeIcon: Icon(Icons.cases_sharp),
+          icon: Icon(Icons.cases_outlined),
+
           label: 'Projects',
         ),
         BottomNavigationBarItem(
-          icon: FaIcon(FontAwesomeIcons.chartSimple),
+          activeIcon: Icon(Icons.settings_sharp),
+          icon: Icon(Icons.settings_outlined),
           label: 'Settings',
         ),
       ],
       currentIndex: selectedBottomNavigationIndex,
       selectedItemColor: Colors.white,
-      //unselectedItemColor: Colors.grey,
+      unselectedItemColor: Colors.white,
       onTap: onBottomNavigationItemTapped,
     );
   }
