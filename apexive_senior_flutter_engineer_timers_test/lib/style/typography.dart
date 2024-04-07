@@ -6,7 +6,7 @@ class TypographyStyles {
   static const lineHeight = 1.4;
 
   //custom offset from the original design to adjust for the different screen sizes
-  static const fontSizeOffset = -3;
+  static const fontSizeOffset = -3.0;
 
   dynamic getHeadlineLarge({Color specifiedColor = defaultColor}) {
     return
@@ -17,6 +17,17 @@ class TypographyStyles {
         fontFamily: 'Inter',
         color: specifiedColor,
         letterSpacing: 0.1
+      );
+  }
+
+  dynamic getHeadlineSmall({Color specifiedColor = defaultColor}) {
+    return
+      TextStyle(
+        fontSize: 24.0 + fontSizeOffset,
+        fontWeight: FontWeight.w700,
+        height: lineHeight,
+        fontFamily: 'Inter',
+        color: specifiedColor,
       );
   }
 

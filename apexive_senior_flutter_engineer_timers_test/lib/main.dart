@@ -1,3 +1,4 @@
+import 'package:apexive_senior_flutter_engineer_timers_test/pages/create_timer_page.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/pages/my_home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +25,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Timesheets'),
+      routes: {
+        CreateTimerPage.routeName: (context) => CreateTimerPage(),
+      },
       debugShowCheckedModeBanner: false,
     );
   }

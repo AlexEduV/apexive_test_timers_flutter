@@ -1,9 +1,10 @@
+import 'package:apexive_senior_flutter_engineer_timers_test/style/typography.dart';
 import 'package:flutter/material.dart';
 
 class CreateTimerPage extends StatefulWidget {
-  const CreateTimerPage({super.key, required this.title});
+  const CreateTimerPage({super.key});
 
-  final String title;
+  static const routeName = '/CreateTimerActivity';
 
   @override
   State<CreateTimerPage> createState() => _CreateTimerPageState();
@@ -29,20 +30,33 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
           ),
 
           child: Padding(
-            padding: EdgeInsets.only(right: 16, left: 16),
+            padding: const EdgeInsets.only(right: 16, left: 16),
             //app bar
-            child: Row(
+            child: Column(
               children: [
-                //back button
-                IconButton(
-                    onPressed: onBackButtonPressed,
-                    icon: const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8),
-                      child: Icon(Icons.arrow_back_ios, size: 48,),
-                    ))
+                Row(
+                  children: [
+                    //back button
+                    IconButton(
+                        onPressed: onBackButtonPressed,
+                        icon: const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 8),
+                          child: Icon(Icons.arrow_back_ios, size: 48, color: Colors.white,),
+                        ),),
 
-                //title in the center
+                    //title in the center
+                    Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Create Timer', style: TypographyStyles().getHeadlineSmall(),),
+                          ],
+                        ),
+                    ),
+                  ],
+                ),
 
+                const Spacer(),
               ],
             ),
           ),
@@ -55,6 +69,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
   void onBackButtonPressed()
   {
     //route back to the home page;
+    Navigator.pop(context);
 
   }
 }

@@ -1,4 +1,5 @@
 
+import 'package:apexive_senior_flutter_engineer_timers_test/pages/create_timer_page.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/app_bar_button.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/timersList/timer_settings_row.dart';
 import 'package:flutter/material.dart';
@@ -110,7 +111,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void onAddTimerButtonPressed() {
+    debugPrint('AddTimerButtonPressed');
 
+    //open createTimerPage
+    Navigator.pushNamed(context, CreateTimerPage.routeName);
   }
 
   void onSortListButtonPressed() {
