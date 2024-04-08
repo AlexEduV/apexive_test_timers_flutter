@@ -149,10 +149,17 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                   ),
                   child: TextField(
                     decoration: InputDecoration(
-
+                      //hoverColor: Colors.transparent,
+                      enabledBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent),
+                      ),
+                      focusedBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent),
+                      ),
                       hintStyle: TypographyStyles().getBodyLarge(),
                       hintText: 'Description',
                       counterText: "",),
+                    //cursorColor: Colors.transparent,
                     enabled: true,
                     maxLength: 20,
                     textInputAction: TextInputAction.next,
