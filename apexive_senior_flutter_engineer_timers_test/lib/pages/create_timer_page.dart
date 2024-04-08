@@ -108,7 +108,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                     shadowColor: Colors.transparent,
                     leading: IconButton(
                       onPressed: onBackButtonPressed,
-                      icon: const Icon(Icons.arrow_back_ios, size: 30, color: Colors.white,),),
+                      icon: const Icon(Icons.arrow_back_ios, size: 24, color: Colors.white,),),
                   ),
                 ),
 
