@@ -15,6 +15,8 @@ class TaskDetailsPage extends StatefulWidget {
 
 class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
+  int selectedTabPageIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,16 +57,36 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                 ),
 
                 //tab bar - timesheets & details
-
-                  //task detail view
-
-                    //completed records listview
-                    //description onTap
-
-                  //project overview
-
-                    //project details
-                    //project description
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 8.0),
+                  decoration: BoxDecoration(
+                    border: BorderDirectional(
+                      bottom: BorderSide(
+                        width: 1.0,
+                        color: Colors.white.withOpacity(.16),
+                      ),),
+                  ),
+                  child: DefaultTabController(
+                    initialIndex: 1,
+                    length: 3,
+                    child: TabBar(
+                      onTap: (int index) {
+                        setState(() {
+                          selectedTabPageIndex = index;
+                        });
+                      },
+                      labelStyle: TypographyStyles.getLabelLarge(),
+                      indicatorColor: Colors.white,
+                      tabs: const [
+                        Tab(text: 'Timesheets',),
+                        Tab(text: 'Details',),
+                      ],
+                    ),
+                  ),
+                ),
+                  
+                //selected tab view
+                Expanded(child: getTabPage(selectedTabPageIndex),),
 
               ],
             ),
@@ -72,6 +94,29 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
         ),
       ),
     );
+  }
+
+  Widget getTabPage(int index) {
+
+    //timesheets view
+    if (selectedTabPageIndex == 0) {
+
+      //task detail view
+
+        //completed records listview
+        //description onTap
+
+    }
+    //details view
+    else {
+
+      //project overview
+
+        //project details
+        //project description
+    }
+
+    return Container();
   }
 
   void onBackButtonPressed() {
