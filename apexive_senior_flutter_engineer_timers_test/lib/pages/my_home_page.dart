@@ -99,8 +99,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
 
                   //tab view
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 8.0),
+                    decoration: BoxDecoration(
+                      border: BorderDirectional(
+                        bottom: BorderSide(
+                          width: 1.0,
+                          color: Colors.white.withOpacity(.16),
+                        ),),
+                    ),
                     child: DefaultTabController(
                         initialIndex: 1,
                         length: 3,
