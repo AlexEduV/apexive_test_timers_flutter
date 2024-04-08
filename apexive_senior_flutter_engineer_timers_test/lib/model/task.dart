@@ -4,6 +4,7 @@ import 'package:apexive_senior_flutter_engineer_timers_test/model/project.dart';
 
 class Task {
   final String title;
+  final String description;
   final Project project;
   final String deadlineDate;
   late String time;
@@ -14,6 +15,7 @@ class Task {
 
   Task({
     required this.title,
+    required this.description,
     required this.project,
     required this.deadlineDate,
     required this.time,

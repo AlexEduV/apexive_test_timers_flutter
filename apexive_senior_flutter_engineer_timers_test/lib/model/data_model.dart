@@ -18,6 +18,7 @@ class DataModel {
     initList.add(
         Task(
           title: 'iOS App Deployment with odd',
+          description: 'Sample Task',
           project: testProject,
           deadlineDate: '07/20/2023',
           time: '00:30',
@@ -31,6 +32,7 @@ class DataModel {
     initList.add(
         Task(
           title: 'iOS App Deployment',
+          description: 'Sample Task',
           project: testProject,
           deadlineDate: '07/20/2023',
           time: '00:30',
