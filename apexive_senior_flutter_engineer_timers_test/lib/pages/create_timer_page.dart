@@ -140,12 +140,15 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
 
                 //Description TextEdit
                 CustomTextField(
-                    textEditingController: descriptionTextController,
-                    hintText: 'Description',
-                    maxLength: 20,
+                  textEditingController: descriptionTextController,
+                  hintText: 'Description',
+                  maxLength: 20,
                 ),
 
-                //make favorite checkBox
+                const Padding(padding: EdgeInsets.only(top: 16)),
+
+                //isFavorite checkBox
+
 
                 const Spacer(),
 

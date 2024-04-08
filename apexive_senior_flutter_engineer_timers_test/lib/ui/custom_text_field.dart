@@ -51,6 +51,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         maxLength: widget.maxLength,
         textInputAction: TextInputAction.next,
         controller: widget.textEditingController,
+        style: TypographyStyles().getBodyLarge(),
 
       ),
     );
