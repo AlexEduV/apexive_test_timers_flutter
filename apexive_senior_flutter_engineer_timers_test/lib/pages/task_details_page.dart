@@ -179,12 +179,47 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                           iconSource: 'assets/images/pause-1.png',
                           onButtonPressed: onPauseButtonPressed,
                         ),
-
-
                       ],
                     ),
                   ],
                 ),
+
+                const SizedBox(height: 16.0,),
+
+                //Description section
+                Divider(height: 1, color: Colors.white.withOpacity(.16),),
+
+                const SizedBox(height: 16.0,),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Description',
+                      style: TypographyStyles.getBodySmall(),
+                    ),
+
+                    IconButton(
+                      onPressed: onEditDescriptionButtonPressed,
+                      icon: Image.asset(
+                        'assets/images/pencil.png',
+                        height: 24,
+                        width: 24,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 4.0,),
+
+                Text(
+                  'Sync with Client, communicate, '
+                  'work on the new design with designer, '
+                  'new tasks preparation call with the front end',
+                  style: TypographyStyles.getBodyMedium(),
+                )
+
               ],
             ),
           ),
@@ -224,6 +259,10 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   }
 
   void onPauseButtonPressed() {
+
+  }
+
+  void onEditDescriptionButtonPressed() {
 
   }
 
