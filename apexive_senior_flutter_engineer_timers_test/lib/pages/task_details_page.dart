@@ -68,7 +68,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                   ),
                   child: DefaultTabController(
                     initialIndex: 0,
-                    length: 3,
+                    length: 2,
                     child: TabBar(
                       onTap: (int index) {
                         setState(() {
@@ -103,8 +103,8 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
       //task detail view
 
-        //completed records listview
-        //description onTap
+      //completed records listview
+      //description & edit button
 
     }
     //details view
