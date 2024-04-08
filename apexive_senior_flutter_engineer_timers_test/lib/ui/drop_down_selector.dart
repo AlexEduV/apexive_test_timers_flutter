@@ -39,7 +39,7 @@ class _DropDownSelectorState extends State<DropDownSelector> {
       decoration: BoxDecoration(
         border: Border.all(
           width: 2.0,
-          color: const Color(0x29ffffff),
+          color: Colors.white.withOpacity(.16),
         ),
         borderRadius: BorderRadius.circular(8),
       ),
@@ -63,7 +63,7 @@ class _DropDownSelectorState extends State<DropDownSelector> {
               icon: const Icon(Icons.expand_more, size: 32, color: Colors.white,),
               isExpanded: true,
               borderRadius: BorderRadius.circular(8),
-              dropdownColor: const Color(0xafffffff),
+              dropdownColor: Colors.white.withOpacity(.67),
             ),
           ),
         ],

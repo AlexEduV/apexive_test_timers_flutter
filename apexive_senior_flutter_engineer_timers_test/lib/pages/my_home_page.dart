@@ -194,7 +194,7 @@ class _MyHomePageState extends State<MyHomePage> {
       //decorated container
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: const Color(0x14ffffff)
+        color: Colors.white.withOpacity(.08),
       ),
       padding: const EdgeInsets.all(16),
       margin: const EdgeInsets.only(bottom: 8),
@@ -292,7 +292,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(64),
-                color: listOfTasks[index].isActive ? Colors.white : const Color(0x14ffffff),
+                color: listOfTasks[index].isActive ? Colors.white : Colors.white.withOpacity(.08),
               ),
               //width: 104,
               //height: 48,
