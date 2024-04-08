@@ -1,5 +1,6 @@
 
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_app_bar.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/round_button.dart';
 import 'package:flutter/material.dart';
 
 import '../style/typography.dart';
@@ -101,10 +102,99 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     //timesheets view
     if (selectedIndex == 0) {
 
-      //task detail view
+      return Column(
+        children: [
 
-      //completed records listview
-      //description & edit button
+          //task detail view
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              color: Colors.white.withOpacity(.08),
+            ),
+            padding: const EdgeInsets.all(16),
+            margin: const EdgeInsets.only(bottom: 8, top: 16),
+
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+
+                Row(
+                  children: [
+                    Text(
+                      'Monday',
+                      style: TypographyStyles.getBodySmall(),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 4,),
+
+                Row(
+                  children: [
+                    Text(
+                      '17.07.2023',
+                      style: TypographyStyles.getTitleMedium(),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 4,),
+
+                Row(
+                  children: [
+                    Text(
+                      'Start Time 10:00',
+                      style: TypographyStyles.getBodySmall(),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 16,),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '08:08:20',
+                      style: TypographyStyles.getDisplaySmall(),
+                    ),
+
+                    Row(
+                      children: [
+
+                        //stop button
+                        RoundButton(
+                          backgroundColor: Colors.white.withOpacity(.16),
+                          tintColor: Colors.white,
+                          iconSource: 'assets/images/stop_fill.png',
+                          onButtonPressed: onStopButtonPressed
+                        ),
+
+                        const SizedBox(width: 16,),
+
+                        //pause button
+                        RoundButton(
+                          backgroundColor: Colors.white,
+                          tintColor: Colors.black,
+                          iconSource: 'assets/images/pause-1.png',
+                          onButtonPressed: onPauseButtonPressed,
+                        ),
+
+
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+
+          //completed records listview
+          //description & edit button
+
+
+        ],
+      );
 
     }
     //details view
@@ -127,6 +217,14 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   
   void onMoreButtonPressed() {
     
+  }
+
+  void onStopButtonPressed() {
+
+  }
+
+  void onPauseButtonPressed() {
+
   }
 
 }

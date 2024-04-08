@@ -8,6 +8,17 @@ class TypographyStyles {
   //custom offset from the original design to adjust for the different screen sizes
   static const fontSizeOffset = -3.0;
 
+  static TextStyle getDisplaySmall({Color specifiedColor = defaultColor}) {
+    return
+      TextStyle(
+          fontSize: 36.0 + fontSizeOffset,
+          fontWeight: FontWeight.w600,
+          height: lineHeight,
+          fontFamily: 'Inter',
+          color: specifiedColor,
+      );
+  }
+
   static TextStyle getHeadlineLarge({Color specifiedColor = defaultColor}) {
     return
       TextStyle(
@@ -76,6 +87,18 @@ class TypographyStyles {
         fontFamily: 'Inter',
         color: specifiedColor,
         letterSpacing: 0.25,
+      );
+  }
+
+  static TextStyle getBodySmall({Color specifiedColor = defaultColor}) {
+    return
+      TextStyle(
+        fontSize: 12.0 + fontSizeOffset,
+        fontWeight: FontWeight.w400,
+        height: lineHeight,
+        fontFamily: 'Inter',
+        color: specifiedColor,
+        letterSpacing: 0.4,
       );
   }
 
