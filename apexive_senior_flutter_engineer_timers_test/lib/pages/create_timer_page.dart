@@ -162,8 +162,15 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
 
                 //isFavorite checkBox
                 CheckBoxLabeled(
-                    isFavorite: isFavorite,
-                    label: 'Make Favorite'),
+                  isFavorite: isFavorite,
+                  label: 'Make Favorite',
+                  onChanged: (bool? value) {
+                    setState(() {
+                      isFavorite = value!;
+                    });
+                  },
+
+                ),
 
                 const Spacer(),
 

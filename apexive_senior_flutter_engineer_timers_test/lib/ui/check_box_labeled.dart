@@ -6,11 +6,14 @@ class CheckBoxLabeled extends StatefulWidget {
 
   final bool isFavorite;
   final String label;
+  final Function(bool?) onChanged;
+
 
   const CheckBoxLabeled({
     super.key,
     required this.isFavorite,
-    required this.label
+    required this.label,
+    required this.onChanged,
   });
 
   @override
@@ -20,13 +23,13 @@ class CheckBoxLabeled extends StatefulWidget {
 
 class _CheckBoxLabeledState extends State<CheckBoxLabeled> {
 
-  bool isFavorite = false;
+  //bool isFavorite = false;
 
   @override
   void initState() {
     super.initState();
 
-    isFavorite = widget.isFavorite;
+    //isFavorite = widget.isFavorite;
   }
 
   @override
@@ -34,12 +37,8 @@ class _CheckBoxLabeledState extends State<CheckBoxLabeled> {
     return Row(
       children: [
         Checkbox(
-          value: isFavorite,
-          onChanged: (bool? value) {
-            setState(() {
-              isFavorite = value!;
-            });
-          },
+          value: widget.isFavorite,
+          onChanged: widget.onChanged,
           fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
             return Colors.white;
           }),
