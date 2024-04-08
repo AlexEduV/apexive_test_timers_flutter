@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               Visibility(
                                 visible: listSize > 0,
                                 child: AppBarButton(
-                                  icon: Icons.swap_vert_sharp,
+                                  iconSource: 'assets/images/sort.png',
                                   onTap: onSortListButtonPressed,
                                 ),
                               ),
@@ -88,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               const Padding(padding: EdgeInsets.only(right: 8)),
 
                               AppBarButton(
-                                icon: Icons.add,
+                                iconSource: 'assets/images/plus-2.png',
                                 onTap: onAddTimerButtonPressed,
                               ),
                             ],
