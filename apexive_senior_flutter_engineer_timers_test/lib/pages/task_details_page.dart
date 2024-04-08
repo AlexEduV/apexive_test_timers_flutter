@@ -41,6 +41,17 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                   onBackButtonPressed: onBackButtonPressed,
                   title: 'Getting to know Apexer - Ivan',
                   titleTextStyle: TypographyStyles.getTitleMedium(),
+                  actions: [
+                    IconButton(
+                      onPressed: onEditButtonPressed, 
+                      icon: Image.asset(
+                        'assets/images/pencil.png',
+                        height: 24,
+                        width: 24,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
                 ),
 
                 //tab bar - timesheets & details
@@ -66,6 +77,10 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   void onBackButtonPressed() {
     //route back to the home page;
     Navigator.pop(context);
+  }
+  
+  void onEditButtonPressed() {
+    
   }
 
 }

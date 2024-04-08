@@ -103,6 +103,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                   onBackButtonPressed: onBackButtonPressed,
                   title: 'Create Timer',
                   titleTextStyle: TypographyStyles.getHeadlineSmall(),
+                  actions: null,
                 ),
 
                 const Padding(padding: EdgeInsets.only(top: 16)),
