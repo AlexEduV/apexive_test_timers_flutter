@@ -45,7 +45,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                   titleTextStyle: TypographyStyles.getTitleMedium(),
                   actions: [
                     IconButton(
-                      onPressed: onEditButtonPressed, 
+                      onPressed: onMoreButtonPressed,
                       icon: Image.asset(
                         'assets/images/pencil.png',
                         height: 24,
@@ -125,7 +125,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     Navigator.pop(context);
   }
   
-  void onEditButtonPressed() {
+  void onMoreButtonPressed() {
     
   }
 
