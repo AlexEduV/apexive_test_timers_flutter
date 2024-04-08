@@ -122,9 +122,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           tabs: const [
                             Tab(text: 'Favorites',),
                             Tab(text: 'Odoo',),
-                            Tab(text: 'Local',)
+                            Tab(text: 'Local',),
                           ],
-                        )
+                        ),
                     ),
                   ),
 
