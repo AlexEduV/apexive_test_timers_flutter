@@ -158,7 +158,26 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                 const Spacer(),
 
                 //create timer active button
-                
+                GestureDetector(
+                  onTap: onCreateTimerButtonPressed,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16),
+                    margin: const EdgeInsets.only(bottom: 16.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(.16),
+                      borderRadius: BorderRadius.circular(12.0)
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Create Timer',
+                          style: TypographyStyles().getLabelLarge(),
+                        )
+                      ],
+                    ),
+                  ),
+                )
 
               ],
             ),
