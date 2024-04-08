@@ -14,7 +14,7 @@ class AppBarButton extends StatelessWidget {
      width: 48,
      decoration: BoxDecoration(
          borderRadius: BorderRadius.circular(12),
-         color: Colors.white.withOpacity(.26),
+         color: Colors.white.withOpacity(.16),
      ),
      //padding: const EdgeInsets.all(8.0),
      child: IconButton(
