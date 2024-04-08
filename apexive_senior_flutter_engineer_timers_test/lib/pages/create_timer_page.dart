@@ -1,4 +1,5 @@
 import 'package:apexive_senior_flutter_engineer_timers_test/style/typography.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_text_field.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/drop_down_selector.dart';
 import 'package:flutter/material.dart';
 
@@ -130,45 +131,21 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
 
                 //task selector
                 DropDownSelector(
-                    menuItems: taskMenuItems,
-                    selectedValue: _selectedTaskNameValue,
-                    hintText: 'Task',
+                  menuItems: taskMenuItems,
+                  selectedValue: _selectedTaskNameValue,
+                  hintText: 'Task',
                 ),
 
                 const Padding(padding: EdgeInsets.only(top: 16)),
 
                 //Description TextEdit
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 2.0,
-                      color: const Color(0x29ffffff),
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      //hoverColor: Colors.transparent,
-                      enabledBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.transparent),
-                      ),
-                      focusedBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.transparent),
-                      ),
-                      hintStyle: TypographyStyles().getBodyLarge(),
-                      hintText: 'Description',
-                      counterText: "",),
-                    //cursorColor: Colors.transparent,
-                    enabled: true,
+                CustomTextField(
+                    textEditingController: descriptionTextController,
+                    hintText: 'Description',
                     maxLength: 20,
-                    textInputAction: TextInputAction.next,
-                    controller: descriptionTextController,
-
-                  ),
                 ),
 
-                //make favorite selector
+                //make favorite checkBox
 
                 const Spacer(),
 
