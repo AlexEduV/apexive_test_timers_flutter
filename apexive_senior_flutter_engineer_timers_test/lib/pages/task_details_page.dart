@@ -1,5 +1,8 @@
 
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_app_bar.dart';
 import 'package:flutter/material.dart';
+
+import '../style/typography.dart';
 
 class TaskDetailsPage extends StatefulWidget {
   const TaskDetailsPage({super.key});
@@ -32,7 +35,12 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
             padding: const EdgeInsets.only(right: 16, left: 16),
             child: Column(
               children: [
+
                 //app bar - user's name & edit button
+                CustomAppBar(
+                    onBackButtonPressed: onBackButtonPressed,
+                    title: 'Getting to know Apexer - Ivan',
+                ),
 
                 //tab bar - timesheets & details
 
@@ -52,6 +60,11 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
         ),
       ),
     );
+  }
+
+  void onBackButtonPressed() {
+    //route back to the home page;
+    Navigator.pop(context);
   }
 
 }

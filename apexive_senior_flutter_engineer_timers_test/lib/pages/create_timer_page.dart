@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/style/typography.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/check_box_labeled.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_app_bar.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_text_field.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/drop_down_selector.dart';
 import 'package:flutter/material.dart';
@@ -98,19 +99,9 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
             child: Column(
               children: [
 
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: AppBar(
-                    title: Text('Create Timer', style: TypographyStyles.getHeadlineSmall(),),
-                    centerTitle: true,
-                    backgroundColor: Colors.transparent,
-                    elevation: 0.0,
-                    shadowColor: Colors.transparent,
-                    leading: IconButton(
-                      onPressed: onBackButtonPressed,
-                      icon: const Icon(Icons.arrow_back_ios, size: 24, color: Colors.white,),),
-                  ),
-                ),
+                CustomAppBar(
+                    onBackButtonPressed: onBackButtonPressed,
+                    title: 'Create Timer'),
 
                 const Padding(padding: EdgeInsets.only(top: 16)),
 
