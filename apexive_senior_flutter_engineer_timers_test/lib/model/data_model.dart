@@ -47,4 +47,30 @@ class DataModel {
 
     return taskList;
   }
+
+  static Task getTaskByName(String taskName)
+  {
+    for (final task in taskList)
+    {
+      if (task.title == taskName)
+      {
+        return task;
+      }
+    }
+
+    return taskList.first;
+  }
+
+  static Project getProjectByName(String projectName)
+  {
+    for (final task in taskList)
+    {
+      if (task.project.projectName == projectName)
+      {
+        return task.project;
+      }
+    }
+
+    return taskList.first.project;
+  }
 }
