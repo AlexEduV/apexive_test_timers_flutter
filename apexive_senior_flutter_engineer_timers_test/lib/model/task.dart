@@ -6,6 +6,7 @@ class Task {
   final String title;
   final String description;
   final Project project;
+  final String assignedTo;
   final String deadlineDate;
   late String time;
   final bool isFavorite;
@@ -17,6 +18,7 @@ class Task {
     required this.title,
     required this.description,
     required this.project,
+    required this.assignedTo,
     required this.deadlineDate,
     required this.time,
     required this.isFavorite,

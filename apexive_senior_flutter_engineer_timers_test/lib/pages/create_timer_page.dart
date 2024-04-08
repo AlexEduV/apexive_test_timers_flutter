@@ -232,6 +232,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
             title: selectedTask.title,
             description: selectedTask.description,
             project: selectedProject,
+            assignedTo: selectedTask.assignedTo,
             deadlineDate: selectedTask.deadlineDate,
             time: selectedTask.time,
             isFavorite: isFavorite,
