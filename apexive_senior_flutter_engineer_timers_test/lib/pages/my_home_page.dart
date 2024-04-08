@@ -87,7 +87,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
                               const Padding(padding: EdgeInsets.only(right: 8)),
 
-                              AppBarButton(icon: Icons.add, onTap: onAddTimerButtonPressed,),
+                              AppBarButton(
+                                icon: Icons.add,
+                                onTap: onAddTimerButtonPressed,
+                              ),
                             ],
                           ),
                         )
@@ -136,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //debugPrint('AddTimerButtonPressed');
 
     //open createTimerPage
-    Navigator.pushNamed(context, CreateTimerPage.routeName, arguments: listOfTasks);
+    Navigator.pushNamed(context, CreateTimerPage.routeName);
   }
 
   void onSortListButtonPressed() {

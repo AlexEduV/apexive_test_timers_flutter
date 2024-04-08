@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 
 class DataModel {
 
+  static List<Task> taskList = [];
+
   List<Task> getInitTestTasks() {
-    List<Task> initList = [];
+    taskList = [];
 
     Project testProject = Project(
         projectName: 'SO056 - Booqio V2',
@@ -15,7 +17,7 @@ class DataModel {
     );
 
     //add one test task
-    initList.add(
+    taskList.add(
         Task(
           title: 'iOS App Deployment with odd',
           description: 'Sample Task',
@@ -29,7 +31,7 @@ class DataModel {
         )
     );
 
-    initList.add(
+    taskList.add(
         Task(
           title: 'iOS App Deployment',
           description: 'Sample Task',
@@ -43,6 +45,6 @@ class DataModel {
         )
     );
 
-    return initList;
+    return taskList;
   }
 }

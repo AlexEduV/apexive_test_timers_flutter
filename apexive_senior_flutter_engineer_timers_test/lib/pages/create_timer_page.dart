@@ -1,3 +1,4 @@
+import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/style/typography.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/check_box_labeled.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_text_field.dart';
@@ -36,45 +37,40 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
   void initState() {
     super.initState();
 
-    //get data using async
-    Future.delayed(Duration.zero, ()
+    //get data from route
+    tasks = DataModel.taskList;
+
+    //get distinct project names from task list
+    for (final task in tasks) {
+      projectNames.add(task.project.projectName);
+      taskNames.add(task.title);
+    }
+
+    projectNames = projectNames.toSet().toList();
+    taskNames = taskNames.toSet().toList();
+
+    //populate the menu list
+    for (final projectName in projectNames)
     {
-      //get data from route
-      tasks = ModalRoute.of(context)?.settings.arguments as List<Task>;
-
-      //get distinct project names from task list
-      for (final task in tasks) {
-        projectNames.add(task.project.projectName);
-        taskNames.add(task.title);
-      }
-
-      projectNames = projectNames.toSet().toList();
-      taskNames = taskNames.toSet().toList();
-
-      //populate the menu list
-      for (final projectName in projectNames)
-      {
-        projectMenuItems.add(
-            DropdownMenuItem<String>(
-              value: projectName,
-              child: Text(projectName),
-            ),);
-      }
-
-      for (final taskName in taskNames)
-      {
-        taskMenuItems.add(
+      projectMenuItems.add(
           DropdownMenuItem<String>(
-            value: taskName,
-            child: Text(taskName),),
-        );
-      }
+            value: projectName,
+            child: Text(projectName),
+          ),);
+    }
 
-      setState(() {
-        //init text value is set to the first of the list
-        //_selectedProjectNameValue = projectMenuItems[0].value!;
-      });
+    for (final taskName in taskNames)
+    {
+      taskMenuItems.add(
+        DropdownMenuItem<String>(
+          value: taskName,
+          child: Text(taskName),),
+      );
+    }
 
+    setState(() {
+      //init text value is set to the first of the list
+      //_selectedProjectNameValue = projectMenuItems[0].value!;
     });
   }
 
@@ -197,7 +193,11 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
 
   void onCreateTimerButtonPressed()
   {
+    //check inputs
+
+
     //add a new task to the list with specified parameters
+
 
     //go forward to the list page
 
