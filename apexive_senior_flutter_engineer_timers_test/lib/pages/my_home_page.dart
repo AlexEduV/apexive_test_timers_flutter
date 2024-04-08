@@ -315,10 +315,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   const Padding(padding: EdgeInsets.only(right: 4),),
 
                   //pause icon
-                  Icon(
-                    listOfTasks[index].isActive ? Icons.pause_rounded : Icons.play_arrow,
-                    color: listOfTasks[index].isActive ? Colors.black : Colors.white,
-                    size: 32,
+                  Image.asset(listOfTasks[index].isActive ?
+                  'assets/images/pause-1.png' :
+                  'assets/images/play_arrow_solid.png',
+                  color: listOfTasks[index].isActive ? Colors.black : Colors.white,
+                  height: 32,
+                  width: 32,
                   ),
                 ],
               ),
