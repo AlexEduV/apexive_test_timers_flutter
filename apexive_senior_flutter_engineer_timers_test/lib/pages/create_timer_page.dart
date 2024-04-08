@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/style/typography.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/check_box_labeled.dart';
@@ -5,6 +7,7 @@ import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_text_field
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/drop_down_selector.dart';
 import 'package:flutter/material.dart';
 
+import '../model/project.dart';
 import '../model/task.dart';
 
 class CreateTimerPage extends StatefulWidget {
@@ -190,14 +193,36 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
 
   void onCreateTimerButtonPressed()
   {
-    //check inputs
+    debugPrint('create timer button pressed');
 
+    //check user inputs
+    if (_selectedProjectNameValue != null && _selectedTaskNameValue != null)
+    {
 
-    //add a new task to the list with specified parameters
+      debugPrint('input check passed');
 
+      //get data based on the inputs
+      Project? selectedProject = DataModel.getProjectByName(_selectedProjectNameValue!);
+      Task selectedTask = DataModel.getTaskByName(_selectedTaskNameValue!);
 
-    //go forward to the list page
+      //add a new task to the list with specified parameters
+      DataModel.taskList.add(
+          Task(
+            title: selectedTask.title,
+            description: selectedTask.description,
+            project: selectedProject,
+            deadlineDate: selectedTask.deadlineDate,
+            time: selectedTask.time,
+            isFavorite: isFavorite,
+            isActive: false,
+            isCompleted: false,
+            timer: Timer(Duration.zero, (){}),
+          )
+      );
 
+      //go forward to the list page
+      Navigator.pop(context);
+    }
 
   }
 }

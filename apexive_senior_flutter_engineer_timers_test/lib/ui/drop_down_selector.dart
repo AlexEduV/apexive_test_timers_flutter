@@ -7,10 +7,10 @@ class DropDownSelector extends StatefulWidget {
 
   final List<DropdownMenuItem<String>> menuItems;
 
-  final String? selectedValue;
+  late String? selectedValue;
   final String hintText;
 
-  const DropDownSelector({
+  DropDownSelector({
     super.key,
     required this.menuItems,
     required this.selectedValue,
@@ -49,11 +49,11 @@ class _DropDownSelectorState extends State<DropDownSelector> {
           Expanded(
             child: DropdownButton<String>(
               items: widget.menuItems,
-              value: _selectedValue,
+              value: widget.selectedValue,
               onChanged: (String? selectedValue) {
                 if (selectedValue is String) {
                   setState(() {
-                    _selectedValue = selectedValue;
+                    widget.selectedValue = selectedValue;
                   });
                 }
               },
