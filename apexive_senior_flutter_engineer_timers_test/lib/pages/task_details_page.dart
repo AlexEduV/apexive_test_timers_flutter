@@ -67,7 +67,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                       ),),
                   ),
                   child: DefaultTabController(
-                    initialIndex: 1,
+                    initialIndex: 0,
                     length: 3,
                     child: TabBar(
                       onTap: (int index) {
@@ -96,10 +96,10 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     );
   }
 
-  Widget getTabPage(int index) {
+  Widget getTabPage(int selectedIndex) {
 
     //timesheets view
-    if (selectedTabPageIndex == 0) {
+    if (selectedIndex == 0) {
 
       //task detail view
 
@@ -108,7 +108,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
     }
     //details view
-    else {
+    else if (selectedIndex == 1) {
 
       //project overview
 
@@ -116,6 +116,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
         //project description
     }
 
+    //if unknown index
     return Container();
   }
 
