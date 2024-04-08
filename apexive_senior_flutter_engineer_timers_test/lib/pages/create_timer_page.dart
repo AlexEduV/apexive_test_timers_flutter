@@ -29,6 +29,8 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
 
   TextEditingController descriptionTextController = TextEditingController();
 
+  bool isFavorite = false;
+
   @override
   void initState() {
     super.initState();
@@ -148,6 +150,37 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                 const Padding(padding: EdgeInsets.only(top: 16)),
 
                 //isFavorite checkBox
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                  child: Row(
+                    children: [
+                      Checkbox(
+                        value: isFavorite,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            isFavorite = value!;
+                          });
+                        },
+                        fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                          if (states.contains(MaterialState.selected)) {
+                            return Colors.orange.withOpacity(.32);
+                          }
+                          return Colors.orange;
+                        }),
+                        //checkColor: Colors.transparent,
+                      ),
+
+                      Expanded(
+                          child: Row(
+                            children: [
+                              Text('Make Favorite'),
+                            ],
+                          )
+                      )
+                    ],
+                  ),
+
+                ),
 
 
                 const Spacer(),
