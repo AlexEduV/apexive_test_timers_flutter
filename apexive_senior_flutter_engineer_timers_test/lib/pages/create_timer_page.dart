@@ -78,6 +78,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.indigo,
+      extendBodyBehindAppBar: true,
       body: SafeArea(
         child: Container(
           decoration: const BoxDecoration(
@@ -96,24 +97,18 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
             //app bar
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Stack(
-                    //alignment: Alignment.center,
-                    children: [
-                      //back button
-                      IconButton(
-                          onPressed: onBackButtonPressed,
-                          icon: const Icon(Icons.arrow_back_ios, size: 30, color: Colors.white,),),
 
-                      //title in the center
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('Create Timer', style: TypographyStyles.getHeadlineSmall(),),
-                        ],
-                      ),
-                    ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: AppBar(
+                    title: Text('Create Timer', style: TypographyStyles.getHeadlineSmall(),),
+                    centerTitle: true,
+                    backgroundColor: Colors.transparent,
+                    elevation: 0.0,
+                    shadowColor: Colors.transparent,
+                    leading: IconButton(
+                      onPressed: onBackButtonPressed,
+                      icon: const Icon(Icons.arrow_back_ios, size: 30, color: Colors.white,),),
                   ),
                 ),
 

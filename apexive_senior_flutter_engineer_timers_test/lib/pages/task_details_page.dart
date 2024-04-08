@@ -45,7 +45,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
                     //project details
                     //project description
-                
+
               ],
             ),
           ),
