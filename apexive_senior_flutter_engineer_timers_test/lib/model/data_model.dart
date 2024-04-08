@@ -9,7 +9,7 @@ class DataModel {
 
   static List<Task> taskList = [];
 
-  List<Task> getInitTestTasks() {
+  static List<Task> getInitTestTasks() {
     taskList = [];
 
     Project testProject = Project(
@@ -77,5 +77,20 @@ class DataModel {
     }
 
     return taskList.first.project;
+  }
+
+  static int getNotCompletedTasksCount()
+  {
+    int result = 0;
+
+    for (final task in taskList)
+    {
+      if (!task.isCompleted)
+      {
+        result++;
+      }
+    }
+
+    return result;
   }
 }
