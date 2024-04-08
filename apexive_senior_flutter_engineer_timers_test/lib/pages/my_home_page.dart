@@ -208,6 +208,12 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _getTimersListTile(BuildContext context, int index) {
+
+    //hide the task if completed
+    if (listOfTasks[index].isCompleted){
+      return Container();
+    }
+
     return GestureDetector(
       onTap: () => onListItemTapped(index),
       child: Container(
@@ -368,8 +374,8 @@ class _MyHomePageState extends State<MyHomePage> {
           timer.cancel();
 
           setState(() {
-            listOfTasks.removeAt(index);
-            listSize--;
+            listOfTasks[index].isCompleted = true;
+            //listSize--;
           });
 
         }
