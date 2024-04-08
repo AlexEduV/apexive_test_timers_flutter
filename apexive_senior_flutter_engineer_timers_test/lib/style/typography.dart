@@ -79,4 +79,16 @@ class TypographyStyles {
       );
   }
 
+  static TextStyle getBottomNavigationNormal({Color specifiedColor = defaultColor})
+  {
+    return
+      TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        height: lineHeight + 0.4,
+        fontFamily: 'SF Pro',
+        color: specifiedColor,
+      );
+  }
+
 }

@@ -341,7 +341,7 @@ class _MyHomePageState extends State<MyHomePage> {
           activeIcon: Icon(Icons.access_time_filled_sharp),
           icon: Icon(Icons.access_time_rounded),
 
-          label: 'TimeSheets',
+          label: 'Timesheets',
         ),
         BottomNavigationBarItem(
           activeIcon: Icon(Icons.cases_sharp),
@@ -358,6 +358,8 @@ class _MyHomePageState extends State<MyHomePage> {
       currentIndex: selectedBottomNavigationIndex,
       selectedItemColor: Colors.white,
       unselectedItemColor: Colors.white,
+      selectedLabelStyle: TypographyStyles.getBottomNavigationNormal(),
+      unselectedLabelStyle: TypographyStyles.getBottomNavigationNormal(),
       onTap: onBottomNavigationItemTapped,
     );
   }
