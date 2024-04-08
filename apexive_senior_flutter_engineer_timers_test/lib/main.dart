@@ -1,5 +1,6 @@
 import 'package:apexive_senior_flutter_engineer_timers_test/pages/create_timer_page.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/pages/my_home_page.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/pages/task_details_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
       ),
       home: const MyHomePage(title: 'Timesheets'),
       routes: {
-        CreateTimerPage.routeName: (context) => CreateTimerPage(),
+        CreateTimerPage.routeName: (context) => const CreateTimerPage(),
+        TaskDetailsPage.routeName: (context) => const TaskDetailsPage(),
       },
       debugShowCheckedModeBanner: false,
     );
