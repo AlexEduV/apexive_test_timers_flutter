@@ -26,6 +26,8 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
   String? _selectedProjectNameValue;
   String? _selectedTaskNameValue;
 
+  TextEditingController descriptionTextController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -133,7 +135,31 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                     hintText: 'Task',
                 ),
 
+                const Padding(padding: EdgeInsets.only(top: 16)),
+
                 //Description TextEdit
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 2.0,
+                      color: const Color(0x29ffffff),
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: TextField(
+                    decoration: InputDecoration(
+
+                      hintStyle: TypographyStyles().getBodyLarge(),
+                      hintText: 'Description',
+                      counterText: "",),
+                    enabled: true,
+                    maxLength: 20,
+                    textInputAction: TextInputAction.next,
+                    controller: descriptionTextController,
+
+                  ),
+                ),
 
                 //make favorite selector
 
@@ -146,6 +172,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
 
         ),
       ),
+      resizeToAvoidBottomInset: false,
     );
   }
 
