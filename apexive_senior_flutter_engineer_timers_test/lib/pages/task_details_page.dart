@@ -32,7 +32,20 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
             padding: const EdgeInsets.only(right: 16, left: 16),
             child: Column(
               children: [
+                //app bar - user's name & edit button
 
+                //tab bar - timesheets & details
+
+                  //task detail view
+
+                    //completed records listview
+                    //description onTap
+
+                  //project overview
+
+                    //project details
+                    //project description
+                
               ],
             ),
           ),
