@@ -20,7 +20,11 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
   List<String> projectNames = [];
   List<DropdownMenuItem<String>> projectMenuItems = [];
 
+  List<String> taskNames = [];
+  List<DropdownMenuItem<String>> taskMenuItems = [];
+
   String? _selectedProjectNameValue;
+  String? _selectedTaskNameValue;
 
   @override
   void initState() {
@@ -35,9 +39,11 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
       //get distinct project names from task list
       for (final task in tasks) {
         projectNames.add(task.project.projectName);
+        taskNames.add(task.title);
       }
 
       projectNames = projectNames.toSet().toList();
+      taskNames = taskNames.toSet().toList();
 
       //populate the menu list
       for (final projectName in projectNames)
@@ -47,6 +53,15 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
               value: projectName,
               child: Text(projectName),
             ),);
+      }
+
+      for (final taskName in taskNames)
+      {
+        taskMenuItems.add(
+          DropdownMenuItem<String>(
+            value: taskName,
+            child: Text(taskName),),
+        );
       }
 
       setState(() {
@@ -109,7 +124,14 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                   hintText: 'Project',
                 ),
 
+                const Padding(padding: EdgeInsets.only(top: 16)),
+
                 //task selector
+                DropDownSelector(
+                    menuItems: taskMenuItems,
+                    selectedValue: _selectedTaskNameValue,
+                    hintText: 'Task',
+                ),
 
                 //Description TextEdit
 
