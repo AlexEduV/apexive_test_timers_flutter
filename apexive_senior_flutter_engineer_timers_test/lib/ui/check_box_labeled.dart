@@ -50,7 +50,7 @@ class _CheckBoxLabeledState extends State<CheckBoxLabeled> {
               children: [
                 Text(
                   widget.label,
-                  style: TypographyStyles().getBodyLarge(),
+                  style: TypographyStyles.getBodyLarge(),
                 ),
               ],
             )

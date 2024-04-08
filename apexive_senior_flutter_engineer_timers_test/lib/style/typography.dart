@@ -8,7 +8,7 @@ class TypographyStyles {
   //custom offset from the original design to adjust for the different screen sizes
   static const fontSizeOffset = -3.0;
 
-  dynamic getHeadlineLarge({Color specifiedColor = defaultColor}) {
+  static TextStyle getHeadlineLarge({Color specifiedColor = defaultColor}) {
     return
       TextStyle(
         fontSize: 32.0 + fontSizeOffset,
@@ -20,7 +20,7 @@ class TypographyStyles {
       );
   }
 
-  dynamic getHeadlineSmall({Color specifiedColor = defaultColor}) {
+  static TextStyle getHeadlineSmall({Color specifiedColor = defaultColor}) {
     return
       TextStyle(
         fontSize: 24.0 + fontSizeOffset,
@@ -31,7 +31,7 @@ class TypographyStyles {
       );
   }
 
-  dynamic getLabelLarge({Color specifiedColor = defaultColor}) {
+  static TextStyle getLabelLarge({Color specifiedColor = defaultColor}) {
     return
       TextStyle(
         fontSize: 14.0 + fontSizeOffset,
@@ -43,7 +43,7 @@ class TypographyStyles {
       );
   }
 
-  dynamic getTitleMedium({Color specifiedColor = defaultColor}) {
+  static TextStyle getTitleMedium({Color specifiedColor = defaultColor}) {
     return
       TextStyle(
           fontSize: 16.0 + fontSizeOffset,
@@ -55,7 +55,7 @@ class TypographyStyles {
       );
   }
 
-  dynamic getBodyLarge({Color specifiedColor = defaultColor}) {
+  static TextStyle getBodyLarge({Color specifiedColor = defaultColor}) {
     return
       TextStyle(
         fontSize: 16,
@@ -67,7 +67,7 @@ class TypographyStyles {
       );
   }
 
-  dynamic getBodyMedium({Color specifiedColor = defaultColor}) {
+  static TextStyle getBodyMedium({Color specifiedColor = defaultColor}) {
     return
       TextStyle(
         fontSize: 14.0 + fontSizeOffset,

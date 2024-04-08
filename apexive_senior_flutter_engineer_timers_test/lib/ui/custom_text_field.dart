@@ -43,7 +43,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           focusedBorder: const UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.transparent),
           ),
-          hintStyle: TypographyStyles().getBodyLarge(),
+          hintStyle: TypographyStyles.getBodyLarge(),
           hintText: widget.hintText,
           counterText: "",),
         //cursorColor: Colors.transparent,
@@ -51,7 +51,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         maxLength: widget.maxLength,
         textInputAction: TextInputAction.next,
         controller: widget.textEditingController,
-        style: TypographyStyles().getBodyLarge(),
+        style: TypographyStyles.getBodyLarge(),
 
       ),
     );

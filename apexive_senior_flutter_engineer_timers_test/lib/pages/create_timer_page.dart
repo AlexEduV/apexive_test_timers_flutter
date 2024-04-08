@@ -110,7 +110,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Create Timer', style: TypographyStyles().getHeadlineSmall(),),
+                          Text('Create Timer', style: TypographyStyles.getHeadlineSmall(),),
                         ],
                       ),
                     ],
@@ -189,7 +189,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                       children: [
                         Text(
                           'Create Timer',
-                          style: TypographyStyles().getLabelLarge(),
+                          style: TypographyStyles.getLabelLarge(),
                         )
                       ],
                     ),

@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(widget.title, style: TypographyStyles().getHeadlineLarge(),),
+                        Text(widget.title, style: TypographyStyles.getHeadlineLarge(),),
 
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8),
@@ -110,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               selectedTabPageIndex = index;
                             });
                           },
-                          labelStyle: TypographyStyles().getLabelLarge(),
+                          labelStyle: TypographyStyles.getLabelLarge(),
                           indicatorColor: Colors.white,
                           tabs: const [
                             Tab(text: 'Favorites',),
@@ -170,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Text(
                   'You have $listSize Timers',
-                  style: TypographyStyles().getLabelLarge(),
+                  style: TypographyStyles.getLabelLarge(),
                   textAlign: TextAlign.start,
                 ),
               ),
@@ -230,19 +230,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   //timer name
                   TimerSettingsRow(
                       text: listOfTasks[index].title,
-                      textStyle: TypographyStyles().getTitleMedium(),
+                      textStyle: TypographyStyles.getTitleMedium(),
                       icon: listOfTasks[index].isFavorite ? Icons.star : Icons.star_border),
 
                   //timer project
                   TimerSettingsRow(
                       text: listOfTasks[index].project.projectName,
-                      textStyle: TypographyStyles().getBodyMedium(),
+                      textStyle: TypographyStyles.getBodyMedium(),
                       icon: Icons.cases_outlined),
 
                   //deadline
                   TimerSettingsRow(
                       text: 'Deadline ${listOfTasks[index].deadlineDate}',
-                      textStyle: TypographyStyles().getBodyMedium(),
+                      textStyle: TypographyStyles.getBodyMedium(),
                       icon: Icons.access_time_rounded),
 
                 ],
@@ -310,7 +310,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Row(
                 children: [
                   //time
-                  Text(listOfTasks[index].time, style: TypographyStyles().getLabelLarge(specifiedColor: listOfTasks[index].isActive ? Colors.black : Colors.white),),
+                  Text(listOfTasks[index].time, style: TypographyStyles.getLabelLarge(specifiedColor: listOfTasks[index].isActive ? Colors.black : Colors.white),),
 
                   const Padding(padding: EdgeInsets.only(right: 4),),
 
