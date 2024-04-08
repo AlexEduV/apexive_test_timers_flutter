@@ -38,8 +38,9 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
                 //app bar - user's name & edit button
                 CustomAppBar(
-                    onBackButtonPressed: onBackButtonPressed,
-                    title: 'Getting to know Apexer - Ivan',
+                  onBackButtonPressed: onBackButtonPressed,
+                  title: 'Getting to know Apexer - Ivan',
+                  titleTextStyle: TypographyStyles.getTitleMedium(),
                 ),
 
                 //tab bar - timesheets & details

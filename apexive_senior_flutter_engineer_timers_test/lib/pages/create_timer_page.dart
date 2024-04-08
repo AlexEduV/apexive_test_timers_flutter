@@ -100,8 +100,10 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
               children: [
 
                 CustomAppBar(
-                    onBackButtonPressed: onBackButtonPressed,
-                    title: 'Create Timer'),
+                  onBackButtonPressed: onBackButtonPressed,
+                  title: 'Create Timer',
+                  titleTextStyle: TypographyStyles.getHeadlineSmall(),
+                ),
 
                 const Padding(padding: EdgeInsets.only(top: 16)),
 
