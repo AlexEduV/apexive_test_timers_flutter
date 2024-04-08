@@ -48,7 +48,7 @@ class TypographyStyles {
       TextStyle(
           fontSize: 16.0 + fontSizeOffset,
           fontWeight: FontWeight.w600,
-          height: lineHeight + 0.1,
+          height: lineHeight - 0.1,
           fontFamily: 'Inter',
           color: specifiedColor,
           letterSpacing: 0.15

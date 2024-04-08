@@ -17,21 +17,17 @@ class TimerSettingsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 4.0),
+    return Container(
+      padding: const EdgeInsets.only(bottom: 4.0,),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Icon(icon, size: 24, color: Colors.white),
-          
+
           const Padding(padding: EdgeInsets.only(right: 4.0),),
-          
+
           Flexible(
-            child: Column(
-              children: [
-                Text(text, style: textStyle),
-              ],
-            ),
+            child: Text(text, style: textStyle),
           ),
         ],
       ),
