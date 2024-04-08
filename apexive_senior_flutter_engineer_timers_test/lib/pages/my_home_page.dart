@@ -139,11 +139,18 @@ class _MyHomePageState extends State<MyHomePage> {
     //debugPrint('AddTimerButtonPressed');
 
     //open createTimerPage
-    Navigator.pushNamed(context, CreateTimerPage.routeName);
+    Navigator.pushNamed(context, CreateTimerPage.routeName).then((value) => updateTimersList());
   }
 
   void onSortListButtonPressed() {
 
+  }
+  
+  void updateTimersList() {
+    setState(() {
+      listOfTasks = DataModel.taskList;
+      listSize = listOfTasks.length;
+    });
   }
 
   Widget getTabPage(int selectedIndex)
