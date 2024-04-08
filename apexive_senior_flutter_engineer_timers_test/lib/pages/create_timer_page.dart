@@ -56,7 +56,8 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
           DropdownMenuItem<String>(
             value: projectName,
             child: Text(projectName),
-          ),);
+          ),
+      );
     }
 
     for (final taskName in taskNames)
@@ -64,14 +65,10 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
       taskMenuItems.add(
         DropdownMenuItem<String>(
           value: taskName,
-          child: Text(taskName),),
+          child: Text(taskName),
+        ),
       );
     }
-
-    setState(() {
-      //init text value is set to the first of the list
-      //_selectedProjectNameValue = projectMenuItems[0].value!;
-    });
   }
 
   @override
