@@ -1,4 +1,5 @@
 import 'package:apexive_senior_flutter_engineer_timers_test/style/typography.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/check_box_labeled.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_text_field.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/drop_down_selector.dart';
 import 'package:flutter/material.dart';
@@ -150,41 +151,15 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                 const Padding(padding: EdgeInsets.only(top: 16)),
 
                 //isFavorite checkBox
-                Row(
-                  children: [
-                    Checkbox(
-                      value: isFavorite,
-                      onChanged: (bool? value) {
-                        setState(() {
-                          isFavorite = value!;
-                        });
-                      },
-                      fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                        // if (states.contains(MaterialState.selected)) {
-                        //   return Colors.orange.withOpacity(.32);
-                        // }
-                        return Colors.white;
-                      }),
-                      checkColor: Colors.indigo,
-                    ),
-
-                    Expanded(
-                        child: Row(
-                          children: [
-                            Text(
-                              'Make Favorite',
-                              style: TypographyStyles().getBodyLarge(),
-                            ),
-                          ],
-                        )
-                    )
-                  ],
-                ),
-
+                CheckBoxLabeled(
+                    isFavorite: isFavorite,
+                    label: 'Make Favorite'),
 
                 const Spacer(),
 
                 //create timer active button
+                
+
               ],
             ),
           ),
@@ -199,6 +174,14 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
   {
     //route back to the home page;
     Navigator.pop(context);
+  }
+
+  void onCreateTimerButtonPressed()
+  {
+    //add a new task to the list with specified parameters
+
+    //go forward to the list page
+
 
   }
 }
