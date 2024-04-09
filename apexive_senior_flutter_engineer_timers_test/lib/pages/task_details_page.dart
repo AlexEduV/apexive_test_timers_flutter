@@ -331,7 +331,27 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
             ),
             padding: const EdgeInsets.all(16),
             margin: const EdgeInsets.only(bottom: 8),
-            child: Container(),
+
+            child: Wrap(
+              runSpacing: 4,
+              children: [
+
+                Row(
+                  children: [
+                    Text(
+                      'Description',
+                      style: TypographyStyles.getBodyMedium(),
+                    ),
+                  ],
+                ),
+
+                Text(
+                  openedTask.description,
+                  style: TypographyStyles.getTitleSmall(),
+                )
+
+              ],
+            ),
           ),
 
         ],

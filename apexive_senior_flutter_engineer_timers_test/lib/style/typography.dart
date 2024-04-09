@@ -66,6 +66,18 @@ class TypographyStyles {
       );
   }
 
+  static TextStyle getTitleSmall({Color specifiedColor = defaultColor}) {
+    return
+      TextStyle(
+        fontSize: 14.0 + fontSizeOffset,
+        fontWeight: FontWeight.w500,
+        height: lineHeight,
+        fontFamily: 'Inter',
+        color: specifiedColor,
+        letterSpacing: 0.1,
+      );
+  }
+
   static TextStyle getBodyLarge({Color specifiedColor = defaultColor}) {
     return
       TextStyle(
