@@ -29,6 +29,7 @@ class DetailRow extends StatelessWidget {
         ),
 
         Row(
+          //crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
 
             //leading element?
@@ -39,7 +40,7 @@ class DetailRow extends StatelessWidget {
                 width: 2,
                 height: 24,
                 //height: const BoxConstraints.expand().maxHeight,
-                //constraints: BoxConstraints.expand(),
+                //constraints: BoxConstraints(maxWidth: 2, minWidth: 2, minHeight: double.infinity),
                 decoration: BoxDecoration(
                   color: leadingColor,
                   borderRadius: BorderRadius.circular(4.0),

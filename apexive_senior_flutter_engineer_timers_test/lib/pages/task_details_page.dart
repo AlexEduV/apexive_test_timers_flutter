@@ -1,6 +1,6 @@
 
 import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dart';
-import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_app_bar.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/custom_app_bar.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/round_button.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/detail_row.dart';
 import 'package:flutter/material.dart';
@@ -324,6 +324,15 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
           ),
 
           //task description
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              color: Colors.white.withOpacity(.08),
+            ),
+            padding: const EdgeInsets.all(16),
+            margin: const EdgeInsets.only(bottom: 8),
+            child: Container(),
+          ),
 
         ],
       );
