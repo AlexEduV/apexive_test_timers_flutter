@@ -154,53 +154,54 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                     ),
 
                     Text(
-                      '17.07.2023',
+                      '${openedTask?.deadlineDate}',
                       style: TypographyStyles.getTitleMedium(),
                     ),
 
                     Text(
-                      'Start Time 10:00',
+                      'Start Time ${openedTask?.startTime}',
                       style: TypographyStyles.getBodySmall(),
                     ),
                   ],
                 ),
 
-                const SizedBox(height: 16,),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      '08:08:20',
-                      style: TypographyStyles.getDisplaySmall(),
-                    ),
+                      //time text
+                      Text(
+                        '${openedTask?.currentTime}',
+                        style: TypographyStyles.getDisplaySmall(),
+                      ),
 
-                    Row(
-                      children: [
+                      //control buttons
+                      Wrap(
+                        spacing: 16,
+                        children: [
 
-                        //stop button
-                        RoundButton(
-                          backgroundColor: Colors.white.withOpacity(.16),
-                          tintColor: Colors.white,
-                          iconSource: 'assets/images/stop_fill.png',
-                          onButtonPressed: onStopButtonPressed
-                        ),
+                          //stop button
+                          RoundButton(
+                            backgroundColor: Colors.white.withOpacity(.16),
+                            tintColor: Colors.white,
+                            iconSource: 'assets/images/stop_fill.png',
+                            onButtonPressed: onStopButtonPressed
+                          ),
 
-                        const SizedBox(width: 16,),
-
-                        //pause button
-                        RoundButton(
-                          backgroundColor: Colors.white,
-                          tintColor: Colors.black,
-                          iconSource: 'assets/images/pause-1.png',
-                          onButtonPressed: onPauseButtonPressed,
-                        ),
-                      ],
-                    ),
-                  ],
+                          //pause button
+                          RoundButton(
+                            backgroundColor: Colors.white,
+                            tintColor: Colors.black,
+                            iconSource: 'assets/images/pause-1.png',
+                            onButtonPressed: onPauseButtonPressed,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-
-                const SizedBox(height: 16.0,),
 
                 //Description section
                 Divider(height: 1, color: Colors.white.withOpacity(.16),),
