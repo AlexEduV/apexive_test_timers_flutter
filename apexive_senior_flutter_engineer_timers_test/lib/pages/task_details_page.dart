@@ -18,6 +18,9 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
   int selectedTabPageIndex = 0;
 
+  //for every timer in the task set init readMore to 'false'
+  List<bool> readMore = [false];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -219,6 +222,23 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                           'work on the new design with designer, '
                           'new tasks preparation call with the front end',
                       style: TypographyStyles.getBodyMedium(),
+                      maxLines: readMore[0] ? 10 : 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+
+                    Visibility(
+                      visible: !readMore[0],
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            readMore[0] = !readMore[0];
+                          });
+                        },
+                        child: Text(
+                          'Read More',
+                          style: TypographyStyles.getBodySmall(),
+                        ),
+                      ),
                     ),
 
                    ]
