@@ -2,6 +2,7 @@
 import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_app_bar.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/round_button.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/detail_row.dart';
 import 'package:flutter/material.dart';
 
 import '../model/task.dart';
@@ -268,8 +269,6 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                    ]
                 ),
 
-
-
               ],
             ),
           ),
@@ -286,9 +285,42 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     else if (selectedIndex == 1) {
 
       //task overview
+      return Column(
+        children: [
 
-        //task details
-        //task description
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              color: Colors.white.withOpacity(.08),
+            ),
+            padding: const EdgeInsets.all(16),
+            margin: const EdgeInsets.only(bottom: 8, top: 16),
+
+            child: Wrap(
+              spacing: 16,
+              //crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+
+                //task details
+
+                //Project
+                DetailRow(
+                  detailTitle: 'Project',
+                  detailValue: openedTask.project.projectName,
+                  leadingColor: openedTask.project.markerColor,
+                ),
+
+
+
+
+              ],
+            ),
+          ),
+
+          //task description
+
+        ],
+      );
     }
 
     //if unknown index
