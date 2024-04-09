@@ -69,19 +69,23 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 children: [
 
-                  //Top row
+                  //app bar
                   Padding(
                     padding: const EdgeInsets.only(top: 8, bottom: 8),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+
+                        //title
                         Text(widget.title, style: TypographyStyles.getHeadlineLarge(),),
 
+                        //
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8),
-                          child: Row(
+                          child: Wrap(
+                            direction: Axis.horizontal,
+                            spacing: 8,
                             children: [
-
                               Visibility(
                                 visible: listNotCompletedCount > 0,
                                 child: AppBarButton(
@@ -89,8 +93,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                   onTap: onSortListButtonPressed,
                                 ),
                               ),
-
-                              const Padding(padding: EdgeInsets.only(right: 8)),
 
                               AppBarButton(
                                 iconSource: 'assets/images/plus-2.png',
@@ -245,7 +247,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.only(left: 8),
                 child: Wrap(
                   runSpacing: 4,
-
                   children: [
 
                     //timer name
@@ -392,7 +393,7 @@ class _MyHomePageState extends State<MyHomePage> {
           setState(() {
             listOfTasks[index].time =
             '${minutes.toString().padLeft(2, "0")}'
-                ':${seconds.toString().padLeft(2, "0")}';
+            ':${seconds.toString().padLeft(2, "0")}';
           });
         }
       });
