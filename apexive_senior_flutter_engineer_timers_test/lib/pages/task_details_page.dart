@@ -249,8 +249,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
                     Visibility(
                       visible: !readMore[0]
-                          && hasTextOverflow
-                            (
+                          && hasTextOverflow (
                               openedTask?.description ?? '',
                               TypographyStyles.getBodyMedium()
                             ),
