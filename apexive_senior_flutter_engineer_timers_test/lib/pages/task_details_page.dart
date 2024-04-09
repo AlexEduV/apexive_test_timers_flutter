@@ -247,7 +247,11 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                     const SizedBox(height: 4,),
 
                     Visibility(
-                      visible: !readMore[0],
+                      visible: !readMore[0]
+                          && hasTextOverflow(
+                              openedTask.description,
+                              TypographyStyles.getBodyMedium()
+                          ),
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
@@ -281,10 +285,10 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     //details view
     else if (selectedIndex == 1) {
 
-      //project overview
+      //task overview
 
-        //project details
-        //project description
+        //task details
+        //task description
     }
 
     //if unknown index
@@ -315,6 +319,21 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
   void onEditDescriptionButtonPressed() {
 
+  }
+
+  bool hasTextOverflow(
+      String text,
+      TextStyle style,
+      {double minWidth = 0,
+        double maxWidth = double.infinity,
+        int maxLines = 2
+      }) {
+    final TextPainter textPainter = TextPainter(
+      text: TextSpan(text: text, style: style),
+      maxLines: maxLines,
+      textDirection: TextDirection.ltr,
+    )..layout(minWidth: minWidth, maxWidth: maxWidth);
+    return textPainter.didExceedMaxLines;
   }
 
 }
