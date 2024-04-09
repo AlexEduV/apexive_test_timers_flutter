@@ -1,8 +1,10 @@
 
+import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_app_bar.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/round_button.dart';
 import 'package:flutter/material.dart';
 
+import '../model/task.dart';
 import '../style/typography.dart';
 
 class TaskDetailsPage extends StatefulWidget {
@@ -18,8 +20,28 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
   int selectedTabPageIndex = 0;
 
+  Task? openedTask;
+  int? taskId = 0;
+
   //for every timer in the task set init readMore to 'false'
   List<bool> readMore = [false];
+
+  @override
+  void initState() {
+    super.initState();
+
+    Future.delayed(Duration.zero, () {
+
+      //get task id from the route arguments;
+      taskId = ModalRoute.of(context)?.settings.arguments as int;
+
+      //set current task
+      setState(() {
+        openedTask = DataModel.taskList[taskId!];
+      });
+
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +67,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                 //app bar - user's name & edit button
                 CustomAppBar(
                   onBackButtonPressed: onBackButtonPressed,
-                  title: 'Getting to know Apexer - Ivan',
+                  title: '${openedTask?.title} - ${openedTask?.assignedTo}',
                   titleTextStyle: TypographyStyles.getTitleMedium(),
                   actions: [
                     IconButton(
@@ -121,30 +143,21 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
 
-                Row(
+                Wrap(
+                  direction: Axis.vertical,
+                  spacing: 4,
+
                   children: [
                     Text(
                       'Monday',
                       style: TypographyStyles.getBodySmall(),
                     ),
-                  ],
-                ),
 
-                const SizedBox(height: 4,),
-
-                Row(
-                  children: [
                     Text(
                       '17.07.2023',
                       style: TypographyStyles.getTitleMedium(),
                     ),
-                  ],
-                ),
 
-                const SizedBox(height: 4,),
-
-                Row(
-                  children: [
                     Text(
                       'Start Time 10:00',
                       style: TypographyStyles.getBodySmall(),
