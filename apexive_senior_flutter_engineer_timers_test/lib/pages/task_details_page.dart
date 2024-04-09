@@ -296,12 +296,10 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
             padding: const EdgeInsets.all(16),
             margin: const EdgeInsets.only(bottom: 8, top: 16),
 
+            //task details
             child: Wrap(
-              spacing: 16,
-              //crossAxisAlignment: CrossAxisAlignment.start,
+              runSpacing: 16,
               children: [
-
-                //task details
 
                 //Project
                 DetailRow(
@@ -310,8 +308,16 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                   leadingColor: openedTask.project.markerColor,
                 ),
 
+                //Deadline
+                DetailRow(
+                  detailTitle: 'Deadline',
+                  detailValue: openedTask.deadlineDate,
+                ),
 
-
+                DetailRow(
+                  detailTitle: 'Assigned to',
+                  detailValue: openedTask.assignedTo,
+                ),
 
               ],
             ),

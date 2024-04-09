@@ -6,8 +6,8 @@ import '../../style/typography.dart';
 class DetailRow extends StatelessWidget {
 
   final String detailTitle;
-  final Color? leadingColor;
   final String detailValue;
+  final Color? leadingColor;
 
   const DetailRow({
     super.key,
@@ -38,7 +38,8 @@ class DetailRow extends StatelessWidget {
                 margin: const EdgeInsets.only(right: 8.0),
                 width: 2,
                 height: 24,
-                //height: BoxConstraints.expand().maxHeight,
+                //height: const BoxConstraints.expand().maxHeight,
+                //constraints: BoxConstraints.expand(),
                 decoration: BoxDecoration(
                   color: leadingColor,
                   borderRadius: BorderRadius.circular(4.0),
