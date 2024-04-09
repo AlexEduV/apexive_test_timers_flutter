@@ -23,15 +23,6 @@ class CheckBoxLabeled extends StatefulWidget {
 
 class _CheckBoxLabeledState extends State<CheckBoxLabeled> {
 
-  //bool isFavorite = false;
-
-  @override
-  void initState() {
-    super.initState();
-
-    //isFavorite = widget.isFavorite;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -45,15 +36,9 @@ class _CheckBoxLabeledState extends State<CheckBoxLabeled> {
           checkColor: Colors.indigo,
         ),
 
-        Expanded(
-            child: Row(
-              children: [
-                Text(
-                  widget.label,
-                  style: TypographyStyles.getBodyLarge(),
-                ),
-              ],
-            )
+        Text(
+          widget.label,
+          style: TypographyStyles.getBodyLarge(),
         )
       ],
     );
