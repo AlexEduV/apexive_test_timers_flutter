@@ -7,13 +7,13 @@ class CustomTextField extends StatefulWidget {
   
   final TextEditingController textEditingController;
   final String hintText;
-  final int maxLength;
+  final int? maxLength;
 
   const CustomTextField({
     super.key,
     required this.textEditingController,
     required this.hintText,
-    required this.maxLength,
+    this.maxLength,
   });
 
   @override

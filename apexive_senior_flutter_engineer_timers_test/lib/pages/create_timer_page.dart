@@ -141,7 +141,6 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                     CustomTextField(
                       textEditingController: descriptionTextController,
                       hintText: 'Description',
-                      maxLength: 20,
                     ),
 
                     //isFavorite checkBox
