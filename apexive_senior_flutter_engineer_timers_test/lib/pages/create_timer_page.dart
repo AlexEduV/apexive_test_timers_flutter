@@ -200,7 +200,10 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
     debugPrint('create timer button pressed');
 
     //check user inputs
-    if (_selectedProjectNameValue != null && _selectedTaskNameValue != null)
+    if (_selectedProjectNameValue != null
+        && _selectedTaskNameValue != null
+        && descriptionTextController.text.isNotEmpty
+    )
     {
 
       debugPrint('input check passed');
@@ -213,7 +216,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
       DataModel.taskList.add(
           Task(
             title: selectedTask.title,
-            description: selectedTask.description,
+            description: descriptionTextController.text,
             project: selectedProject,
             assignedTo: selectedTask.assignedTo,
             deadlineDate: selectedTask.deadlineDate,
