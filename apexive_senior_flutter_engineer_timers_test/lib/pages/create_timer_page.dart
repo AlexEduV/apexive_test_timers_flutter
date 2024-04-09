@@ -98,67 +98,63 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
             //app bar
             child: Column(
               children: [
+                Wrap(
+                  runSpacing: 16,
+                  children: [
 
-                CustomAppBar(
-                  onBackButtonPressed: onBackButtonPressed,
-                  title: 'Create Timer',
-                  titleTextStyle: TypographyStyles.getHeadlineSmall(),
-                  actions: null,
-                ),
+                    CustomAppBar(
+                      onBackButtonPressed: onBackButtonPressed,
+                      title: 'Create Timer',
+                      titleTextStyle: TypographyStyles.getHeadlineSmall(),
+                      actions: null,
+                    ),
 
-                const Padding(padding: EdgeInsets.only(top: 16)),
+                    //project selector
+                    DropDownSelector(
+                      menuItems: projectMenuItems,
+                      selectedValue: _selectedProjectNameValue,
+                      hintText: 'Project',
+                      onChanged: (String? selectedValue) {
+                        if (selectedValue is String) {
+                          setState(() {
+                            _selectedProjectNameValue = selectedValue;
+                          });
+                        }
+                      },
+                    ),
 
-                //project selector
-                DropDownSelector(
-                  menuItems: projectMenuItems,
-                  selectedValue: _selectedProjectNameValue,
-                  hintText: 'Project',
-                  onChanged: (String? selectedValue) {
-                    if (selectedValue is String) {
-                      setState(() {
-                        _selectedProjectNameValue = selectedValue;
-                      });
-                    }
-                  },
-                ),
+                    //task selector
+                    DropDownSelector(
+                      menuItems: taskMenuItems,
+                      selectedValue: _selectedTaskNameValue,
+                      hintText: 'Task',
+                      onChanged: (String? selectedValue) {
+                        if (selectedValue is String) {
+                          setState(() {
+                            _selectedTaskNameValue = selectedValue;
+                          });
+                        }
+                      },
+                    ),
 
-                const Padding(padding: EdgeInsets.only(top: 16)),
+                    //Description TextEdit
+                    CustomTextField(
+                      textEditingController: descriptionTextController,
+                      hintText: 'Description',
+                      maxLength: 20,
+                    ),
 
-                //task selector
-                DropDownSelector(
-                  menuItems: taskMenuItems,
-                  selectedValue: _selectedTaskNameValue,
-                  hintText: 'Task',
-                  onChanged: (String? selectedValue) {
-                    if (selectedValue is String) {
-                      setState(() {
-                        _selectedTaskNameValue = selectedValue;
-                      });
-                    }
-                  },
-                ),
-
-                const Padding(padding: EdgeInsets.only(top: 16)),
-
-                //Description TextEdit
-                CustomTextField(
-                  textEditingController: descriptionTextController,
-                  hintText: 'Description',
-                  maxLength: 20,
-                ),
-
-                const Padding(padding: EdgeInsets.only(top: 16)),
-
-                //isFavorite checkBox
-                CheckBoxLabeled(
-                  isFavorite: isFavorite,
-                  label: 'Make Favorite',
-                  onChanged: (bool? value) {
-                    setState(() {
-                      isFavorite = value!;
-                    });
-                  },
-
+                    //isFavorite checkBox
+                    CheckBoxLabeled(
+                      isFavorite: isFavorite,
+                      label: 'Make Favorite',
+                      onChanged: (bool? value) {
+                        setState(() {
+                          isFavorite = value!;
+                        });
+                      },
+                    ),
+                  ],
                 ),
 
                 const Spacer(),
@@ -167,11 +163,11 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                 GestureDetector(
                   onTap: onCreateTimerButtonPressed,
                   child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16),
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
                     margin: const EdgeInsets.only(bottom: 16.0),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(.16),
-                      borderRadius: BorderRadius.circular(12.0)
+                        color: Colors.white.withOpacity(.16),
+                        borderRadius: BorderRadius.circular(12.0)
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -184,7 +180,6 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                     ),
                   ),
                 )
-
               ],
             ),
           ),

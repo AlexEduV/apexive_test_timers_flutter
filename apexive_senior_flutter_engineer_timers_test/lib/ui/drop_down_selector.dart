@@ -27,15 +27,6 @@ class DropDownSelector extends StatefulWidget {
 
 class _DropDownSelectorState extends State<DropDownSelector> {
 
-  //late String? _selectedValue;
-
-  @override
-  void initState() {
-    super.initState();
-
-    //_selectedValue = widget.selectedValue;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
