@@ -26,7 +26,9 @@ class DataModel {
     taskList.add(
         Task(
           title: 'iOS App Deployment with odd',
-          description: 'Sample Task',
+          description: 'Sync with Client, communicate, '
+              'work on the new design with designer, '
+              'new tasks preparation call with the front end',
           project: testProject,
           assignedTo: '${testUser.firstName} ${testUser.lastName}',
           deadlineDate: '07/20/2023',

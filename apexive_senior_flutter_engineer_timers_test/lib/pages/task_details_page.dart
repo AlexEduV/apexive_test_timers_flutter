@@ -20,8 +20,8 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
   int selectedTabPageIndex = 0;
 
-  Task? openedTask;
-  int? taskId = 0;
+  late Task openedTask;
+  int taskId = 0;
 
   //for every timer in the task set init readMore to 'false'
   List<bool> readMore = [false];
@@ -37,7 +37,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
       //set current task
       setState(() {
-        openedTask = DataModel.taskList[taskId!];
+        openedTask = DataModel.taskList[taskId];
       });
 
     });
@@ -67,7 +67,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                 //app bar - user's name & edit button
                 CustomAppBar(
                   onBackButtonPressed: onBackButtonPressed,
-                  title: '${openedTask?.title} - ${openedTask?.assignedTo}',
+                  title: '${openedTask.title} - ${openedTask.assignedTo}',
                   titleTextStyle: TypographyStyles.getTitleMedium(),
                   actions: [
                     IconButton(
@@ -154,12 +154,12 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                     ),
 
                     Text(
-                      '${openedTask?.deadlineDate}',
+                      openedTask.deadlineDate,
                       style: TypographyStyles.getTitleMedium(),
                     ),
 
                     Text(
-                      'Start Time ${openedTask?.startTime}',
+                      'Start Time ${openedTask.startTime}',
                       style: TypographyStyles.getBodySmall(),
                     ),
                   ],
@@ -173,7 +173,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
                       //time text
                       Text(
-                        '${openedTask?.currentTime}',
+                        openedTask.currentTime,
                         style: TypographyStyles.getDisplaySmall(),
                       ),
 
@@ -192,9 +192,13 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
                           //pause button
                           RoundButton(
-                            backgroundColor: Colors.white,
-                            tintColor: Colors.black,
-                            iconSource: 'assets/images/pause-1.png',
+                            backgroundColor: openedTask.isActive
+                                ? Colors.white : Colors.white.withOpacity(.16),
+                            tintColor: openedTask.isActive
+                                ? Colors.black : Colors.white,
+                            iconSource: openedTask.isActive
+                                ? 'assets/images/pause-1.png'
+                                : 'assets/images/play_arrow_solid.png',
                             onButtonPressed: onPauseButtonPressed,
                           ),
                         ],
@@ -208,8 +212,8 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
                 const SizedBox(height: 16.0,),
 
-                Wrap(
-                  runSpacing: 4,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children:[
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -231,14 +235,16 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                       ],
                     ),
 
+                    const SizedBox(height: 4,),
+
                     Text(
-                      'Sync with Client, communicate, '
-                          'work on the new design with designer, '
-                          'new tasks preparation call with the front end',
+                      openedTask.description,
                       style: TypographyStyles.getBodyMedium(),
                       maxLines: readMore[0] ? 10 : 2,
                       overflow: TextOverflow.ellipsis,
                     ),
+
+                    const SizedBox(height: 4,),
 
                     Visibility(
                       visible: !readMore[0],
@@ -299,7 +305,9 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   }
 
   void onPauseButtonPressed() {
-
+    setState(() {
+      openedTask.isActive = !openedTask.isActive;
+    });
   }
 
   void onEditDescriptionButtonPressed() {
