@@ -301,7 +301,10 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   }
 
   void onStopButtonPressed() {
-
+    setState(() {
+      openedTask.isCompleted = true;
+      openedTask.isActive = false;
+    });
   }
 
   void onPauseButtonPressed() {
