@@ -191,34 +191,40 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
                 const SizedBox(height: 16.0,),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Description',
-                      style: TypographyStyles.getBodySmall(),
+                Wrap(
+                  runSpacing: 4,
+                  children:[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Description',
+                          style: TypographyStyles.getBodySmall(),
+                        ),
+
+                        IconButton(
+                          onPressed: onEditDescriptionButtonPressed,
+                          icon: Image.asset(
+                            'assets/images/pencil.png',
+                            height: 24,
+                            width: 24,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
                     ),
 
-                    IconButton(
-                      onPressed: onEditDescriptionButtonPressed,
-                      icon: Image.asset(
-                        'assets/images/pencil.png',
-                        height: 24,
-                        width: 24,
-                        color: Colors.white,
-                      ),
+                    Text(
+                      'Sync with Client, communicate, '
+                          'work on the new design with designer, '
+                          'new tasks preparation call with the front end',
+                      style: TypographyStyles.getBodyMedium(),
                     ),
-                  ],
+
+                   ]
                 ),
 
-                const SizedBox(height: 4.0,),
 
-                Text(
-                  'Sync with Client, communicate, '
-                  'work on the new design with designer, '
-                  'new tasks preparation call with the front end',
-                  style: TypographyStyles.getBodyMedium(),
-                )
 
               ],
             ),
