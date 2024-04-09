@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         //     fontWeight: FontWeight.w700,
         //   )
         // ),
-        primarySwatch: Colors.blue,
+        //primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Timesheets'),
       routes: {

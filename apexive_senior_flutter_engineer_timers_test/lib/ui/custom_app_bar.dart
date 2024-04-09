@@ -21,6 +21,7 @@ class CustomAppBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: AppBar(
 
+        //back button
         leading: IconButton(
           onPressed: onBackButtonPressed,
           icon: Image.asset(
@@ -31,9 +32,12 @@ class CustomAppBar extends StatelessWidget {
           ),
         ),
 
+        //title
         title: Text(title),
         titleTextStyle: titleTextStyle,
         centerTitle: true,
+
+        //app bar properties
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         shadowColor: Colors.transparent,
