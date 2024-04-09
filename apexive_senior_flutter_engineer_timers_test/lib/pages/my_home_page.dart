@@ -243,8 +243,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   )
                 ),
                 padding: const EdgeInsets.only(left: 8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Wrap(
+                  runSpacing: 4,
+
                   children: [
 
                     //timer name
@@ -277,8 +278,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   borderRadius: BorderRadius.circular(64),
                   color: listOfTasks[index].isActive ? Colors.white : Colors.white.withOpacity(.08),
                 ),
-                //width: 104,
-                //height: 48,
                 padding: const EdgeInsets.only(left: 16, top: 8, right: 8, bottom: 8),
                 child: Row(
                   children: [
