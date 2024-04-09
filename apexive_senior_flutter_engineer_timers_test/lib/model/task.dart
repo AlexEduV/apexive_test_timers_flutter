@@ -8,7 +8,8 @@ class Task {
   final Project project;
   final String assignedTo;
   final String deadlineDate;
-  late String time;
+  final String startTime;
+  late String currentTime;
   final bool isFavorite;
   late bool isActive;
   late bool isCompleted;
@@ -20,7 +21,8 @@ class Task {
     required this.project,
     required this.assignedTo,
     required this.deadlineDate,
-    required this.time,
+    required this.startTime,
+    required this.currentTime,
     required this.isFavorite,
     required this.isActive,
     required this.isCompleted,

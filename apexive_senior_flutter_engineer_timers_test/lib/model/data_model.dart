@@ -17,7 +17,10 @@ class DataModel {
         markerColor: const Color(0xffFFC629),
     );
 
-    User testUser = User(name: 'Alex Ivanov');
+    User testUser = const User(
+      firstName: 'Alex',
+      lastName: 'Ivanov',
+    );
 
     //add one test task
     taskList.add(
@@ -25,9 +28,10 @@ class DataModel {
           title: 'iOS App Deployment with odd',
           description: 'Sample Task',
           project: testProject,
-          assignedTo: testUser.name,
+          assignedTo: '${testUser.firstName} ${testUser.lastName}',
           deadlineDate: '07/20/2023',
-          time: '00:30',
+          startTime: '00:30',
+          currentTime: '00:30',
           isFavorite: false,
           isActive: false,
           isCompleted: false,
@@ -40,9 +44,10 @@ class DataModel {
           title: 'iOS App Deployment',
           description: 'Sample Task',
           project: testProject,
-          assignedTo: testUser.name,
+          assignedTo: '${testUser.firstName} ${testUser.lastName}',
           deadlineDate: '07/20/2023',
-          time: '00:30',
+          startTime: '00:30',
+          currentTime: '00:30',
           isFavorite: true,
           isActive: false,
           isCompleted: false,

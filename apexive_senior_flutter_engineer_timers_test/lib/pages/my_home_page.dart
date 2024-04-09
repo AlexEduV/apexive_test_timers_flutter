@@ -283,7 +283,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Row(
                   children: [
                     //time
-                    Text(listOfTasks[index].time, style: TypographyStyles.getLabelLarge(specifiedColor: listOfTasks[index].isActive ? Colors.black : Colors.white),),
+                    Text(listOfTasks[index].currentTime, style: TypographyStyles.getLabelLarge(specifiedColor: listOfTasks[index].isActive ? Colors.black : Colors.white),),
 
                     const Padding(padding: EdgeInsets.only(right: 4),),
 
@@ -366,8 +366,8 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     else {
       //start a timer
-      int minutes = int.parse(listOfTasks[index].time.substring(0, 2));
-      int seconds = int.parse(listOfTasks[index].time.substring(3, 5));
+      int minutes = int.parse(listOfTasks[index].currentTime.substring(0, 2));
+      int seconds = int.parse(listOfTasks[index].currentTime.substring(3, 5));
 
       int startingPoint = minutes * 60 + seconds;
 
@@ -391,7 +391,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           //update time
           setState(() {
-            listOfTasks[index].time =
+            listOfTasks[index].currentTime =
             '${minutes.toString().padLeft(2, "0")}'
             ':${seconds.toString().padLeft(2, "0")}';
           });

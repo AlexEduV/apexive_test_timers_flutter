@@ -1,5 +1,6 @@
 class User {
-  String name;
+  final String firstName;
+  final String lastName;
 
-  User({required this.name});
+  const User({required this.firstName, required this.lastName});
 }
