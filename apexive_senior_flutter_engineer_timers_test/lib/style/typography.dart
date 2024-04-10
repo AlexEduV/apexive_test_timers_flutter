@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 class TypographyStyles {
 
   static const defaultColor = Colors.white;
-  static const lineHeight = 1.4;
+  static const lineHeight = 1.5;
 
   //custom offset from the original design to adjust for the different screen sizes
-  static const fontSizeOffset = -3.0;
+  static const fontSizeOffset = -0.0;
 
   static TextStyle getDisplaySmall({Color specifiedColor = defaultColor}) {
     return
