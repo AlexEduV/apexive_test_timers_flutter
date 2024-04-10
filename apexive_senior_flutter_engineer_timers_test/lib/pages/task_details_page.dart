@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 import '../model/task.dart';
 import '../style/typography.dart';
+import '../ui/custom_card.dart';
 
 class TaskDetailsPage extends StatefulWidget {
   const TaskDetailsPage({super.key});
@@ -134,145 +135,142 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
         children: [
 
           //task detail view
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              color: Colors.white.withOpacity(.08),
-            ),
-            padding: const EdgeInsets.all(16),
-            margin: const EdgeInsets.only(bottom: 8, top: 16),
+          Padding(
+            padding: const EdgeInsets.only(top: 16),
+            child: CustomCard(
 
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
 
-                Wrap(
-                  direction: Axis.vertical,
-                  spacing: 4,
+                  Wrap(
+                    direction: Axis.vertical,
+                    spacing: 4,
 
-                  children: [
-                    Text(
-                      'Monday',
-                      style: TypographyStyles.getBodySmall(),
-                    ),
-
-                    Text(
-                      openedTask?.deadlineDate ?? '',
-                      style: TypographyStyles.getTitleMedium(),
-                    ),
-
-                    Text(
-                      'Start Time ${openedTask?.startTime}',
-                      style: TypographyStyles.getBodySmall(),
-                    ),
-                  ],
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-
-                      //time text
                       Text(
-                        openedTask?.currentTime ?? '',
-                        style: TypographyStyles.getDisplaySmall(),
+                        'Monday',
+                        style: TypographyStyles.getBodySmall(),
                       ),
 
-                      //control buttons
-                      Wrap(
-                        spacing: 16,
-                        children: [
+                      Text(
+                        openedTask?.deadlineDate ?? '',
+                        style: TypographyStyles.getTitleMedium(),
+                      ),
 
-                          //stop button
-                          RoundButton(
-                            backgroundColor: Colors.white.withOpacity(.16),
-                            tintColor: Colors.white,
-                            iconSource: 'assets/images/stop_fill.png',
-                            onButtonPressed: onStopButtonPressed
-                          ),
-
-                          //pause button
-                          RoundButton(
-                            backgroundColor: openedTask?.isActive ?? false
-                                ? Colors.white : Colors.white.withOpacity(.16),
-                            tintColor: openedTask?.isActive ?? false
-                                ? Colors.black : Colors.white,
-                            iconSource: openedTask?.isActive ?? false
-                                ? 'assets/images/pause-1.png'
-                                : 'assets/images/play_arrow_solid.png',
-                            onButtonPressed: onPauseButtonPressed,
-                          ),
-                        ],
+                      Text(
+                        'Start Time ${openedTask?.startTime}',
+                        style: TypographyStyles.getBodySmall(),
                       ),
                     ],
                   ),
-                ),
 
-                //Description section
-                Divider(height: 1, color: Colors.white.withOpacity(.16),),
-
-                const SizedBox(height: 16.0,),
-
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children:[
-                    Row(
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+
+                        //time text
                         Text(
-                          'Description',
-                          style: TypographyStyles.getBodySmall(),
+                          openedTask?.currentTime ?? '',
+                          style: TypographyStyles.getDisplaySmall(),
                         ),
 
-                        IconButton(
-                          onPressed: onEditDescriptionButtonPressed,
-                          icon: Image.asset(
-                            'assets/images/pencil.png',
-                            height: 24,
-                            width: 24,
-                            color: Colors.white,
-                          ),
+                        //control buttons
+                        Wrap(
+                          spacing: 16,
+                          children: [
+
+                            //stop button
+                            RoundButton(
+                              backgroundColor: Colors.white.withOpacity(.16),
+                              tintColor: Colors.white,
+                              iconSource: 'assets/images/stop_fill.png',
+                              onButtonPressed: onStopButtonPressed
+                            ),
+
+                            //pause button
+                            RoundButton(
+                              backgroundColor: openedTask?.isActive ?? false
+                                  ? Colors.white : Colors.white.withOpacity(.16),
+                              tintColor: openedTask?.isActive ?? false
+                                  ? Colors.black : Colors.white,
+                              iconSource: openedTask?.isActive ?? false
+                                  ? 'assets/images/pause-1.png'
+                                  : 'assets/images/play_arrow_solid.png',
+                              onButtonPressed: onPauseButtonPressed,
+                            ),
+                          ],
                         ),
                       ],
                     ),
+                  ),
 
-                    const SizedBox(height: 4,),
+                  //Description section
+                  Divider(height: 1, color: Colors.white.withOpacity(.16),),
 
-                    Text(
-                      openedTask?.description ?? '',
-                      style: TypographyStyles.getBodyMedium(),
-                      maxLines: readMore[0] ? 10 : 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                  const SizedBox(height: 16.0,),
 
-                    const SizedBox(height: 4,),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children:[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Description',
+                            style: TypographyStyles.getBodySmall(),
+                          ),
 
-                    Visibility(
-                      visible: !readMore[0] && hasTextOverflow (
-                        openedTask?.description ?? '',
-                        TypographyStyles.getBodyMedium(),
-                        MediaQuery.of(context).textScaleFactor,
-                        maxWidth: MediaQuery.of(context).size.width,
+                          IconButton(
+                            onPressed: onEditDescriptionButtonPressed,
+                            icon: Image.asset(
+                              'assets/images/pencil.png',
+                              height: 24,
+                              width: 24,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
                       ),
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            readMore[0] = !readMore[0];
-                          });
-                        },
-                        child: Text(
-                          'Read More',
-                          style: TypographyStyles.getBodySmall(),
+
+                      const SizedBox(height: 4,),
+
+                      Text(
+                        openedTask?.description ?? '',
+                        style: TypographyStyles.getBodyMedium(),
+                        maxLines: readMore[0] ? 10 : 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+
+                      const SizedBox(height: 4,),
+
+                      Visibility(
+                        visible: !readMore[0] && hasTextOverflow (
+                          openedTask?.description ?? '',
+                          TypographyStyles.getBodyMedium(),
+                          MediaQuery.of(context).textScaleFactor,
+                          maxWidth: MediaQuery.of(context).size.width,
+                        ),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              readMore[0] = !readMore[0];
+                            });
+                          },
+                          child: Text(
+                            'Read More',
+                            style: TypographyStyles.getBodySmall(),
+                          ),
                         ),
                       ),
-                    ),
 
-                   ]
-                ),
+                     ]
+                  ),
 
-              ],
+                ],
+              ),
             ),
           ),
 
@@ -291,49 +289,40 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
       return Column(
         children: [
 
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              color: Colors.white.withOpacity(.08),
-            ),
-            padding: const EdgeInsets.all(16),
-            margin: const EdgeInsets.only(bottom: 8, top: 16),
+          Padding(
+            padding: const EdgeInsets.only(top: 16),
+            child: CustomCard(
 
-            //task details
-            child: Wrap(
-              runSpacing: 16,
-              children: [
+              //task details
+              child: Wrap(
+                runSpacing: 16,
+                children: [
 
-                //Project
-                DetailRow(
-                  detailTitle: 'Project',
-                  detailValue: openedTask?.project.projectName ?? '',
-                  leadingColor: openedTask?.project.markerColor,
-                ),
+                  //Project
+                  DetailRow(
+                    detailTitle: 'Project',
+                    detailValue: openedTask?.project.projectName ?? '',
+                    leadingColor: openedTask?.project.markerColor,
+                  ),
 
-                //Deadline
-                DetailRow(
-                  detailTitle: 'Deadline',
-                  detailValue: openedTask?.deadlineDate ?? '',
-                ),
+                  //Deadline
+                  DetailRow(
+                    detailTitle: 'Deadline',
+                    detailValue: openedTask?.deadlineDate ?? '',
+                  ),
 
-                DetailRow(
-                  detailTitle: 'Assigned to',
-                  detailValue: openedTask?.assignedTo ?? '',
-                ),
+                  DetailRow(
+                    detailTitle: 'Assigned to',
+                    detailValue: openedTask?.assignedTo ?? '',
+                  ),
 
-              ],
+                ],
+              ),
             ),
           ),
 
           //task description
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              color: Colors.white.withOpacity(.08),
-            ),
-            padding: const EdgeInsets.all(16),
-            margin: const EdgeInsets.only(bottom: 8),
+          CustomCard(
 
             child: Wrap(
               runSpacing: 4,

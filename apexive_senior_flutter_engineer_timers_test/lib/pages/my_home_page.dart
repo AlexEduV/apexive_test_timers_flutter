@@ -5,6 +5,7 @@ import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dar
 import 'package:apexive_senior_flutter_engineer_timers_test/pages/create_timer_page.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/pages/task_details_page.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/app_bar_button.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_card.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/timersList/timer_settings_row.dart';
 import 'package:flutter/material.dart';
 
@@ -237,14 +238,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return GestureDetector(
       onTap: () => onListItemTapped(index),
-      child: Container(
-        //decorated container
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: Colors.white.withOpacity(.08),
-        ),
-        padding: const EdgeInsets.all(16),
-        margin: const EdgeInsets.only(bottom: 8),
+      child: CustomCard(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
