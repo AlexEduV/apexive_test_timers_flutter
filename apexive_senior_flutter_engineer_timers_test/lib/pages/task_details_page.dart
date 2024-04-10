@@ -247,7 +247,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                       const SizedBox(height: 4,),
 
                       Visibility(
-                        visible: !readMore[0] && hasTextOverflow (
+                        visible: !readMore[0] && hasTextOverflow(
                           openedTask?.description ?? '',
                           TypographyStyles.getBodyMedium(),
                           MediaQuery.of(context).textScaleFactor,
@@ -311,6 +311,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                     detailValue: openedTask?.deadlineDate ?? '',
                   ),
 
+                  //Assign To
                   DetailRow(
                     detailTitle: 'Assigned to',
                     detailValue: openedTask?.assignedTo ?? '',
