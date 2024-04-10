@@ -41,6 +41,8 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
         openedTask = DataModel.taskList[taskId];
       });
 
+      //debugPrint(MediaQuery.of(context).viewInsets.horizontal.toString());
+
     });
   }
 
@@ -248,11 +250,12 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                     const SizedBox(height: 4,),
 
                     Visibility(
-                      visible: !readMore[0]
-                          && hasTextOverflow (
-                              openedTask?.description ?? '',
-                              TypographyStyles.getBodyMedium()
-                            ),
+                      visible: !readMore[0] && hasTextOverflow (
+                        openedTask?.description ?? '',
+                        TypographyStyles.getBodyMedium(),
+                        MediaQuery.of(context).textScaleFactor,
+                        maxWidth: MediaQuery.of(context).size.width,
+                      ),
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
@@ -394,6 +397,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   bool hasTextOverflow(
       String text,
       TextStyle style,
+      double textScaleFactor,
       {double minWidth = 0,
         double maxWidth = double.infinity,
         int maxLines = 2
@@ -402,6 +406,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
       text: TextSpan(text: text, style: style),
       maxLines: maxLines,
       textDirection: TextDirection.ltr,
+      textScaleFactor: textScaleFactor,
     )..layout(minWidth: minWidth, maxWidth: maxWidth);
     return textPainter.didExceedMaxLines;
   }
