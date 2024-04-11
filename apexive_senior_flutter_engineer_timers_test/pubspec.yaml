@@ -120,3 +120,9 @@ flutter:
     - family: Inter
       fonts:
         - asset: assets/fonts/Inter-Regular.ttf
+
+
+    - family: SF Pro
+      fonts:
+        - asset: assets/fonts/SFPro-Regular.ttf
+

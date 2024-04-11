@@ -118,9 +118,9 @@ class TypographyStyles {
   {
     return
       TextStyle(
-        fontSize: 12,
+        fontSize: 10,
         fontWeight: FontWeight.w500,
-        height: lineHeight + 0.4,
+        height: lineHeight,
         fontFamily: 'SF Pro',
         color: specifiedColor,
       );
