@@ -22,7 +22,6 @@ class DetailRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Wrap(
       runSpacing: 4,
-
       children: [
 
         //item title
