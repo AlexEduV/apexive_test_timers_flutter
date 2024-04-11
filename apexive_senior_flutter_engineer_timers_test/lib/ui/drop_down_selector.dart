@@ -65,6 +65,12 @@ class _DropDownSelectorState extends State<DropDownSelector> {
           width: 32,
           color: Colors.white,
         ),
+        selectedTrailingIcon: Image.asset(
+          'assets/images/chevron_down.png',
+          height: 32,
+          width: 32,
+          color: Colors.white,
+        ),
       ),
     );
   }
