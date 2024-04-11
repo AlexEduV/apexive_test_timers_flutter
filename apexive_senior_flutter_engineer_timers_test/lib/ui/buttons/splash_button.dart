@@ -6,12 +6,12 @@ import '../../style/typography.dart';
 class SplashButton extends StatelessWidget {
 
   final Function() onTap;
-  final String label;
+  final String title;
 
   const SplashButton({
     super.key,
     required this.onTap,
-    required this.label,
+    required this.title,
   });
 
   @override
@@ -20,22 +20,18 @@ class SplashButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 16.0),
-        margin: const EdgeInsets.only(bottom: 16.0),
+        margin: const EdgeInsets.symmetric(vertical: 16.0),
         decoration: BoxDecoration(
             color: Colors.white.withOpacity(.16),
             borderRadius: BorderRadius.circular(12.0)
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              label,
-              style: TypographyStyles.getLabelLarge(),
-            )
-          ],
+        child: Center(
+          child: Text(
+            title,
+            style: TypographyStyles.getLabelLarge(),
+          ),
         ),
       ),
     );
   }
-
 }

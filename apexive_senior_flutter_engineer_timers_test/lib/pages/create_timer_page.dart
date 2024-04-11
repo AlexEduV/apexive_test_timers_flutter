@@ -179,7 +179,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                 //create timer active button
                 SplashButton(
                   onTap: onCreateTimerButtonPressed,
-                  label: 'Create Timer',
+                  title: 'Create Timer',
                 ),
 
               ],
