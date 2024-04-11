@@ -61,7 +61,12 @@ class _DropDownSelectorState extends State<DropDownSelector> {
             hintText: widget.hintText,
             textStyle:  TypographyStyles.getBodyLarge(),
             //underline: Container(),
-            trailingIcon: const Icon(Icons.expand_more, size: 32, color: Colors.white,),
+            trailingIcon: Image.asset(
+              'assets/images/chevron_down.png',
+              height: 32,
+              width: 32,
+              color: Colors.white,
+            ),
             //isExpanded: true,
             //borderRadius: BorderRadius.circular(8),
             //dropdownColor: Colors.white.withOpacity(.67),
