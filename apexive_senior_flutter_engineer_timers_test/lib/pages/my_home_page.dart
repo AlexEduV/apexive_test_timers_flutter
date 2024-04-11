@@ -237,6 +237,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+
             //column with timer specs and border
             Expanded(
               child: Container(
@@ -281,17 +282,20 @@ class _MyHomePageState extends State<MyHomePage> {
             GestureDetector(
               onTap: () => onPauseButtonPressed(index),
               child: Container(
+                width: 104,
+                height: 48,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(64),
                   color: listOfTasks[index].isActive ? Colors.white : Colors.white.withOpacity(.08),
                 ),
                 padding: const EdgeInsets.only(left: 16, top: 8, right: 8, bottom: 8),
-                child: Row(
+                child: Wrap(
+                  runSpacing: 4,
+                  crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
+
                     //time
                     Text(listOfTasks[index].currentTime, style: TypographyStyles.getLabelLarge(specifiedColor: listOfTasks[index].isActive ? Colors.black : Colors.white),),
-
-                    const Padding(padding: EdgeInsets.only(right: 4),),
 
                     //pause icon
                     Image.asset(listOfTasks[index].isActive ?
