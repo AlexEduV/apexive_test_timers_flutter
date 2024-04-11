@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Odoo',
       theme: ThemeData(
+        useMaterial3: true,
         // appBarTheme: AppBarTheme(
         //   toolbarHeight: 64,
         //   titleTextStyle: TextStyle(

@@ -41,7 +41,7 @@ class _DropDownSelectorState extends State<DropDownSelector> {
       child: Row(
         children: [
           Expanded(
-            child: DropdownButton<String>(
+            child: DropdownMenu<String>(
               items: widget.menuItems,
               value: widget.selectedValue,
               onChanged: widget.onChanged,
