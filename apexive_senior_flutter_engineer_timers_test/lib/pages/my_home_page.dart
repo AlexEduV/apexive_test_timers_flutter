@@ -6,7 +6,7 @@ import 'package:apexive_senior_flutter_engineer_timers_test/pages/create_timer_p
 import 'package:apexive_senior_flutter_engineer_timers_test/pages/task_details_page.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/app_bar_button.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_card.dart';
-import 'package:apexive_senior_flutter_engineer_timers_test/ui/timersList/timer_settings_row.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/timersList/timer_specs_row.dart';
 import 'package:flutter/material.dart';
 
 import '../model/task.dart';
@@ -255,7 +255,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
 
                     //timer name
-                    TimerSettingsRow(
+                    TimerSpecsRow(
                       text: listOfTasks[index].title,
                       textStyle: TypographyStyles.getTitleMedium(),
                       icon: listOfTasks[index].isFavorite ? Icons.star : Icons.star_border,
@@ -263,13 +263,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
 
                     //timer project
-                    TimerSettingsRow(
+                    TimerSpecsRow(
                         text: listOfTasks[index].project.projectName,
                         textStyle: TypographyStyles.getBodyMedium(),
                         iconSource: 'assets/images/case.png'),
 
                     //deadline
-                    TimerSettingsRow(
+                    TimerSpecsRow(
                         text: 'Deadline ${listOfTasks[index].deadlineDate}',
                         textStyle: TypographyStyles.getBodyMedium(),
                         iconSource: 'assets/images/timer.png'),

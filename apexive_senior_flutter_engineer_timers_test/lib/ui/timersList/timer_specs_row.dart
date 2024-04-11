@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TimerSettingsRow extends StatelessWidget {
+class TimerSpecsRow extends StatelessWidget {
 
   final String text;
   final dynamic textStyle;
@@ -9,7 +9,7 @@ class TimerSettingsRow extends StatelessWidget {
   final String? iconSource;
 
 
-  const TimerSettingsRow({
+  const TimerSpecsRow({
     super.key,
     required this.text,
     required this.textStyle,
@@ -26,7 +26,7 @@ class TimerSettingsRow extends StatelessWidget {
 
         const SizedBox(width: 4,),
 
-        Flexible(child: Text(text, style: textStyle)),
+        Flexible(child: Text(text, style: textStyle,),),
       ],
     );
   }
