@@ -105,6 +105,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
             padding: const EdgeInsets.only(right: 16, left: 16),
             //app bar
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Wrap(
                   runSpacing: 16,
@@ -166,7 +167,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                   ],
                 ),
 
-                const Spacer(),
+                //const Spacer(),
 
                 //create timer active button
                 GestureDetector(

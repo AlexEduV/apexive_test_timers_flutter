@@ -36,12 +36,18 @@ class DropDownSelector extends StatelessWidget {
         initialSelection: initValue,
         dropdownMenuEntries: menuItems,
         onSelected: onSelected,
+        label: Text(hintText),
+        textStyle: TypographyStyles.getBodyLarge(),
+        trailingIcon: getTrailingIcon(),
+        selectedTrailingIcon: getTrailingIcon(),
         inputDecorationTheme: InputDecorationTheme(
           labelStyle: TypographyStyles.getBodyLarge(),
           hintStyle: TypographyStyles.getBodyLarge(),
           border: InputBorder.none,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8)
-
+          contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 8,
+          ),
         ),
         menuStyle: MenuStyle(
           backgroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
@@ -52,11 +58,6 @@ class DropDownSelector extends StatelessWidget {
           }),
         ),
         expandedInsets: EdgeInsets.zero,
-        hintText: hintText,
-        label: Text(hintText),
-        textStyle: TypographyStyles.getBodyLarge(),
-        trailingIcon: getTrailingIcon(),
-        selectedTrailingIcon: getTrailingIcon(),
       ),
     );
   }
