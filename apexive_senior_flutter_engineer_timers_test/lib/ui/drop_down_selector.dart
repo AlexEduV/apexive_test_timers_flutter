@@ -60,6 +60,7 @@ class _DropDownSelectorState extends State<DropDownSelector> {
             expandedInsets: EdgeInsets.zero,
             hintText: widget.hintText,
             textStyle:  TypographyStyles.getBodyLarge(),
+            label: Text(widget.hintText),
             //underline: Container(),
             trailingIcon: Image.asset(
               'assets/images/chevron_down.png',
