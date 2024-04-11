@@ -122,7 +122,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                       menuItems: projectMenuItems,
                       selectedValue: _selectedProjectNameValue,
                       hintText: 'Project',
-                      onChanged: (String? selectedValue) {
+                      onSelected: (String? selectedValue) {
                         if (selectedValue is String) {
                           setState(() {
                             _selectedProjectNameValue = selectedValue;
@@ -136,7 +136,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                       menuItems: taskMenuItems,
                       selectedValue: _selectedTaskNameValue,
                       hintText: 'Task',
-                      onChanged: (String? selectedValue) {
+                      onSelected: (String? selectedValue) {
                         if (selectedValue is String) {
                           setState(() {
                             _selectedTaskNameValue = selectedValue;

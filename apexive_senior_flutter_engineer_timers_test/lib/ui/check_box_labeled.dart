@@ -42,7 +42,7 @@ class _CheckBoxLabeledState extends State<CheckBoxLabeled> {
             borderRadius: BorderRadius.circular(4.0),
           ),
           side: MaterialStateBorderSide.resolveWith(
-                (states) => BorderSide(width: 2.0, color: Colors.white),
+                (states) => const BorderSide(width: 2.0, color: Colors.white),
           ),
         ),
 

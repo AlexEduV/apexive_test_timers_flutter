@@ -10,14 +10,14 @@ class DropDownSelector extends StatefulWidget {
   late String? selectedValue;
   final String hintText;
 
-  final Function(String?) onChanged;
+  final Function(String?) onSelected;
 
   DropDownSelector({
     super.key,
     required this.menuItems,
     required this.selectedValue,
     required this.hintText,
-    required this.onChanged,
+    required this.onSelected,
   });
 
   @override
@@ -39,6 +39,7 @@ class _DropDownSelectorState extends State<DropDownSelector> {
       ),
       child: DropdownMenu<String>(
         dropdownMenuEntries: widget.menuItems,
+        onSelected: widget.onSelected,
         inputDecorationTheme: InputDecorationTheme(
           labelStyle: TypographyStyles.getBodyLarge(),
           hintStyle: TypographyStyles.getBodyLarge(),
