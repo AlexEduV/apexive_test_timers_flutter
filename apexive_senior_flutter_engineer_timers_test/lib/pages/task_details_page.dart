@@ -42,8 +42,6 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
         openedTask = DataModel.taskList[taskId];
       });
 
-      //debugPrint(MediaQuery.of(context).viewInsets.horizontal.toString());
-
     });
   }
 
@@ -373,8 +371,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
   void onPauseButtonPressed() {
     setState(() {
-      if (openedTask != null)
-      {
+      if (openedTask != null) {
         openedTask?.isActive = !openedTask!.isActive;
       }
     });
