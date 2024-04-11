@@ -37,42 +37,32 @@ class _DropDownSelectorState extends State<DropDownSelector> {
         ),
         borderRadius: BorderRadius.circular(8),
       ),
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      child: Column(
-        children: [
-          DropdownMenu<String>(
-            dropdownMenuEntries: widget.menuItems,
-            //value: widget.selectedValue,
-            //onChanged: widget.onChanged,
-            inputDecorationTheme: InputDecorationTheme(
-              labelStyle: TypographyStyles.getBodyLarge(),
-              hintStyle: TypographyStyles.getBodyLarge()
+      child: DropdownMenu<String>(
+        dropdownMenuEntries: widget.menuItems,
+        inputDecorationTheme: InputDecorationTheme(
+          labelStyle: TypographyStyles.getBodyLarge(),
+          hintStyle: TypographyStyles.getBodyLarge(),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8)
 
-            ),
-            menuStyle: MenuStyle(
-              backgroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                return Colors.white.withOpacity(.12);
-              }),
-              surfaceTintColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                return Colors.white;
-              }),
-            ),
-            expandedInsets: EdgeInsets.zero,
-            hintText: widget.hintText,
-            textStyle:  TypographyStyles.getBodyLarge(),
-            label: Text(widget.hintText),
-            //underline: Container(),
-            trailingIcon: Image.asset(
-              'assets/images/chevron_down.png',
-              height: 32,
-              width: 32,
-              color: Colors.white,
-            ),
-            //isExpanded: true,
-            //borderRadius: BorderRadius.circular(8),
-            //dropdownColor: Colors.white.withOpacity(.67),
-          ),
-        ],
+        ),
+        menuStyle: MenuStyle(
+          backgroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+            return Colors.white.withOpacity(.12);
+          }),
+          surfaceTintColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+            return Colors.white;
+          }),
+        ),
+        expandedInsets: EdgeInsets.zero,
+        hintText: widget.hintText,
+        label: Text(widget.hintText),
+        textStyle: TypographyStyles.getBodyLarge(),
+        trailingIcon: Image.asset(
+          'assets/images/chevron_down.png',
+          height: 32,
+          width: 32,
+          color: Colors.white,
+        ),
       ),
     );
   }
