@@ -55,13 +55,13 @@ class DropDownSelector extends StatelessWidget {
         hintText: hintText,
         label: Text(hintText),
         textStyle: TypographyStyles.getBodyLarge(),
-        trailingIcon: getTrailingIcon('assets/images/chevron_down.png',),
-        selectedTrailingIcon: getTrailingIcon('assets/images/chevron_down.png',),
+        trailingIcon: getTrailingIcon(),
+        selectedTrailingIcon: getTrailingIcon(),
       ),
     );
   }
 
-  Widget getTrailingIcon(String iconSource)
+  Widget getTrailingIcon({String iconSource = 'assets/images/chevron_down.png'})
   {
     return Image.asset(
         iconSource,
