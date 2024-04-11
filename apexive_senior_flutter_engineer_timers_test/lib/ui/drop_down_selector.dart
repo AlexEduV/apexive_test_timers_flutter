@@ -42,6 +42,7 @@ class _DropDownSelectorState extends State<DropDownSelector> {
         inputDecorationTheme: InputDecorationTheme(
           labelStyle: TypographyStyles.getBodyLarge(),
           hintStyle: TypographyStyles.getBodyLarge(),
+          border: InputBorder.none,
           contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8)
 
         ),
