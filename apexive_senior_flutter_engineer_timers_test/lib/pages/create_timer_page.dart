@@ -25,10 +25,10 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
   List<Task> tasks = [];
 
   List<String> projectNames = [];
-  List<DropdownMenuItem<String>> projectMenuItems = [];
+  List<DropdownMenuEntry<String>> projectMenuItems = [];
 
   List<String> taskNames = [];
-  List<DropdownMenuItem<String>> taskMenuItems = [];
+  List<DropdownMenuEntry<String>> taskMenuItems = [];
 
   String? _selectedProjectNameValue;
   String? _selectedTaskNameValue;
@@ -57,9 +57,12 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
     for (final projectName in projectNames)
     {
       projectMenuItems.add(
-          DropdownMenuItem<String>(
+          DropdownMenuEntry<String>(
             value: projectName,
-            child: Text(projectName),
+            label: projectName,
+            style: MenuItemButton.styleFrom(
+              foregroundColor: Colors.white,
+            ),
           ),
       );
     }
@@ -67,9 +70,12 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
     for (final taskName in taskNames)
     {
       taskMenuItems.add(
-        DropdownMenuItem<String>(
+        DropdownMenuEntry<String>(
           value: taskName,
-          child: Text(taskName),
+          label: taskName,
+          style: MenuItemButton.styleFrom(
+            foregroundColor: Colors.white,
+          ),
         ),
       );
     }

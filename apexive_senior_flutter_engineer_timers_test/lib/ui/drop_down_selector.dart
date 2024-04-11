@@ -5,7 +5,7 @@ import '../style/typography.dart';
 
 class DropDownSelector extends StatefulWidget {
 
-  final List<DropdownMenuItem<String>> menuItems;
+  final List<DropdownMenuEntry<String>> menuItems;
 
   late String? selectedValue;
   final String hintText;
@@ -38,21 +38,33 @@ class _DropDownSelectorState extends State<DropDownSelector> {
         borderRadius: BorderRadius.circular(8),
       ),
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      child: Row(
+      child: Column(
         children: [
-          Expanded(
-            child: DropdownMenu<String>(
-              items: widget.menuItems,
-              value: widget.selectedValue,
-              onChanged: widget.onChanged,
-              hint: Text(widget.hintText, style: TypographyStyles.getBodyLarge(),),
-              style:  TypographyStyles.getBodyLarge(),
-              underline: Container(),
-              icon: const Icon(Icons.expand_more, size: 32, color: Colors.white,),
-              isExpanded: true,
-              borderRadius: BorderRadius.circular(8),
-              dropdownColor: Colors.white.withOpacity(.67),
+          DropdownMenu<String>(
+            dropdownMenuEntries: widget.menuItems,
+            //value: widget.selectedValue,
+            //onChanged: widget.onChanged,
+            inputDecorationTheme: InputDecorationTheme(
+              labelStyle: TypographyStyles.getBodyLarge(),
+              hintStyle: TypographyStyles.getBodyLarge()
+
             ),
+            menuStyle: MenuStyle(
+              backgroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                return Colors.white.withOpacity(.12);
+              }),
+              surfaceTintColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                return Colors.white;
+              }),
+            ),
+            expandedInsets: EdgeInsets.zero,
+            hintText: widget.hintText,
+            textStyle:  TypographyStyles.getBodyLarge(),
+            //underline: Container(),
+            trailingIcon: const Icon(Icons.expand_more, size: 32, color: Colors.white,),
+            //isExpanded: true,
+            //borderRadius: BorderRadius.circular(8),
+            //dropdownColor: Colors.white.withOpacity(.67),
           ),
         ],
       ),
