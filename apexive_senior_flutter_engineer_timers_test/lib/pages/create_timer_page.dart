@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/style/typography.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/buttons/splash_button.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/check_box_labeled.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/custom_app_bar.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_text_field.dart';
@@ -178,27 +179,10 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                 ),
 
                 //create timer active button
-                GestureDetector(
+                SplashButton(
                   onTap: onCreateTimerButtonPressed,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 16.0),
-                    margin: const EdgeInsets.only(bottom: 16.0),
-                    decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(.16),
-                        borderRadius: BorderRadius.circular(12.0)
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Create Timer',
-                          style: TypographyStyles.getLabelLarge(),
-                        )
-                      ],
-                    ),
-                  ),
+                  label: 'Create Timer',
                 ),
-
 
               ],
             ),
