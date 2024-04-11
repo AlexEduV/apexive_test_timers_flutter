@@ -116,38 +116,35 @@ class _MyHomePageState extends State<MyHomePage> {
                           color: Colors.white.withOpacity(.16),
                         ),),
                     ),
-                    child: Container(
-                      alignment: Alignment.center,
-                      width: double.maxFinite,
-                      child: DefaultTabController(
-                          initialIndex: 1,
-                          length: 3,
-                          child: TabBar(
-                            onTap: (int index) {
-                              setState(() {
-                                selectedTabPageIndex = index;
-                              });
-                            },
-                            labelStyle: TypographyStyles.getLabelLarge(),
-                            indicatorColor: Colors.white,
-                            indicatorSize: TabBarIndicatorSize.label,
-                            isScrollable: true,
-                            tabs: [
-                              const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                                child: Tab(text: 'Favorites',),
-                              ),
-                              Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                                child: const Tab(text: 'Odoo',),
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                                child: Tab(text: 'Local',),
-                              ),
-                            ],
-                          ),
-                      ),
+                    child: DefaultTabController(
+                        initialIndex: 1,
+                        length: 3,
+                        child: TabBar(
+                          onTap: (int index) {
+                            setState(() {
+                              selectedTabPageIndex = index;
+                            });
+                          },
+                          labelStyle: TypographyStyles.getLabelLarge(),
+                          indicatorColor: Colors.white,
+                          indicatorSize: TabBarIndicatorSize.label,
+                          unselectedLabelColor: Colors.white,
+                          //isScrollable: true,
+                          tabs: [
+                            const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 16.0),
+                              child: Tab(text: 'Favorites',),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                              child: const Tab(text: 'Odoo',),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 16.0),
+                              child: Tab(text: 'Local',),
+                            ),
+                          ],
+                        ),
                     ),
                   ),
 
