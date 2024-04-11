@@ -31,9 +31,19 @@ class _CheckBoxLabeledState extends State<CheckBoxLabeled> {
           value: widget.isFavorite,
           onChanged: widget.onChanged,
           fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-            return Colors.white;
+            if (states.contains(MaterialState.selected)) {
+              return Colors.white;
+            }
+
+            return Colors.transparent;
           }),
           checkColor: Colors.indigo,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4.0),
+          ),
+          side: MaterialStateBorderSide.resolveWith(
+                (states) => BorderSide(width: 2.0, color: Colors.white),
+          ),
         ),
 
         Text(
