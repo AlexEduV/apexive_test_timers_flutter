@@ -7,11 +7,11 @@ class TypographyStyles {
   static TextStyle getDisplaySmall({Color specifiedColor = defaultColor}) {
     return
       TextStyle(
-          fontSize: 36.0,
-          fontWeight: FontWeight.w600,
-          height: getLineHeightFrom(fontSize: 36.0, heightInPx: 44.0),
-          fontFamily: 'Inter',
-          color: specifiedColor,
+        fontSize: 36.0,
+        fontWeight: FontWeight.w600,
+        height: getLineHeightFrom(fontSize: 36.0, heightInPx: 44.0),
+        fontFamily: 'Inter',
+        color: specifiedColor,
       );
   }
 
@@ -23,7 +23,6 @@ class TypographyStyles {
         height: getLineHeightFrom(fontSize: 32.0, heightInPx: 40.0),
         fontFamily: 'Inter',
         color: specifiedColor,
-        letterSpacing: 0.1
       );
   }
 
@@ -38,27 +37,15 @@ class TypographyStyles {
       );
   }
 
-  static TextStyle getLabelLarge({Color specifiedColor = defaultColor}) {
-    return
-      TextStyle(
-        fontSize: 14.0,
-        fontWeight: FontWeight.w400,
-        height: getLineHeightFrom(fontSize: 14.0, heightInPx: 20.0),
-        fontFamily: 'Inter',
-        color: specifiedColor,
-        letterSpacing: 0.1,
-      );
-  }
-
   static TextStyle getTitleMedium({Color specifiedColor = defaultColor}) {
     return
       TextStyle(
-          fontSize: 16.0,
-          fontWeight: FontWeight.w600,
-          height: getLineHeightFrom(fontSize: 16.0, heightInPx: 24.0),
-          fontFamily: 'Inter',
-          color: specifiedColor,
-          letterSpacing: 0.15
+        fontSize: 16.0,
+        fontWeight: FontWeight.w600,
+        height: getLineHeightFrom(fontSize: 16.0, heightInPx: 24.0),
+        fontFamily: 'Inter',
+        color: specifiedColor,
+        letterSpacing: 0.15,
       );
   }
 
@@ -69,6 +56,18 @@ class TypographyStyles {
         fontWeight: FontWeight.w500,
         height: getLineHeightFrom(fontSize: 14.0, heightInPx: 20.0),
         fontFamily: 'Inter',
+        color: specifiedColor,
+        letterSpacing: 0.1,
+      );
+  }
+
+  static TextStyle getLabelLarge({Color specifiedColor = defaultColor}) {
+    return
+      TextStyle(
+        fontSize: 14.0,
+        fontWeight: FontWeight.w400,
+        height: getLineHeightFrom(fontSize: 14.0, heightInPx: 20.0),
+        fontFamily: 'Roboto',
         color: specifiedColor,
         letterSpacing: 0.1,
       );
