@@ -119,6 +119,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
 
                     //project selector
                     DropDownSelector(
+                      initValue: _selectedProjectNameValue,
                       menuItems: projectMenuItems,
                       selectedValue: _selectedProjectNameValue,
                       hintText: 'Project',
@@ -133,6 +134,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
 
                     //task selector
                     DropDownSelector(
+                      initValue: _selectedTaskNameValue,
                       menuItems: taskMenuItems,
                       selectedValue: _selectedTaskNameValue,
                       hintText: 'Task',

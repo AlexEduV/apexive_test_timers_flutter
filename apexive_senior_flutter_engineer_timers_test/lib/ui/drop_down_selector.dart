@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 
 import '../style/typography.dart';
 
-class DropDownSelector extends StatefulWidget {
+class DropDownSelector extends StatelessWidget {
 
   final List<DropdownMenuEntry<String>> menuItems;
 
+  final String? initValue;
   late String? selectedValue;
   final String hintText;
 
@@ -15,17 +16,11 @@ class DropDownSelector extends StatefulWidget {
   DropDownSelector({
     super.key,
     required this.menuItems,
+    required this.initValue,
     required this.selectedValue,
     required this.hintText,
     required this.onSelected,
   });
-
-  @override
-  State<DropDownSelector> createState() => _DropDownSelectorState();
-
-}
-
-class _DropDownSelectorState extends State<DropDownSelector> {
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +33,9 @@ class _DropDownSelectorState extends State<DropDownSelector> {
         borderRadius: BorderRadius.circular(8),
       ),
       child: DropdownMenu<String>(
-        dropdownMenuEntries: widget.menuItems,
-        onSelected: widget.onSelected,
+        initialSelection: initValue,
+        dropdownMenuEntries: menuItems,
+        onSelected: onSelected,
         inputDecorationTheme: InputDecorationTheme(
           labelStyle: TypographyStyles.getBodyLarge(),
           hintStyle: TypographyStyles.getBodyLarge(),
@@ -56,22 +52,22 @@ class _DropDownSelectorState extends State<DropDownSelector> {
           }),
         ),
         expandedInsets: EdgeInsets.zero,
-        hintText: widget.hintText,
-        label: Text(widget.hintText),
+        hintText: hintText,
+        label: Text(hintText),
         textStyle: TypographyStyles.getBodyLarge(),
-        trailingIcon: Image.asset(
-          'assets/images/chevron_down.png',
-          height: 32,
-          width: 32,
-          color: Colors.white,
-        ),
-        selectedTrailingIcon: Image.asset(
-          'assets/images/chevron_down.png',
-          height: 32,
-          width: 32,
-          color: Colors.white,
-        ),
+        trailingIcon: getTrailingIcon('assets/images/chevron_down.png',),
+        selectedTrailingIcon: getTrailingIcon('assets/images/chevron_down.png',),
       ),
+    );
+  }
+
+  Widget getTrailingIcon(String iconSource)
+  {
+    return Image.asset(
+        iconSource,
+        height: 32,
+        width: 32,
+        color: Colors.white,
     );
   }
 
