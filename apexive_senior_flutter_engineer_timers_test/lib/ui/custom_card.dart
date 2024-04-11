@@ -11,8 +11,9 @@ class CustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    //a rounded semi-transparent container
     return Container(
-      //decorated container
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: Colors.white.withOpacity(.08),

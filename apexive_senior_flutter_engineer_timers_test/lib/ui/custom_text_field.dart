@@ -22,11 +22,12 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
+
+  static TextStyle defaultTextStyle = TypographyStyles.getBodyLarge();
   
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       decoration: BoxDecoration(
         border: Border.all(
           width: 2.0,
@@ -36,23 +37,22 @@ class _CustomTextFieldState extends State<CustomTextField> {
       ),
       child: TextField(
         decoration: InputDecoration(
-          //hoverColor: Colors.transparent,
           enabledBorder: const UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.transparent),
           ),
           focusedBorder: const UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.transparent),
           ),
-          hintStyle: TypographyStyles.getBodyLarge(),
-          hintText: widget.hintText,
-          counterText: "",),
-        //cursorColor: Colors.transparent,
-        enabled: true,
+          hintStyle: defaultTextStyle,
+          labelText: widget.hintText,
+          labelStyle: defaultTextStyle,
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        ),
         maxLength: widget.maxLength,
         textInputAction: TextInputAction.next,
         controller: widget.textEditingController,
-        style: TypographyStyles.getBodyLarge(),
-
+        style: defaultTextStyle,
+        cursorColor: Colors.white,
       ),
     );
   }
