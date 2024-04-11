@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         //title
                         Text(widget.title, style: TypographyStyles.getHeadlineLarge(),),
 
-                        //
+                        //buttons
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8),
                           child: Wrap(
@@ -260,21 +260,23 @@ class _MyHomePageState extends State<MyHomePage> {
 
                     //timer name
                     TimerSettingsRow(
-                        text: listOfTasks[index].title,
-                        textStyle: TypographyStyles.getTitleMedium(),
-                        icon: listOfTasks[index].isFavorite ? Icons.star : Icons.star_border),
+                      text: listOfTasks[index].title,
+                      textStyle: TypographyStyles.getTitleMedium(),
+                      icon: listOfTasks[index].isFavorite ? Icons.star : Icons.star_border,
+                      iconSource: '',
+                    ),
 
                     //timer project
                     TimerSettingsRow(
                         text: listOfTasks[index].project.projectName,
                         textStyle: TypographyStyles.getBodyMedium(),
-                        icon: Icons.cases_outlined),
+                        iconSource: 'assets/images/case.png'),
 
                     //deadline
                     TimerSettingsRow(
                         text: 'Deadline ${listOfTasks[index].deadlineDate}',
                         textStyle: TypographyStyles.getBodyMedium(),
-                        icon: Icons.access_time_rounded),
+                        iconSource: 'assets/images/timer.png'),
 
                   ],
                 ),

@@ -5,14 +5,16 @@ class TimerSettingsRow extends StatelessWidget {
   final String text;
   final dynamic textStyle;
 
-  final IconData icon;
+  final IconData? icon;
+  final String? iconSource;
 
 
   const TimerSettingsRow({
     super.key,
     required this.text,
     required this.textStyle,
-    required this.icon
+    this.icon,
+    this.iconSource,
   });
 
   @override
@@ -20,12 +22,26 @@ class TimerSettingsRow extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(icon, size: 24, color: Colors.white),
+        getImageOrIcon(icon, iconSource),
 
         const SizedBox(width: 4,),
 
         Flexible(child: Text(text, style: textStyle)),
       ],
     );
+  }
+
+  Widget getImageOrIcon(IconData? icon, String? iconSource)
+  {
+    if (icon != null) {
+      return Icon(icon, size: 24, color: Colors.white);
+    }
+    else {
+      return Image.asset(
+        iconSource ?? 'assets/images/arrow_2_circlepath',
+        height: 24, width: 24,
+        color: Colors.white,
+      );
+    }
   }
 }
