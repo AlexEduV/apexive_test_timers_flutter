@@ -62,6 +62,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
             label: projectName,
             style: MenuItemButton.styleFrom(
               foregroundColor: Colors.white,
+              textStyle: TypographyStyles.getBodyLarge(),
             ),
           ),
       );
@@ -75,6 +76,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
           label: taskName,
           style: MenuItemButton.styleFrom(
             foregroundColor: Colors.white,
+            textStyle: TypographyStyles.getBodyLarge(),
           ),
         ),
       );
