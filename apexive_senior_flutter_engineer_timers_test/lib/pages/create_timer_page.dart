@@ -103,71 +103,81 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
 
           child: Padding(
             padding: const EdgeInsets.only(right: 16, left: 16),
-            //app bar
+
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Wrap(
-                  runSpacing: 16,
-                  children: [
+                
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Wrap(
+                          runSpacing: 16,
+                          children: [
 
-                    CustomAppBar(
-                      onBackButtonPressed: onBackButtonPressed,
-                      title: 'Create Timer',
-                      titleTextStyle: TypographyStyles.getHeadlineSmall(),
-                      actions: null,
-                    ),
+                            //app bar
+                            CustomAppBar(
+                              onBackButtonPressed: onBackButtonPressed,
+                              title: 'Create Timer',
+                              titleTextStyle: TypographyStyles.getHeadlineSmall(),
+                              actions: null,
+                            ),
 
-                    //project selector
-                    DropDownSelector(
-                      initValue: _selectedProjectNameValue,
-                      menuItems: projectMenuItems,
-                      selectedValue: _selectedProjectNameValue,
-                      hintText: 'Project',
-                      onSelected: (String? selectedValue) {
-                        if (selectedValue is String) {
-                          setState(() {
-                            _selectedProjectNameValue = selectedValue;
-                          });
-                        }
-                      },
-                    ),
+                            //project selector
+                            DropDownSelector(
+                              initValue: _selectedProjectNameValue,
+                              menuItems: projectMenuItems,
+                              selectedValue: _selectedProjectNameValue,
+                              hintText: 'Project',
+                              onSelected: (String? selectedValue) {
+                                if (selectedValue is String) {
+                                  setState(() {
+                                    _selectedProjectNameValue = selectedValue;
+                                  });
+                                }
+                              },
+                            ),
 
-                    //task selector
-                    DropDownSelector(
-                      initValue: _selectedTaskNameValue,
-                      menuItems: taskMenuItems,
-                      selectedValue: _selectedTaskNameValue,
-                      hintText: 'Task',
-                      onSelected: (String? selectedValue) {
-                        if (selectedValue is String) {
-                          setState(() {
-                            _selectedTaskNameValue = selectedValue;
-                          });
-                        }
-                      },
-                    ),
+                            //task selector
+                            DropDownSelector(
+                              initValue: _selectedTaskNameValue,
+                              menuItems: taskMenuItems,
+                              selectedValue: _selectedTaskNameValue,
+                              hintText: 'Task',
+                              onSelected: (String? selectedValue) {
+                                if (selectedValue is String) {
+                                  setState(() {
+                                    _selectedTaskNameValue = selectedValue;
+                                  });
+                                }
+                              },
+                            ),
 
-                    //Description TextEdit
-                    CustomTextField(
-                      textEditingController: descriptionTextController,
-                      hintText: 'Description',
-                    ),
+                            //Description TextEdit
+                            CustomTextField(
+                              textEditingController: descriptionTextController,
+                              hintText: 'Description',
+                            ),
 
-                    //isFavorite checkBox
-                    CheckBoxLabeled(
-                      isFavorite: isFavorite,
-                      label: 'Make Favorite',
-                      onChanged: (bool? value) {
-                        setState(() {
-                          isFavorite = value!;
-                        });
-                      },
+                            //isFavorite checkBox
+                            CheckBoxLabeled(
+                              isFavorite: isFavorite,
+                              label: 'Make Favorite',
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  isFavorite = value!;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+
+                        //const Spacer(),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-
-                //const Spacer(),
 
                 //create timer active button
                 GestureDetector(

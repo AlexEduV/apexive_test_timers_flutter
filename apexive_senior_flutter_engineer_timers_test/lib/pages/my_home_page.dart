@@ -161,12 +161,10 @@ class _MyHomePageState extends State<MyHomePage> {
             )
         ),
       ),
-      //bottomNavigationBar: _getBottomNavigationBar(),
     );
   }
 
   void onAddTimerButtonPressed() {
-    //debugPrint('AddTimerButtonPressed');
 
     //open createTimerPage
     Navigator.pushNamed(context, CreateTimerPage.routeName).then((value) => updateTimersList());
