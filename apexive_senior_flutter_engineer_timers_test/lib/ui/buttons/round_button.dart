@@ -9,7 +9,7 @@ class RoundButton extends StatelessWidget {
   final Function() onButtonPressed;
 
 
-  RoundButton({
+  const RoundButton({
     super.key,
     required this.backgroundColor,
     required this.tintColor,
@@ -36,5 +36,4 @@ class RoundButton extends StatelessWidget {
       ),
     );
   }
-
 }
