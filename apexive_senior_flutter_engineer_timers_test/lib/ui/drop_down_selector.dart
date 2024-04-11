@@ -7,7 +7,6 @@ class DropDownSelector extends StatelessWidget {
 
   final List<DropdownMenuEntry<String>> menuItems;
 
-  final String? initValue;
   late String? selectedValue;
   final String hintText;
 
@@ -16,7 +15,6 @@ class DropDownSelector extends StatelessWidget {
   DropDownSelector({
     super.key,
     required this.menuItems,
-    required this.initValue,
     required this.selectedValue,
     required this.hintText,
     required this.onSelected,
@@ -33,7 +31,6 @@ class DropDownSelector extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: DropdownMenu<String>(
-        initialSelection: initValue,
         dropdownMenuEntries: menuItems,
         onSelected: onSelected,
         label: Text(hintText),
