@@ -432,14 +432,13 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
   void onStopButtonPressed() {
     setState(() {
-      //todo: this line compromises the main page list;
-      //mainItem.isCompleted = true;
-      //mainItem.isActive = false;
       DataModel.timeSheetList[timerId].isCompleted = true;
       DataModel.timeSheetList[timerId].isActive = false;
 
       //update listView
       completedTimeSheets = DataModel.getCompletedTimeSheetsForTask(openedTask);
+
+      //todo: maybe we don't need to reset descriptions when stopping the timer;
       //readMore = List.filled(DataModel.getAllTimeSheetsForTask(openedTask).length, false);
 
     });
