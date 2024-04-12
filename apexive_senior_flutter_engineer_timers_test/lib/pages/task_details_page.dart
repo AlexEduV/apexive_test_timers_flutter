@@ -467,12 +467,12 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
   String getWeekDayFromDate(String date)
   {
-    List<String> array = date.split('-');
-
-    debugPrint(array.first);
+    List<String> array = date.split('.');
 
     if (array.length == 3)
     {
+      debugPrint(array.first);
+
       var day = array.first;
       var month = array[1];
       var year = array[2];
