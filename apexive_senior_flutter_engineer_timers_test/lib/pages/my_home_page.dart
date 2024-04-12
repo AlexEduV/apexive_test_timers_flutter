@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
     listOfTimers = DataModel.getInitTestTimeSheets();
 
     //show only not completed timers
-    listSize = DataModel.getNotCompletedTimersCount();
+    listSize = listOfTimers.length;
 
     //show all timers count
     timersCount = listOfTimers.length;
@@ -168,11 +168,9 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
 
       listOfTimers = DataModel.timeSheetList;
-      listSize = DataModel.getNotCompletedTimersCount();
-
+      listSize = listOfTimers.length;
 
       timersCount = listOfTimers.length;
-      debugPrint('list of timers length: ${timersCount.toString()}');
     });
   }
 
@@ -220,7 +218,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _getTimersListTile(BuildContext context, int index) {
 
     //hide the task if completed
-    if (listOfTimers[index].isCompleted){
+    if (listOfTimers[index].isCompleted) {
       return Container();
     }
 
