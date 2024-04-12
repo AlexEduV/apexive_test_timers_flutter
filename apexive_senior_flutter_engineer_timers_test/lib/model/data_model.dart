@@ -34,13 +34,14 @@ class DataModel {
           assignedTo: '${testUser.firstName} ${testUser.lastName}',
           deadlineDate: '07/20/2024',
           startTime: '00:30',
-          isFavorite: false,
           timers: [
             TimeSheetItem(
                 description: 'A timer for a task',
                 dateCreated: '04/12/2024',
                 currentTime: '00:30',
+                project: testProject,
                 isActive: false,
+                isFavorite:  false,
                 isCompleted: false,
                 timer: Timer(Duration.zero, (){}),
             ),
@@ -56,13 +57,14 @@ class DataModel {
           assignedTo: '${testUser.firstName} ${testUser.lastName}',
           deadlineDate: '07/20/2024',
           startTime: '00:30',
-          isFavorite: true,
           timers: [
             TimeSheetItem(
               description: 'A timer for a task',
               dateCreated: '04/12/2024',
               currentTime: '00:30',
+              project: testProject,
               isActive: false,
+              isFavorite: true,
               isCompleted: false,
               timer: Timer(Duration.zero, (){}),
             ),

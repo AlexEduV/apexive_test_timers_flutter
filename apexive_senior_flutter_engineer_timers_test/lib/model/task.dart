@@ -9,7 +9,6 @@ class Task {
   final Project project;
   final String assignedTo;
   final String deadlineDate;
-  final bool isFavorite;
   final String startTime;
   late List<TimeSheetItem> timers;
 
@@ -19,7 +18,6 @@ class Task {
     required this.project,
     required this.assignedTo,
     required this.deadlineDate,
-    required this.isFavorite,
     required this.startTime,
     required this.timers,
   });
