@@ -4,7 +4,9 @@ import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/custom_app
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/buttons/round_button.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/detail_row.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/timesheet_specs_column.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'dart:ui' as ui;
 import 'package:intl/intl.dart';
 
@@ -278,23 +280,32 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
           ),
 
           //completed records listview
-          Row(
-            children: [
-              Text(
-                'Completed Records',
-                style: TypographyStyles.getBodySmall(),
-              )
-            ],
-          ),
+          Visibility(
+            visible: completedTimeSheets.isNotEmpty,
+            child: Expanded(
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        'Completed Records',
+                        style: TypographyStyles.getBodySmall(),
+                      )
+                    ],
+                  ),
 
-          const SizedBox(height: 8,),
+                  const SizedBox(height: 8,),
 
-          Expanded(
-            child: ListView.builder(
-              itemBuilder: _getCompletedItemListTile,
-              itemCount: completedTimeSheets.length,
+                  Expanded(
+                    child: ListView.builder(
+                      itemBuilder: _getCompletedItemListTile,
+                      itemCount: completedTimeSheets.length,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
+          )
 
         ],
       );
