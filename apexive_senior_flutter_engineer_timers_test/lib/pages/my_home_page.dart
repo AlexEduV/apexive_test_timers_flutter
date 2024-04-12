@@ -98,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
 
                               AppBarButton(
-                                iconSource: 'assets/images/plus-2.png',
+                                iconSource: 'assets/images/plus.png',
                                 onTap: onAddTimerButtonPressed,
                               ),
                             ],
@@ -285,23 +285,25 @@ class _MyHomePageState extends State<MyHomePage> {
                     color: listOfTasks[index].isActive ? Colors.white : Colors.white.withOpacity(.08),
                   ),
                   padding: const EdgeInsets.only(left: 16, top: 8, right: 8, bottom: 8),
-                  child: Wrap(
-                    runSpacing: 4,
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    children: [
+                  child: Center(
+                    child: Wrap(
+                      runSpacing: 4,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
 
-                      //time
-                      Text(listOfTasks[index].currentTime, style: TypographyStyles.getLabelLarge(specifiedColor: listOfTasks[index].isActive ? Colors.black : Colors.white),),
+                        //time
+                        Text(listOfTasks[index].currentTime, style: TypographyStyles.getLabelLarge(specifiedColor: listOfTasks[index].isActive ? Colors.black : Colors.white),),
 
-                      //pause icon
-                      Image.asset(listOfTasks[index].isActive ?
-                      'assets/images/pause-1.png' :
-                      'assets/images/play_arrow_solid.png',
-                      color: listOfTasks[index].isActive ? Colors.black : Colors.white,
-                      height: 32,
-                      width: 32,
-                      ),
-                    ],
+                        //pause icon
+                        Image.asset(listOfTasks[index].isActive ?
+                        'assets/images/pause-1.png' :
+                        'assets/images/play_arrow_solid.png',
+                        color: listOfTasks[index].isActive ? Colors.black : Colors.white,
+                        height: 24,
+                        width: 24,
+                        ),
+                      ],
+                    ),
                   ),
 
                 ),
