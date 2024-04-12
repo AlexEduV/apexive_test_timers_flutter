@@ -196,14 +196,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
           //listView
           Expanded(
-            child: ListView.separated(
+            child: ListView.builder(
                 itemBuilder: _getTimersListTile,
                 itemCount: listSize,
-                separatorBuilder:(context, index) {
-                  return const Divider(
-                    //empty invisible divider
-                    height: 0, thickness: 0, color: Colors.transparent,);
-                 },
             ),
           )
 
