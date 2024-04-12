@@ -104,8 +104,14 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                         });
                       },
                       tabs: const [
-                        Tab(text: 'Timesheets',),
-                        Tab(text: 'Details',),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          child: Tab(text: 'Timesheets',),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          child: Tab(text: 'Details',),
+                        ),
                       ],
                     ),
                   ),
