@@ -40,6 +40,7 @@ class TimerSpecsRow extends StatelessWidget {
       return Image.asset(
         iconSource ?? 'assets/images/arrow_2_circlepath',
         height: 24, width: 24,
+        scale: 1.5,
         color: Colors.white,
       );
     }
