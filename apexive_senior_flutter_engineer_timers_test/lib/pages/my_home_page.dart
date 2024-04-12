@@ -43,10 +43,13 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
 
     //testing
-    //init one test task
+    //init test tasks
     listOfTasks = DataModel.getInitTestTasks();
-    listSize = listOfTasks.length;
 
+    //show only not completed timers
+    listSize = DataModel.getNotCompletedTimersCount();
+
+    //show all timers count
     timersCount = DataModel.getTimersCount();
 
   }
@@ -163,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
   
   void updateTimersList() {
     setState(() {
-      listOfTasks = DataModel.taskList;
+      listOfTasks = DataModel.timeSheetList;
       listSize = listOfTasks.length;
     });
   }

@@ -8,10 +8,10 @@ import 'package:flutter/material.dart';
 
 class DataModel {
 
-  static List<Task> taskList = [];
+  static List<TimeSheetItem> timeSheetList = [];
 
-  static List<Task> getInitTestTasks() {
-    taskList = [];
+  static List<TimeSheetItem> getInitTestTasks() {
+    timeSheetList = [];
 
     Project testProject = Project(
         projectName: 'SO056 - Booqio V2',
@@ -23,108 +23,101 @@ class DataModel {
       lastName: 'Ivanov',
     );
 
-    //add one test task
-    taskList.add(
-        Task(
-          title: 'iOS App Deployment with odd',
-          description: 'Sync with Client, communicate, '
-              'work on the new design with designer, '
-              'new tasks preparation call with the front end',
-          project: testProject,
-          assignedTo: '${testUser.firstName} ${testUser.lastName}',
-          deadlineDate: '07/20/2024',
-          startTime: '00:30',
-          timers: [
-            TimeSheetItem(
-                description: 'A timer for a task',
-                dateCreated: '04/12/2024',
-                currentTime: '00:30',
-                project: testProject,
-                isActive: false,
-                isFavorite:  false,
-                isCompleted: false,
-                timer: Timer(Duration.zero, (){}),
-            ),
-          ],
-        )
+    Task testTask = Task(
+      title: 'iOS App Deployment with odd',
+      description: 'Sync with Client, communicate, '
+          'work on the new design with designer, '
+          'new tasks preparation call with the front end',
+      assignedTo: '${testUser.firstName} ${testUser.lastName}',
+      deadlineDate: '07/20/2024',
+      startTime: '00:30',
     );
 
-    taskList.add(
-        Task(
-          title: 'iOS App Deployment',
-          description: 'Sample Task',
-          project: testProject,
-          assignedTo: '${testUser.firstName} ${testUser.lastName}',
-          deadlineDate: '07/20/2024',
-          startTime: '00:30',
-          timers: [
-            TimeSheetItem(
-              description: 'A timer for a task',
-              dateCreated: '04/12/2024',
-              currentTime: '00:30',
-              project: testProject,
-              isActive: false,
-              isFavorite: true,
-              isCompleted: false,
-              timer: Timer(Duration.zero, (){}),
-            ),
-          ],
-        )
+    Task testTask1 = Task(
+      title: 'iOS App Deployment',
+      description: 'Sync with Client, communicate, '
+          'work on the new design with designer, '
+          'new tasks preparation call with the front end',
+      assignedTo: '${testUser.firstName} ${testUser.lastName}',
+      deadlineDate: '07/20/2024',
+      startTime: '00:30',
     );
 
-    return taskList;
+    //add test tasks here:
+    timeSheetList.add(
+      TimeSheetItem(
+          description: 'A sample TimeSheet',
+          project: testProject,
+          task: testTask,
+          dateCreated: '04/12/2024',
+          currentTime: testTask.startTime,
+          isActive: false,
+          isCompleted: false,
+          isFavorite: false,
+          timer:  Timer(Duration.zero, (){}),
+      )
+    );
+
+    timeSheetList.add(
+      TimeSheetItem(
+        description: 'A sample TimeSheet description',
+        project: testProject,
+        task: testTask1,
+        dateCreated: '04/12/2024',
+        currentTime: testTask1.startTime,
+        isActive: false,
+        isCompleted: false,
+        isFavorite: false,
+        timer:  Timer(Duration.zero, (){}),
+      )
+    );
+
+    return timeSheetList;
   }
 
   static Task getTaskByName(String taskName)
   {
-    for (final task in taskList)
+    for (final timeSheet in timeSheetList)
     {
-      if (task.title == taskName)
+      if (timeSheet.task.title == taskName)
       {
-        return task;
+        return timeSheet.task;
       }
     }
 
-    return taskList.first;
+    return timeSheetList.first.task;
   }
 
   static Project getProjectByName(String projectName)
   {
-    for (final task in taskList)
+    for (final timeSheet in timeSheetList)
     {
-      if (task.project.projectName == projectName)
+      if (timeSheet.project.projectName == projectName)
       {
-        return task.project;
+        return timeSheet.project;
       }
     }
 
-    return taskList.first.project;
+    return timeSheetList.first.project;
   }
 
   static int getTimersCount()
   {
+    return timeSheetList.length;
+  }
+
+  static int getNotCompletedTimersCount()
+  {
     int result = 0;
 
-    for (final task in taskList)
+    for (final timeSheet in timeSheetList)
     {
-      result += task.timers.length;
+      if (!timeSheet.isCompleted)
+      {
+        result++;
+      }
     }
 
     return result;
   }
-
-  // static int getNotCompletedTasksCount()
-  // {
-  //   int result = 0;
-  //
-  //   for (final task in taskList)
-  //   {
-  //     if (!task.isCompleted)
-  //     {
-  //       result++;
-  //     }
-  //   }
-  //
-  //   return result;
-  // }
 }

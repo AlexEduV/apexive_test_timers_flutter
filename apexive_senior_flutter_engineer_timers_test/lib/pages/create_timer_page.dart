@@ -44,7 +44,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
     super.initState();
 
     //get data from route
-    tasks = DataModel.taskList;
+    tasks = DataModel.timeSheetList;
 
     //get distinct project names from task list
     for (final task in tasks) {

@@ -40,7 +40,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
       //set current task
       setState(() {
-        openedTask = DataModel.taskList[taskId];
+        openedTask = DataModel.timeSheetList[taskId];
       });
 
     });

@@ -2,6 +2,7 @@
 import 'dart:async';
 
 import 'package:apexive_senior_flutter_engineer_timers_test/model/project.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/model/task.dart';
 
 //substitute for a timer
 //but the timer name is already taken by the OS;
@@ -9,6 +10,7 @@ import 'package:apexive_senior_flutter_engineer_timers_test/model/project.dart';
 class TimeSheetItem {
   final String description;
   final Project project;
+  final Task task;
   final String dateCreated;
   late String currentTime;
   late bool isActive;
@@ -19,6 +21,7 @@ class TimeSheetItem {
   TimeSheetItem({
     required this.description,
     required this.project,
+    required this.task,
     required this.dateCreated,
     required this.currentTime,
     required this.isActive,
