@@ -10,6 +10,7 @@ class Task {
   final String assignedTo;
   final String deadlineDate;
   final bool isFavorite;
+  final String startTime;
   late List<TimeSheetItem> timers;
 
   Task({
@@ -19,6 +20,7 @@ class Task {
     required this.assignedTo,
     required this.deadlineDate,
     required this.isFavorite,
+    required this.startTime,
     required this.timers,
   });
 

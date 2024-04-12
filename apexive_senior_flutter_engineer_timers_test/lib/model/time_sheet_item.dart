@@ -8,7 +8,6 @@ import 'package:apexive_senior_flutter_engineer_timers_test/model/task.dart';
 class TimeSheetItem {
   final String description;
   final String dateCreated;
-  final String startTime;
   late String currentTime;
   late bool isActive;
   late bool isCompleted;
@@ -17,7 +16,6 @@ class TimeSheetItem {
   TimeSheetItem({
     required this.description,
     required this.dateCreated,
-    required this.startTime,
     required this.currentTime,
     required this.isActive,
     required this.isCompleted,

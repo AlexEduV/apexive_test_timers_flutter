@@ -33,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Task> listOfTasks = [];
   int listSize = 0;
 
-  int listNotCompletedCount = 0;
+  int timersCount = 0;
 
   //time constants
   static const oneSecond = Duration(seconds: 1);
@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
     listOfTasks = DataModel.getInitTestTasks();
     listSize = listOfTasks.length;
 
-    listNotCompletedCount = DataModel.getNotCompletedTasksCount();
+    timersCount = DataModel.getTimersCount();
 
   }
 
@@ -88,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           spacing: 8,
                           children: [
                             Visibility(
-                              visible: listNotCompletedCount > 0,
+                              visible: timersCount > 0,
                               child: AppBarButton(
                                 iconSource: 'assets/images/sort.png',
                                 onTap: onSortListButtonPressed,
@@ -184,7 +184,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Text(
-                  'You have $listNotCompletedCount Timers',
+                  'You have $timersCount Timers',
                   style: TypographyStyles.getLabelLarge(),
                   textAlign: TextAlign.start,
                 ),
@@ -368,7 +368,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           setState(() {
             listOfTasks[index].isCompleted = true;
-            listNotCompletedCount--;
+            timersCount--;
           });
 
         }
