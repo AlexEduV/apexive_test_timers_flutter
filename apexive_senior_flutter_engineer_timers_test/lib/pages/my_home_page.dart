@@ -7,7 +7,9 @@ import 'package:apexive_senior_flutter_engineer_timers_test/pages/task_details_p
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/app_bar_button.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_card.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/timersList/timer_specs_row.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import '../model/task.dart';
 import '../style/typography.dart';
@@ -109,13 +111,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   //tab view
                   Container(
                     margin: const EdgeInsets.symmetric(vertical: 8.0),
-                    decoration: BoxDecoration(
-                      border: BorderDirectional(
-                        bottom: BorderSide(
-                          width: 1.0,
-                          color: Colors.white.withOpacity(.16),
-                        ),),
-                    ),
                     child: DefaultTabController(
                         initialIndex: 1,
                         length: 3,
@@ -129,17 +124,19 @@ class _MyHomePageState extends State<MyHomePage> {
                           indicatorColor: Colors.white,
                           indicatorSize: TabBarIndicatorSize.label,
                           unselectedLabelColor: Colors.white,
-                          //isScrollable: true,
-                          tabs: [
-                            const Padding(
+                          //this property is needed to prevent tab label clipping:
+                          labelPadding: const EdgeInsets.symmetric(horizontal: 0.0),
+                          dividerColor: Colors.white.withOpacity(.16),
+                          tabs: const [
+                            Padding(
                               padding: EdgeInsets.symmetric(horizontal: 16.0),
                               child: Tab(text: 'Favorites',),
                             ),
-                            Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                              child: const Tab(text: 'Odoo',),
+                            Padding(
+                              padding:  EdgeInsets.symmetric(horizontal: 16.0),
+                              child: Tab(text: 'Odoo',),
                             ),
-                            const Padding(
+                            Padding(
                               padding: EdgeInsets.symmetric(horizontal: 16.0),
                               child: Tab(text: 'Local',),
                             ),
