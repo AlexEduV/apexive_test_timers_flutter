@@ -103,8 +103,6 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                           selectedTabPageIndex = index;
                         });
                       },
-                      labelStyle: TypographyStyles.getLabelLarge(),
-                      indicatorColor: Colors.white,
                       tabs: const [
                         Tab(text: 'Timesheets',),
                         Tab(text: 'Details',),

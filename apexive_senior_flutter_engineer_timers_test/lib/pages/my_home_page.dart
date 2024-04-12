@@ -120,13 +120,6 @@ class _MyHomePageState extends State<MyHomePage> {
                               selectedTabPageIndex = index;
                             });
                           },
-                          labelStyle: TypographyStyles.getLabelLarge(),
-                          indicatorColor: Colors.white,
-                          indicatorSize: TabBarIndicatorSize.label,
-                          unselectedLabelColor: Colors.white,
-                          //this property is needed to prevent tab label clipping:
-                          labelPadding: const EdgeInsets.symmetric(horizontal: 0.0),
-                          dividerColor: Colors.white.withOpacity(.16),
                           tabs: const [
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -319,8 +312,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _getBottomNavigationBar()
   {
     return BottomNavigationBar(
-      elevation: 0,
-      backgroundColor: Colors.transparent,
       items: [
         BottomNavigationBarItem(
           activeIcon: Image.asset('assets/images/timer_fill.png', height: 24, width: 24,),
@@ -339,10 +330,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ],
       currentIndex: selectedBottomNavigationIndex,
-      selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.white,
-      selectedLabelStyle: TypographyStyles.getBottomNavigationNormal(),
-      unselectedLabelStyle: TypographyStyles.getBottomNavigationNormal(),
       onTap: onBottomNavigationItemTapped,
     );
   }

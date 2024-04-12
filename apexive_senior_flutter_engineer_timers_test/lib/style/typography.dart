@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TypographyStyles {
+class TypographyStyles extends TextTheme {
 
   static const defaultColor = Colors.white;
 
