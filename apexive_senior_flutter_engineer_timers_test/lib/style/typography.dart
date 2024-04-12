@@ -67,7 +67,7 @@ class TypographyStyles {
         fontSize: 14.0,
         fontWeight: FontWeight.w400,
         height: getLineHeightFrom(fontSize: 14.0, heightInPx: 20.0),
-        fontFamily: 'Roboto',
+        fontFamily: 'Inter',
         color: specifiedColor,
         letterSpacing: 0.1,
       );
