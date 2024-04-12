@@ -120,4 +120,19 @@ class DataModel {
 
     return result;
   }
+
+  static List<TimeSheetItem> getAllTimeSheetsForTask(Task task)
+  {
+    List<TimeSheetItem> result = [];
+
+    for (final timeSheet in timeSheetList)
+    {
+      if (timeSheet.task == task)
+      {
+        result.add(timeSheet);
+      }
+    }
+
+    return result;
+  }
 }

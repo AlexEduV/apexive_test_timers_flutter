@@ -343,7 +343,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.pushNamed(
         context,
         TaskDetailsPage.routeName,
-        arguments: index                 //share id of task
+        arguments: index                 //share id of timesheet
     ).then((value) => updateTimersList());
   }
 

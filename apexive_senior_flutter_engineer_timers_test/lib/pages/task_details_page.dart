@@ -1,5 +1,6 @@
 
 import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/model/time_sheet_item.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/custom_app_bar.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/buttons/round_button.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/detail_row.dart';
@@ -23,11 +24,13 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
   int selectedTabPageIndex = 0;
 
+  int timerId = 0;
+  TimeSheetItem? mainItem;
   Task? openedTask;
-  int taskId = 0;
 
-  //for every timer in the task set init readMore to 'false'
-  List<bool> readMore = [false];
+  List<TimeSheetItem> timeSheets = [];
+
+  List<bool> readMore = [];
 
   @override
   void initState() {
@@ -36,11 +39,14 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     Future.delayed(Duration.zero, () {
 
       //get task id from the route arguments;
-      taskId = ModalRoute.of(context)?.settings.arguments as int;
+      timerId = ModalRoute.of(context)?.settings.arguments as int;
 
       //set current task
       setState(() {
-        openedTask = DataModel.timeSheetList[taskId];
+        mainItem = DataModel.timeSheetList[timerId];
+        openedTask = mainItem?.task;
+
+        timeSheets = DataModel.getAllTimeSheetsForTask(openedTask!);
       });
 
     });
@@ -160,7 +166,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
                         //time text
                         Text(
-                          openedTask?.currentTime ?? '',
+                          mainItem?.currentTime ?? '',
                           style: TypographyStyles.getDisplaySmall(),
                         ),
 
@@ -179,11 +185,11 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
                             //pause button
                             RoundButton(
-                              backgroundColor: openedTask?.isActive ?? false
+                              backgroundColor: mainItem?.isActive ?? false
                                   ? Colors.white : Colors.white.withOpacity(.16),
-                              tintColor: openedTask?.isActive ?? false
+                              tintColor: mainItem?.isActive ?? false
                                   ? Colors.black : Colors.white,
-                              iconSource: openedTask?.isActive ?? false
+                              iconSource: mainItem?.isActive ?? false
                                   ? 'assets/images/pause-1.png'
                                   : 'assets/images/play_arrow_solid.png',
                               onButtonPressed: onPauseButtonPressed,
@@ -306,8 +312,8 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                   //Project
                   DetailRow(
                     detailTitle: 'Project',
-                    detailValue: openedTask?.project.projectName ?? '',
-                    leadingColor: openedTask?.project.markerColor,
+                    detailValue: mainItem?.project.projectName ?? '',
+                    leadingColor: mainItem?.project.markerColor,
                   ),
 
                   //Deadline
@@ -419,15 +425,15 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
   void onStopButtonPressed() {
     setState(() {
-      openedTask?.isCompleted = true;
-      openedTask?.isActive = false;
+      mainItem?.isCompleted = true;
+      mainItem?.isActive = false;
     });
   }
 
   void onPauseButtonPressed() {
     setState(() {
-      if (openedTask != null) {
-        openedTask?.isActive = !openedTask!.isActive;
+      if (mainItem != null) {
+        mainItem?.isActive = !mainItem!.isActive;
       }
     });
   }
