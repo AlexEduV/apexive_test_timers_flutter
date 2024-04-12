@@ -27,7 +27,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   int selectedTabPageIndex = 0;
 
   int timerId = 0;
-  TimeSheetItem? mainItem;
+  late TimeSheetItem mainItem;
   Task? openedTask;
 
   List<TimeSheetItem> completedTimeSheets = [];
@@ -46,13 +46,12 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
       //set current task
       setState(() {
         mainItem = DataModel.timeSheetList[timerId];
-        openedTask = mainItem?.task;
+        openedTask = mainItem.task;
 
         completedTimeSheets = DataModel.getCompletedTimeSheetsForTask(openedTask!);
 
         readMore = List.filled(completedTimeSheets.length, false);
-        if (!mainItem!.isCompleted)
-        {
+        if (!mainItem.isCompleted) {
           readMore.add(false);
         }
 
@@ -154,7 +153,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
           //task detail view
           Visibility(
-            visible: !mainItem!.isCompleted,
+            visible: !mainItem.isCompleted,
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: CustomCard(
@@ -164,8 +163,8 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                   children: [
 
                     TimesheetSpecsColumn(
-                      dayOfWeek: getWeekDayFromDate(mainItem!.dateCreated),
-                      deadlineDate: mainItem?.dateCreated ?? '',
+                      dayOfWeek: getWeekDayFromDate(mainItem.dateCreated),
+                      deadlineDate: mainItem.dateCreated,
                       startTime: openedTask?.startTime ?? ''
                     ),
 
@@ -177,7 +176,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
                           //time text
                           Text(
-                            mainItem?.currentTime ?? '',
+                            mainItem.currentTime,
                             style: TypographyStyles.getDisplaySmall(),
                           ),
 
@@ -196,11 +195,11 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
                               //pause button
                               RoundButton(
-                                backgroundColor: mainItem?.isActive ?? false
+                                backgroundColor: mainItem.isActive
                                     ? Colors.white : Colors.white.withOpacity(.16),
-                                tintColor: mainItem?.isActive ?? false
+                                tintColor: mainItem.isActive
                                     ? Colors.black : Colors.white,
-                                iconSource: mainItem?.isActive ?? false
+                                iconSource: mainItem.isActive
                                     ? 'assets/images/pause-1.png'
                                     : 'assets/images/play_arrow_solid.png',
                                 onButtonPressed: onPauseButtonPressed,
@@ -324,8 +323,8 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                   //Project
                   DetailRow(
                     detailTitle: 'Project',
-                    detailValue: mainItem?.project.projectName ?? '',
-                    leadingColor: mainItem?.project.markerColor,
+                    detailValue: mainItem.project.projectName,
+                    leadingColor: mainItem.project.markerColor,
                   ),
 
                   //Deadline
@@ -437,16 +436,16 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
   void onStopButtonPressed() {
     setState(() {
-      mainItem?.isCompleted = true;
-      mainItem?.isActive = false;
+      mainItem.isCompleted = true;
+      mainItem.isActive = false;
     });
   }
 
   void onPauseButtonPressed() {
     setState(() {
-      if (mainItem != null) {
-        mainItem?.isActive = !mainItem!.isActive;
-      }
+      //if (mainItem) {
+        mainItem.isActive = !mainItem.isActive;
+      //}
     });
   }
 
