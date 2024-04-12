@@ -67,7 +67,7 @@ class DataModel {
         currentTime: testTask1.startTime,
         isActive: false,
         isCompleted: false,
-        isFavorite: false,
+        isFavorite: true,
         timer:  Timer(Duration.zero, (){}),
       )
     );

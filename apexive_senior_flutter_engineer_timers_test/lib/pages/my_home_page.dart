@@ -28,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int selectedBottomNavigationIndex = 0;
 
   //persistence init
-  List<TimeSheetItem> listOfTasks = [];
+  List<TimeSheetItem> listOfTimers = [];
   int listSize = 0;
 
   int timersCount = 0;
@@ -42,13 +42,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
     //testing
     //init test tasks
-    listOfTasks = DataModel.getInitTestTimeSheets();
+    listOfTimers = DataModel.getInitTestTimeSheets();
 
     //show only not completed timers
     listSize = DataModel.getNotCompletedTimersCount();
 
     //show all timers count
-    timersCount = DataModel.getTimersCount();
+    timersCount = listOfTimers.length;
 
   }
 
@@ -164,8 +164,10 @@ class _MyHomePageState extends State<MyHomePage> {
   
   void updateTimersList() {
     setState(() {
-      listOfTasks = DataModel.timeSheetList;
-      listSize = listOfTasks.length;
+      listOfTimers = DataModel.timeSheetList;
+      listSize = DataModel.getNotCompletedTimersCount();
+
+      timersCount = listOfTimers.length;
     });
   }
 
@@ -213,7 +215,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _getTimersListTile(BuildContext context, int index) {
 
     //hide the task if completed
-    if (listOfTasks[index].isCompleted){
+    if (listOfTimers[index].isCompleted){
       return Container();
     }
 
@@ -229,7 +231,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 2,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
-                  color: listOfTasks[index].project.markerColor,
+                  color: listOfTimers[index].project.markerColor,
                 ),
                 margin: const EdgeInsets.only(right: 8.0),
               ),
@@ -242,21 +244,21 @@ class _MyHomePageState extends State<MyHomePage> {
 
                     //timer name
                     TimerSpecsRow(
-                      text: listOfTasks[index].task.title,
+                      text: listOfTimers[index].task.title,
                       textStyle: TypographyStyles.getTitleMedium(),
-                      icon: listOfTasks[index].isFavorite ? Icons.star : Icons.star_border,
+                      icon: listOfTimers[index].isFavorite ? Icons.star : Icons.star_border,
                       iconSource: '',
                     ),
 
                     //timer project
                     TimerSpecsRow(
-                        text: listOfTasks[index].project.projectName,
+                        text: listOfTimers[index].project.projectName,
                         textStyle: TypographyStyles.getBodyMedium(),
                         iconSource: 'assets/images/case.png'),
 
                     //deadline
                     TimerSpecsRow(
-                        text: 'Deadline ${listOfTasks[index].task.deadlineDate}',
+                        text: 'Deadline ${listOfTimers[index].task.deadlineDate}',
                         textStyle: TypographyStyles.getBodyMedium(),
                         iconSource: 'assets/images/timer.png'),
 
@@ -271,7 +273,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 48,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(64),
-                    color: listOfTasks[index].isActive ? Colors.white : Colors.white.withOpacity(.08),
+                    color: listOfTimers[index].isActive ? Colors.white : Colors.white.withOpacity(.08),
                   ),
                   padding: const EdgeInsets.only(left: 16, top: 8, right: 8, bottom: 8),
                   child: Center(
@@ -281,13 +283,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: [
 
                         //time
-                        Text(listOfTasks[index].currentTime, style: TypographyStyles.getLabelLarge(specifiedColor: listOfTasks[index].isActive ? Colors.black : Colors.white),),
+                        Text(listOfTimers[index].currentTime, style: TypographyStyles.getLabelLarge(specifiedColor: listOfTimers[index].isActive ? Colors.black : Colors.white),),
 
                         //pause icon
-                        Image.asset(listOfTasks[index].isActive ?
+                        Image.asset(listOfTimers[index].isActive ?
                         'assets/images/pause.png' :
                         'assets/images/play_arrow_solid.png',
-                        color: listOfTasks[index].isActive ? Colors.black : Colors.white,
+                        color: listOfTimers[index].isActive ? Colors.black : Colors.white,
                         height: 24,
                         width: 24,
                         ),
@@ -351,24 +353,24 @@ class _MyHomePageState extends State<MyHomePage> {
   {
     //start/stop timer
     //stop timer if active
-    if (listOfTasks[index].timer.isActive) {
-      listOfTasks[index].timer.cancel();
+    if (listOfTimers[index].timer.isActive) {
+      listOfTimers[index].timer.cancel();
     }
     else {
       //start a timer
-      int minutes = int.parse(listOfTasks[index].currentTime.substring(0, 2));
-      int seconds = int.parse(listOfTasks[index].currentTime.substring(3, 5));
+      int minutes = int.parse(listOfTimers[index].currentTime.substring(0, 2));
+      int seconds = int.parse(listOfTimers[index].currentTime.substring(3, 5));
 
       int startingPoint = minutes * 60 + seconds;
 
-      listOfTasks[index].timer = Timer.periodic(oneSecond, (Timer timer) {
+      listOfTimers[index].timer = Timer.periodic(oneSecond, (Timer timer) {
         if (startingPoint == 0) {
 
           //the task is finished
           timer.cancel();
 
           setState(() {
-            listOfTasks[index].isCompleted = true;
+            listOfTimers[index].isCompleted = true;
             timersCount--;
           });
 
@@ -381,7 +383,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           //update time
           setState(() {
-            listOfTasks[index].currentTime =
+            listOfTimers[index].currentTime =
             '${minutes.toString().padLeft(2, "0")}'
             ':${seconds.toString().padLeft(2, "0")}';
           });
@@ -392,7 +394,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     //update UI
     setState(() {
-      listOfTasks[index].isActive = !listOfTasks[index].isActive;
+      listOfTimers[index].isActive = !listOfTimers[index].isActive;
     });
   }
 }
