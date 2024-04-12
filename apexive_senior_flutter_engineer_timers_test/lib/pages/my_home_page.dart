@@ -319,22 +319,20 @@ class _MyHomePageState extends State<MyHomePage> {
     return BottomNavigationBar(
       elevation: 0,
       backgroundColor: Colors.transparent,
-      items: const [
+      items: [
         BottomNavigationBarItem(
-          activeIcon: Icon(Icons.access_time_filled_sharp),
-          icon: Icon(Icons.access_time_rounded),
-
+          activeIcon: Image.asset('assets/images/timer_fill.png', height: 24, width: 24,),
+          icon: Image.asset('assets/images/timer.png', height: 24, width: 24,),
           label: 'Timesheets',
         ),
         BottomNavigationBarItem(
-          activeIcon: Icon(Icons.cases_sharp),
-          icon: Icon(Icons.cases_outlined),
-
+          activeIcon: Image.asset('assets/images/case_fill.png', height: 24, width: 24,),
+          icon: Image.asset('assets/images/case.png', height: 24, width: 24,),
           label: 'Projects',
         ),
         BottomNavigationBarItem(
-          activeIcon: Icon(Icons.settings_sharp),
-          icon: Icon(Icons.settings_outlined),
+          activeIcon: Image.asset('assets/images/settings_fill.png', height: 24, width: 24,),
+          icon: Image.asset('assets/images/settings.png', height: 24, width: 24,),
           label: 'Settings',
         ),
       ],

@@ -65,6 +65,7 @@ flutter:
     - assets/images/arrow_2_circlepath.png
     - assets/images/bookmark.png
     - assets/images/case.png
+    - assets/images/case_fill.png
     - assets/images/chevron_down.png
     - assets/images/chevron_forward.png
     - assets/images/chevron_left.png
@@ -79,10 +80,13 @@ flutter:
     - assets/images/play_arrow_solid.png
     - assets/images/plus-1.png
     - assets/images/plus-2.png
+    - assets/images/settings.png
+    - assets/images/settings_fill.png
     - assets/images/sort.png
     - assets/images/stop_fill.png
     - assets/images/sun_min_fill.png
     - assets/images/timer.png
+    - assets/images/timer_fill.png
     - assets/images/trash.png
 
   # To add assets to your application, add an assets section, like this:

@@ -38,8 +38,8 @@ class TimerSpecsRow extends StatelessWidget {
     }
     else {
       return SizedBox(
-        height: 20,
-        width: 20,
+        height: 24,
+        width: 24,
         child: Center(
           child: Image.asset(
             iconSource ?? 'assets/images/arrow_2_circlepath',
