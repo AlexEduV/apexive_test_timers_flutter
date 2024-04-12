@@ -242,7 +242,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                         const SizedBox(height: 4,),
 
                         Text(
-                          openedTask.description,
+                          mainItem.description,
                           style: TypographyStyles.getBodyMedium(),
                           maxLines: readMore[0] ? 10 : 2,
                           overflow: TextOverflow.ellipsis,
@@ -252,7 +252,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
                         Visibility(
                           visible: !readMore[0] && hasTextOverflow(
-                            openedTask.description,
+                            mainItem.description,
                             TypographyStyles.getBodyMedium(),
                             MediaQuery.of(context).textScaleFactor,
                             maxWidth: MediaQuery.of(context).size.width,
