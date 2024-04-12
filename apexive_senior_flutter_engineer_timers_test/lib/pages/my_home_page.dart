@@ -287,7 +287,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   padding: const EdgeInsets.only(left: 16, top: 8, right: 8, bottom: 8),
                   child: Center(
                     child: Wrap(
-                      runSpacing: 4,
+                      spacing: 4,
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
 
@@ -296,7 +296,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                         //pause icon
                         Image.asset(listOfTasks[index].isActive ?
-                        'assets/images/pause-1.png' :
+                        'assets/images/pause.png' :
                         'assets/images/play_arrow_solid.png',
                         color: listOfTasks[index].isActive ? Colors.black : Colors.white,
                         height: 24,
