@@ -234,22 +234,22 @@ class _MyHomePageState extends State<MyHomePage> {
     return GestureDetector(
       onTap: () => onListItemTapped(index),
       child: CustomCard(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
+        child: IntrinsicHeight(
+          child: Row(
+            children: [
 
-            //column with timer specs and border
-            Expanded(
-              child: Container(
+              // leading line with project color
+              Container(
+                width: 2,
                 decoration: BoxDecoration(
-                  border: Border(
-                    left: BorderSide(
-                      width: 2,
-                      color: listOfTasks[index].project.markerColor,
-                    )
-                  )
+                  borderRadius: BorderRadius.circular(8.0),
+                  color: listOfTasks[index].project.markerColor,
                 ),
-                padding: const EdgeInsets.only(left: 8),
+                margin: const EdgeInsets.only(right: 8.0),
+              ),
+
+              //column with timer specs
+              Expanded(
                 child: Wrap(
                   runSpacing: 4,
                   children: [
@@ -277,41 +277,41 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
               ),
-            ),
 
-            GestureDetector(
-              onTap: () => onPauseButtonPressed(index),
-              child: Container(
-                width: 104,
-                height: 48,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(64),
-                  color: listOfTasks[index].isActive ? Colors.white : Colors.white.withOpacity(.08),
+              GestureDetector(
+                onTap: () => onPauseButtonPressed(index),
+                child: Container(
+                  width: 104,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(64),
+                    color: listOfTasks[index].isActive ? Colors.white : Colors.white.withOpacity(.08),
+                  ),
+                  padding: const EdgeInsets.only(left: 16, top: 8, right: 8, bottom: 8),
+                  child: Wrap(
+                    runSpacing: 4,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+
+                      //time
+                      Text(listOfTasks[index].currentTime, style: TypographyStyles.getLabelLarge(specifiedColor: listOfTasks[index].isActive ? Colors.black : Colors.white),),
+
+                      //pause icon
+                      Image.asset(listOfTasks[index].isActive ?
+                      'assets/images/pause-1.png' :
+                      'assets/images/play_arrow_solid.png',
+                      color: listOfTasks[index].isActive ? Colors.black : Colors.white,
+                      height: 32,
+                      width: 32,
+                      ),
+                    ],
+                  ),
+
                 ),
-                padding: const EdgeInsets.only(left: 16, top: 8, right: 8, bottom: 8),
-                child: Wrap(
-                  runSpacing: 4,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: [
+              )
+            ],
 
-                    //time
-                    Text(listOfTasks[index].currentTime, style: TypographyStyles.getLabelLarge(specifiedColor: listOfTasks[index].isActive ? Colors.black : Colors.white),),
-
-                    //pause icon
-                    Image.asset(listOfTasks[index].isActive ?
-                    'assets/images/pause-1.png' :
-                    'assets/images/play_arrow_solid.png',
-                    color: listOfTasks[index].isActive ? Colors.black : Colors.white,
-                    height: 32,
-                    width: 32,
-                    ),
-                  ],
-                ),
-
-              ),
-            )
-          ],
-
+          ),
         ),
       ),
     );
