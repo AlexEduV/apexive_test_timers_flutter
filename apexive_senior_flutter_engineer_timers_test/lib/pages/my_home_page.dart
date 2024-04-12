@@ -2,16 +2,14 @@
 import 'dart:async';
 
 import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/model/time_sheet_item.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/pages/create_timer_page.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/pages/task_details_page.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/app_bar_button.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_card.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/timersList/timer_specs_row.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-import '../model/task.dart';
 import '../style/typography.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -30,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int selectedBottomNavigationIndex = 0;
 
   //persistence init
-  List<Task> listOfTasks = [];
+  List<TimeSheetItem> listOfTasks = [];
   int listSize = 0;
 
   int timersCount = 0;
@@ -44,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     //testing
     //init test tasks
-    listOfTasks = DataModel.getInitTestTasks();
+    listOfTasks = DataModel.getInitTestTimeSheets();
 
     //show only not completed timers
     listSize = DataModel.getNotCompletedTimersCount();
@@ -244,7 +242,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                     //timer name
                     TimerSpecsRow(
-                      text: listOfTasks[index].title,
+                      text: listOfTasks[index].task.title,
                       textStyle: TypographyStyles.getTitleMedium(),
                       icon: listOfTasks[index].isFavorite ? Icons.star : Icons.star_border,
                       iconSource: '',
@@ -258,7 +256,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                     //deadline
                     TimerSpecsRow(
-                        text: 'Deadline ${listOfTasks[index].deadlineDate}',
+                        text: 'Deadline ${listOfTasks[index].task.deadlineDate}',
                         textStyle: TypographyStyles.getBodyMedium(),
                         iconSource: 'assets/images/timer.png'),
 

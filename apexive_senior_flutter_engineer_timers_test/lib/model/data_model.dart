@@ -10,7 +10,7 @@ class DataModel {
 
   static List<TimeSheetItem> timeSheetList = [];
 
-  static List<TimeSheetItem> getInitTestTasks() {
+  static List<TimeSheetItem> getInitTestTimeSheets() {
     timeSheetList = [];
 
     Project testProject = Project(
