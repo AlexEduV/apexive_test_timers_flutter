@@ -29,7 +29,7 @@ class DataModel {
           'work on the new design with designer, '
           'new tasks preparation call with the front end',
       assignedTo: '${testUser.firstName} ${testUser.lastName}',
-      deadlineDate: '07/20/2024',
+      deadlineDate: '20.07.2024',
       startTime: '00:30',
     );
 
@@ -39,7 +39,7 @@ class DataModel {
           'work on the new design with designer, '
           'new tasks preparation call with the front end',
       assignedTo: '${testUser.firstName} ${testUser.lastName}',
-      deadlineDate: '07/20/2024',
+      deadlineDate: '20.07.2024',
       startTime: '00:30',
     );
 
@@ -49,7 +49,7 @@ class DataModel {
           description: 'A sample TimeSheet',
           project: testProject,
           task: testTask,
-          dateCreated: '04/12/2024',
+          dateCreated: '12.04.2024',
           currentTime: testTask.startTime,
           isActive: false,
           isCompleted: false,
@@ -63,7 +63,7 @@ class DataModel {
         description: 'A sample TimeSheet description',
         project: testProject,
         task: testTask1,
-        dateCreated: '04/12/2024',
+        dateCreated: '12.04.2024',
         currentTime: testTask1.startTime,
         isActive: false,
         isCompleted: false,

@@ -1,4 +1,3 @@
-
 import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/model/time_sheet_item.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/custom_app_bar.dart';
@@ -6,10 +5,13 @@ import 'package:apexive_senior_flutter_engineer_timers_test/ui/buttons/round_but
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/detail_row.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/timesheet_specs_column.dart';
 import 'package:flutter/material.dart';
+import 'dart:ui' as ui;
+import 'package:intl/intl.dart';
 
 import '../model/task.dart';
 import '../style/typography.dart';
 import '../ui/custom_card.dart';
+
 
 class TaskDetailsPage extends StatefulWidget {
   const TaskDetailsPage({super.key});
@@ -47,6 +49,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
         openedTask = mainItem?.task;
 
         timeSheets = DataModel.getAllTimeSheetsForTask(openedTask!);
+        readMore = List.filled(timeSheets.length, false);
       });
 
     });
@@ -144,125 +147,128 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
         children: [
 
           //task detail view
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: CustomCard(
+          Visibility(
+            visible: !mainItem!.isCompleted,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: CustomCard(
 
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
 
-                  TimesheetSpecsColumn(
-                      dayOfWeek: 'Monday',
-                      deadlineDate: openedTask?.deadlineDate ?? '',
+                    TimesheetSpecsColumn(
+                      dayOfWeek: getWeekDayFromDate(mainItem!.dateCreated),
+                      deadlineDate: mainItem?.dateCreated ?? '',
                       startTime: openedTask?.startTime ?? ''
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-
-                        //time text
-                        Text(
-                          mainItem?.currentTime ?? '',
-                          style: TypographyStyles.getDisplaySmall(),
-                        ),
-
-                        //control buttons
-                        Wrap(
-                          spacing: 16,
-                          children: [
-
-                            //stop button
-                            RoundButton(
-                              backgroundColor: Colors.white.withOpacity(.16),
-                              tintColor: Colors.white,
-                              iconSource: 'assets/images/stop_fill.png',
-                              onButtonPressed: onStopButtonPressed
-                            ),
-
-                            //pause button
-                            RoundButton(
-                              backgroundColor: mainItem?.isActive ?? false
-                                  ? Colors.white : Colors.white.withOpacity(.16),
-                              tintColor: mainItem?.isActive ?? false
-                                  ? Colors.black : Colors.white,
-                              iconSource: mainItem?.isActive ?? false
-                                  ? 'assets/images/pause-1.png'
-                                  : 'assets/images/play_arrow_solid.png',
-                              onButtonPressed: onPauseButtonPressed,
-                            ),
-                          ],
-                        ),
-                      ],
                     ),
-                  ),
 
-                  //Description section
-                  Divider(height: 1, color: Colors.white.withOpacity(.16),),
-
-                  const SizedBox(height: 16.0,),
-
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children:[
-                      Row(
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+
+                          //time text
                           Text(
-                            'Description',
-                            style: TypographyStyles.getBodySmall(),
+                            mainItem?.currentTime ?? '',
+                            style: TypographyStyles.getDisplaySmall(),
                           ),
 
-                          IconButton(
-                            onPressed: onEditDescriptionButtonPressed,
-                            icon: Image.asset(
-                              'assets/images/pencil.png',
-                              height: 24,
-                              width: 24,
-                              color: Colors.white,
-                            ),
+                          //control buttons
+                          Wrap(
+                            spacing: 16,
+                            children: [
+
+                              //stop button
+                              RoundButton(
+                                backgroundColor: Colors.white.withOpacity(.16),
+                                tintColor: Colors.white,
+                                iconSource: 'assets/images/stop_fill.png',
+                                onButtonPressed: onStopButtonPressed
+                              ),
+
+                              //pause button
+                              RoundButton(
+                                backgroundColor: mainItem?.isActive ?? false
+                                    ? Colors.white : Colors.white.withOpacity(.16),
+                                tintColor: mainItem?.isActive ?? false
+                                    ? Colors.black : Colors.white,
+                                iconSource: mainItem?.isActive ?? false
+                                    ? 'assets/images/pause-1.png'
+                                    : 'assets/images/play_arrow_solid.png',
+                                onButtonPressed: onPauseButtonPressed,
+                              ),
+                            ],
                           ),
                         ],
                       ),
+                    ),
 
-                      const SizedBox(height: 4,),
+                    //Description section
+                    Divider(height: 1, color: Colors.white.withOpacity(.16),),
 
-                      Text(
-                        openedTask?.description ?? '',
-                        style: TypographyStyles.getBodyMedium(),
-                        maxLines: readMore[0] ? 10 : 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                    const SizedBox(height: 16.0,),
 
-                      const SizedBox(height: 4,),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children:[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Description',
+                              style: TypographyStyles.getBodySmall(),
+                            ),
 
-                      Visibility(
-                        visible: !readMore[0] && hasTextOverflow(
-                          openedTask?.description ?? '',
-                          TypographyStyles.getBodyMedium(),
-                          MediaQuery.of(context).textScaleFactor,
-                          maxWidth: MediaQuery.of(context).size.width,
+                            IconButton(
+                              onPressed: onEditDescriptionButtonPressed,
+                              icon: Image.asset(
+                                'assets/images/pencil.png',
+                                height: 24,
+                                width: 24,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
                         ),
-                        child: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              readMore[0] = !readMore[0];
-                            });
-                          },
-                          child: Text(
-                            'Read More',
-                            style: TypographyStyles.getBodySmall(),
+
+                        const SizedBox(height: 4,),
+
+                        Text(
+                          openedTask?.description ?? '',
+                          style: TypographyStyles.getBodyMedium(),
+                          maxLines: readMore[0] ? 10 : 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+
+                        const SizedBox(height: 4,),
+
+                        Visibility(
+                          visible: !readMore[0] && hasTextOverflow(
+                            openedTask?.description ?? '',
+                            TypographyStyles.getBodyMedium(),
+                            MediaQuery.of(context).textScaleFactor,
+                            maxWidth: MediaQuery.of(context).size.width,
+                          ),
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                readMore[0] = !readMore[0];
+                              });
+                            },
+                            child: Text(
+                              'Read More',
+                              style: TypographyStyles.getBodySmall(),
+                            ),
                           ),
                         ),
-                      ),
 
-                     ]
-                  ),
+                       ]
+                    ),
 
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -453,10 +459,30 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     final TextPainter textPainter = TextPainter(
       text: TextSpan(text: text, style: style),
       maxLines: maxLines,
-      textDirection: TextDirection.ltr,
+      textDirection: ui.TextDirection.ltr,
       textScaleFactor: textScaleFactor,
     )..layout(minWidth: minWidth, maxWidth: maxWidth);
     return textPainter.didExceedMaxLines;
+  }
+
+  String getWeekDayFromDate(String date)
+  {
+    List<String> array = date.split('-');
+
+    debugPrint(array.first);
+
+    if (array.length == 3)
+    {
+      var day = array.first;
+      var month = array[1];
+      var year = array[2];
+
+      return DateFormat('EEEE').format(
+        DateTime.parse('$year-$month-$day'),
+      );
+    }
+
+    return '';
   }
 
 }
