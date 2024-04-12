@@ -63,8 +63,8 @@ class DropDownSelector extends StatelessWidget {
   {
     return Image.asset(
         iconSource,
-        height: 32,
-        width: 32,
+        height: 24,
+        width: 24,
         color: Colors.white,
     );
   }
