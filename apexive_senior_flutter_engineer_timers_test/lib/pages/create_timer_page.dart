@@ -217,7 +217,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
           description: descriptionTextController.text,
           project: selectedProject,
           task: selectedTask,
-          dateCreated: '04/12/2024',
+          dateCreated: '12.04.2024',
           dateCompleted: '',
           currentTime: selectedTask.startTime,
           isActive: false,

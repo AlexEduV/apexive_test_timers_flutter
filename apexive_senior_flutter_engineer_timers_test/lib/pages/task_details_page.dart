@@ -46,10 +46,10 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    //get task id from the route arguments;
+    //get timer id from the route arguments;
     timerId = ModalRoute.of(context)?.settings.arguments as int;
 
-    //set current task
+    //set current timer data
     setState(() {
       mainItem = DataModel.timeSheetList[timerId];
       openedTask = mainItem.task;
