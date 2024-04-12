@@ -50,10 +50,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
         completedTimeSheets = DataModel.getCompletedTimeSheetsForTask(openedTask!);
 
-        readMore = List.filled(completedTimeSheets.length, false);
-        if (!mainItem.isCompleted) {
-          readMore.add(false);
-        }
+        readMore = List.filled(DataModel.getAllTimeSheetsForTask(openedTask!).length, false);
 
       });
 
