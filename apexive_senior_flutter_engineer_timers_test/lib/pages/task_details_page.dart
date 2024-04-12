@@ -3,6 +3,7 @@ import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dar
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/custom_app_bar.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/buttons/round_button.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/detail_row.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../model/task.dart';
@@ -138,7 +139,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
           //task detail view
           Padding(
-            padding: const EdgeInsets.only(top: 16),
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: CustomCard(
 
               child: Column(
@@ -277,6 +278,24 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
           ),
 
           //completed records listview
+          Row(
+            children: [
+              Text(
+                'Completed Records',
+                style: TypographyStyles.getBodySmall(),
+              )
+            ],
+          ),
+
+          const SizedBox(height: 8,),
+
+          Expanded(
+            child: ListView.builder(
+              itemBuilder: _getCompletedListTile,
+              itemCount: 2,
+            ),
+          )
+
           //description & edit button
 
 
@@ -355,6 +374,34 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
     //if unknown index
     return Container();
+  }
+
+  Widget _getCompletedListTile(BuildContext context, int index)
+  {
+    return CustomCard(
+        child: Row(
+          children: [
+
+            //check mark rounded
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(64.0),
+                color: Colors.white,
+              ),
+              padding: const EdgeInsets.all(1.0),
+              child: const Icon(
+                Icons.check, size: 22, color: Colors.indigo,),
+            ),
+
+            //timer details column
+            Column(
+              
+            )
+    
+            //completion time rounded
+          ]
+        ),
+    );
   }
 
   void onBackButtonPressed() {
