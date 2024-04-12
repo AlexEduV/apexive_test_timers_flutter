@@ -371,7 +371,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
           setState(() {
             listOfTimers[index].isCompleted = true;
-            timersCount--;
           });
 
         }
