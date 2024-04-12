@@ -28,7 +28,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
   int timerId = 0;
   late TimeSheetItem mainItem;
-  Task? openedTask;
+  late Task openedTask;
 
   List<TimeSheetItem> completedTimeSheets = [];
 
@@ -38,21 +38,23 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   void initState() {
     super.initState();
 
-    Future.delayed(Duration.zero, () {
+  }
 
-      //get task id from the route arguments;
-      timerId = ModalRoute.of(context)?.settings.arguments as int;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
 
-      //set current task
-      setState(() {
-        mainItem = DataModel.timeSheetList[timerId];
-        openedTask = mainItem.task;
+    //get task id from the route arguments;
+    timerId = ModalRoute.of(context)?.settings.arguments as int;
 
-        completedTimeSheets = DataModel.getCompletedTimeSheetsForTask(openedTask!);
+    //set current task
+    setState(() {
+      mainItem = DataModel.timeSheetList[timerId];
+      openedTask = mainItem.task;
 
-        readMore = List.filled(DataModel.getAllTimeSheetsForTask(openedTask!).length, false);
+      completedTimeSheets = DataModel.getCompletedTimeSheetsForTask(openedTask);
 
-      });
+      readMore = List.filled(DataModel.getAllTimeSheetsForTask(openedTask).length, false);
 
     });
   }
@@ -81,7 +83,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                 //app bar - user's name & edit button
                 CustomAppBar(
                   onBackButtonPressed: onBackButtonPressed,
-                  title: '${openedTask?.title} - ${openedTask?.assignedTo}',
+                  title: '${openedTask.title} - ${openedTask.assignedTo}',
                   titleTextStyle: TypographyStyles.getTitleMedium(),
                   actions: [
                     IconButton(
@@ -162,7 +164,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                     TimesheetSpecsColumn(
                       dayOfWeek: getWeekDayFromDate(mainItem.dateCreated),
                       deadlineDate: mainItem.dateCreated,
-                      startTime: openedTask?.startTime ?? ''
+                      startTime: openedTask.startTime,
                     ),
 
                     Padding(
@@ -238,7 +240,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                         const SizedBox(height: 4,),
 
                         Text(
-                          openedTask?.description ?? '',
+                          openedTask.description,
                           style: TypographyStyles.getBodyMedium(),
                           maxLines: readMore[0] ? 10 : 2,
                           overflow: TextOverflow.ellipsis,
@@ -248,7 +250,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
                         Visibility(
                           visible: !readMore[0] && hasTextOverflow(
-                            openedTask?.description ?? '',
+                            openedTask.description,
                             TypographyStyles.getBodyMedium(),
                             MediaQuery.of(context).textScaleFactor,
                             maxWidth: MediaQuery.of(context).size.width,
@@ -292,10 +294,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
               itemBuilder: _getCompletedItemListTile,
               itemCount: completedTimeSheets.length,
             ),
-          )
-
-          //description & edit button
-
+          ),
 
         ],
       );
@@ -327,13 +326,13 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                   //Deadline
                   DetailRow(
                     detailTitle: 'Deadline',
-                    detailValue: openedTask?.deadlineDate ?? '',
+                    detailValue: openedTask.deadlineDate,
                   ),
 
                   //Assign To
                   DetailRow(
                     detailTitle: 'Assigned to',
-                    detailValue: openedTask?.assignedTo ?? '',
+                    detailValue: openedTask.assignedTo,
                   ),
 
                 ],
@@ -358,7 +357,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                 ),
 
                 Text(
-                  openedTask?.description ?? '',
+                  openedTask.description,
                   style: TypographyStyles.getTitleSmall(),
                 )
 
@@ -398,7 +397,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
               child: TimesheetSpecsColumn(
                   dayOfWeek: getWeekDayFromDate(completedTimeSheets[index].dateCreated),
                   deadlineDate: completedTimeSheets[index].dateCreated,
-                  startTime: openedTask?.startTime ?? ''
+                  startTime: openedTask.startTime
               ),
             ),
     
@@ -440,9 +439,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
   void onPauseButtonPressed() {
     setState(() {
-      //if (mainItem) {
-        mainItem.isActive = !mainItem.isActive;
-      //}
+      mainItem.isActive = !mainItem.isActive;
     });
   }
 
