@@ -39,7 +39,6 @@ class MyApp extends StatelessWidget {
           selectedLabelStyle: TypographyStyles.getBottomNavigationNormal(),
           unselectedLabelStyle: TypographyStyles.getBottomNavigationNormal(),
         ),
-        //typography:
 
       ),
       home: const MyHomePage(title: 'Timesheets'),
