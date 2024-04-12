@@ -67,84 +67,84 @@ class _MyHomePageState extends State<MyHomePage> {
                 ], // Customize your colors here
               ),
             ),
-            child: Padding(
-              padding: const EdgeInsets.only(right: 16, left: 16),
-              child: Column(
-                children: [
+            child: Column(
+              children: [
 
-                  //app bar
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8, bottom: 8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                //app bar
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
 
-                        //title
-                        Text(widget.title, style: TypographyStyles.getHeadlineLarge(),),
+                      //title
+                      Text(widget.title, style: TypographyStyles.getHeadlineLarge(),),
 
-                        //buttons
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8),
-                          child: Wrap(
-                            direction: Axis.horizontal,
-                            spacing: 8,
-                            children: [
-                              Visibility(
-                                visible: listNotCompletedCount > 0,
-                                child: AppBarButton(
-                                  iconSource: 'assets/images/sort.png',
-                                  onTap: onSortListButtonPressed,
-                                ),
+                      //buttons
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: Wrap(
+                          direction: Axis.horizontal,
+                          spacing: 8,
+                          children: [
+                            Visibility(
+                              visible: listNotCompletedCount > 0,
+                              child: AppBarButton(
+                                iconSource: 'assets/images/sort.png',
+                                onTap: onSortListButtonPressed,
                               ),
-
-                              AppBarButton(
-                                iconSource: 'assets/images/plus.png',
-                                onTap: onAddTimerButtonPressed,
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-
-                  //tab view
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: DefaultTabController(
-                        initialIndex: 1,
-                        length: 3,
-                        child: TabBar(
-                          onTap: (int index) {
-                            setState(() {
-                              selectedTabPageIndex = index;
-                            });
-                          },
-                          tabs: const [
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 16.0),
-                              child: Tab(text: 'Favorites',),
                             ),
-                            Padding(
-                              padding:  EdgeInsets.symmetric(horizontal: 16.0),
-                              child: Tab(text: 'Odoo',),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 16.0),
-                              child: Tab(text: 'Local',),
+
+                            AppBarButton(
+                              iconSource: 'assets/images/plus.png',
+                              onTap: onAddTimerButtonPressed,
                             ),
                           ],
                         ),
-                    ),
+                      )
+                    ],
                   ),
+                ),
 
-                  //Tab Page
-                  Expanded(child: getTabPage(selectedTabPageIndex),),
+                //tab view
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  child: DefaultTabController(
+                      initialIndex: 1,
+                      length: 3,
+                      child: TabBar(
+                        onTap: (int index) {
+                          setState(() {
+                            selectedTabPageIndex = index;
+                          });
+                        },
+                        tabs: const [
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 16.0),
+                            child: Tab(text: 'Favorites',),
+                          ),
+                          Padding(
+                            padding:  EdgeInsets.symmetric(horizontal: 16.0),
+                            child: Tab(text: 'Odoo',),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 16.0),
+                            child: Tab(text: 'Local',),
+                          ),
+                        ],
+                      ),
+                  ),
+                ),
 
-                  //bottom navigation
-                  _getBottomNavigationBar(),
-                ],
-              ),
+                //Tab Page
+                Expanded(child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: getTabPage(selectedTabPageIndex),
+                ),),
+
+                //bottom navigation
+                _getBottomNavigationBar(),
+              ],
             )
         ),
       ),
