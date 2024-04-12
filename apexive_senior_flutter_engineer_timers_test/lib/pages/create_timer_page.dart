@@ -218,6 +218,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
           project: selectedProject,
           task: selectedTask,
           dateCreated: '04/12/2024',
+          dateCompleted: '',
           currentTime: selectedTask.startTime,
           isActive: false,
           isCompleted: false,
