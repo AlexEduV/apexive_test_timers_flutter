@@ -135,4 +135,19 @@ class DataModel {
 
     return result;
   }
+
+  static List<TimeSheetItem> getCompletedTimeSheetsForTask(Task task)
+  {
+    List<TimeSheetItem> result = [];
+
+    for (final timeSheet in timeSheetList)
+    {
+      if (timeSheet.isCompleted && timeSheet.task == task)
+      {
+        result.add(timeSheet);
+      }
+    }
+
+    return result;
+  }
 }

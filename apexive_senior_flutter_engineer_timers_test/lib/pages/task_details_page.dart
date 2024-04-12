@@ -30,7 +30,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   TimeSheetItem? mainItem;
   Task? openedTask;
 
-  List<TimeSheetItem> timeSheets = [];
+  List<TimeSheetItem> completedTimeSheets = [];
 
   List<bool> readMore = [];
 
@@ -48,8 +48,14 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
         mainItem = DataModel.timeSheetList[timerId];
         openedTask = mainItem?.task;
 
-        timeSheets = DataModel.getAllTimeSheetsForTask(openedTask!);
-        readMore = List.filled(timeSheets.length, false);
+        completedTimeSheets = DataModel.getCompletedTimeSheetsForTask(openedTask!);
+
+        readMore = List.filled(completedTimeSheets.length, false);
+        if (!mainItem!.isCompleted)
+        {
+          readMore.add(false);
+        }
+
       });
 
     });
@@ -287,8 +293,8 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
           Expanded(
             child: ListView.builder(
-              itemBuilder: _getCompletedListTile,
-              itemCount: 2,
+              itemBuilder: _getCompletedItemListTile,
+              itemCount: completedTimeSheets.length,
             ),
           )
 
@@ -372,7 +378,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     return Container();
   }
 
-  Widget _getCompletedListTile(BuildContext context, int index)
+  Widget _getCompletedItemListTile(BuildContext context, int index)
   {
     return CustomCard(
         child: Row(
@@ -394,8 +400,8 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
             //timer details column
             Expanded(
               child: TimesheetSpecsColumn(
-                  dayOfWeek: 'Monday',
-                  deadlineDate: openedTask?.deadlineDate ?? '',
+                  dayOfWeek: getWeekDayFromDate(completedTimeSheets[index].dateCreated),
+                  deadlineDate: completedTimeSheets[index].dateCreated,
                   startTime: openedTask?.startTime ?? ''
               ),
             ),
@@ -410,7 +416,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Center(
                 child: Text(
-                  '08:00',
+                  completedTimeSheets[index].currentTime,
                   style: TypographyStyles.getLabelLarge(),
                 ),
               ),
