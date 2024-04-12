@@ -155,19 +155,24 @@ class _MyHomePageState extends State<MyHomePage> {
   void onAddTimerButtonPressed() {
 
     //open createTimerPage
-    Navigator.pushNamed(context, CreateTimerPage.routeName).then((value) => updateTimersList());
+    Navigator.pushNamed(context, CreateTimerPage.routeName)
+        .then((value) => updateTimersList()
+    );
   }
 
   void onSortListButtonPressed() {
 
   }
-  
+
   void updateTimersList() {
     setState(() {
+
       listOfTimers = DataModel.timeSheetList;
       listSize = DataModel.getNotCompletedTimersCount();
 
+
       timersCount = listOfTimers.length;
+      debugPrint('list of timers length: ${timersCount.toString()}');
     });
   }
 

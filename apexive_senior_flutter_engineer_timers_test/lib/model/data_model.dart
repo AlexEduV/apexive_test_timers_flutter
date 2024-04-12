@@ -118,6 +118,7 @@ class DataModel {
       }
     }
 
+    debugPrint('Not Completed count: $result');
     return result;
   }
 
