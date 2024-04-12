@@ -6,6 +6,7 @@ import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/d
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/timesheet_specs_column.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import '../model/task.dart';
 import '../style/typography.dart';
@@ -381,13 +382,29 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
             const SizedBox(width: 8,),
 
             //timer details column
-            TimesheetSpecsColumn(
-                dayOfWeek: 'Monday',
-                deadlineDate: openedTask?.deadlineDate ?? '',
-                startTime: openedTask?.startTime ?? ''
+            Expanded(
+              child: TimesheetSpecsColumn(
+                  dayOfWeek: 'Monday',
+                  deadlineDate: openedTask?.deadlineDate ?? '',
+                  startTime: openedTask?.startTime ?? ''
+              ),
             ),
     
             //completion time rounded
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(64.0),
+                color: Colors.white.withOpacity(.16),
+              ),
+              height: 32,
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: Center(
+                child: Text(
+                  '08:00',
+                  style: TypographyStyles.getLabelLarge(),
+                ),
+              ),
+            )
           ]
         ),
     );
