@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:apexive_senior_flutter_engineer_timers_test/model/project.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/model/task.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/model/time_sheet_item.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/model/user.dart';
 import 'package:flutter/material.dart';
 
@@ -31,13 +32,19 @@ class DataModel {
               'new tasks preparation call with the front end',
           project: testProject,
           assignedTo: '${testUser.firstName} ${testUser.lastName}',
-          deadlineDate: '07/20/2023',
-          startTime: '00:30',
-          currentTime: '00:30',
+          deadlineDate: '07/20/2024',
           isFavorite: false,
-          isActive: false,
-          isCompleted: false,
-          timer: Timer(Duration.zero, (){}),
+          timers: [
+            TimeSheetItem(
+                description: 'A timer for a task',
+                dateCreated: '04/12/2024',
+                startTime: '00:30',
+                currentTime: '00:30',
+                isActive: false,
+                isCompleted: false,
+                timer: Timer(Duration.zero, (){}),
+            ),
+          ],
         )
     );
 
@@ -47,13 +54,19 @@ class DataModel {
           description: 'Sample Task',
           project: testProject,
           assignedTo: '${testUser.firstName} ${testUser.lastName}',
-          deadlineDate: '07/20/2023',
-          startTime: '00:30',
-          currentTime: '00:30',
+          deadlineDate: '07/20/2024',
           isFavorite: true,
-          isActive: false,
-          isCompleted: false,
-          timer: Timer(Duration.zero, (){}),
+          timers: [
+            TimeSheetItem(
+              description: 'A timer for a task',
+              dateCreated: '04/12/2024',
+              startTime: '00:30',
+              currentTime: '00:30',
+              isActive: false,
+              isCompleted: false,
+              timer: Timer(Duration.zero, (){}),
+            ),
+          ],
         )
     );
 
@@ -86,18 +99,30 @@ class DataModel {
     return taskList.first.project;
   }
 
-  static int getNotCompletedTasksCount()
+  static int getTimersCount()
   {
     int result = 0;
 
     for (final task in taskList)
     {
-      if (!task.isCompleted)
-      {
-        result++;
-      }
+      result += task.timers.length;
     }
 
     return result;
   }
+
+  // static int getNotCompletedTasksCount()
+  // {
+  //   int result = 0;
+  //
+  //   for (final task in taskList)
+  //   {
+  //     if (!task.isCompleted)
+  //     {
+  //       result++;
+  //     }
+  //   }
+  //
+  //   return result;
+  // }
 }
