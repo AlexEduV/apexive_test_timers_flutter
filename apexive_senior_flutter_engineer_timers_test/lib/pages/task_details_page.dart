@@ -434,6 +434,11 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     setState(() {
       mainItem.isCompleted = true;
       mainItem.isActive = false;
+
+      //update listView
+      completedTimeSheets = DataModel.getCompletedTimeSheetsForTask(openedTask);
+      readMore = List.filled(DataModel.getAllTimeSheetsForTask(openedTask).length, false);
+
     });
   }
 
