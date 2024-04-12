@@ -24,8 +24,6 @@ class CreateTimerPage extends StatefulWidget {
 
 class _CreateTimerPageState extends State<CreateTimerPage> {
 
-  List<TimeSheetItem> timeSheets = [];
-
   List<String> projectNames = [];
   List<DropdownMenuEntry<String>> projectMenuItems = [];
 
@@ -43,11 +41,8 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
   void initState() {
     super.initState();
 
-    //get data from route
-    timeSheets = DataModel.timeSheetList;
-
     //get distinct project names from task list
-    for (final timesheet in timeSheets) {
+    for (final timesheet in DataModel.timeSheetList) {
       projectNames.add(timesheet.project.projectName);
       taskNames.add(timesheet.task.title);
     }
@@ -217,7 +212,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
       Task selectedTask = DataModel.getTaskByName(_selectedTaskNameValue!);
 
       //add a new timer to the task list with specified parameters
-      timeSheets.add(
+      DataModel.timeSheetList.add(
         TimeSheetItem(
           description: descriptionTextController.text,
           project: selectedProject,
