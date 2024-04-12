@@ -3,6 +3,7 @@ import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dar
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/custom_app_bar.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/buttons/round_button.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/detail_row.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/timesheet_specs_column.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -146,26 +147,10 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
-                  Wrap(
-                    direction: Axis.vertical,
-                    spacing: 4,
-
-                    children: [
-                      Text(
-                        'Monday',
-                        style: TypographyStyles.getBodySmall(),
-                      ),
-
-                      Text(
-                        openedTask?.deadlineDate ?? '',
-                        style: TypographyStyles.getTitleMedium(),
-                      ),
-
-                      Text(
-                        'Start Time ${openedTask?.startTime}',
-                        style: TypographyStyles.getBodySmall(),
-                      ),
-                    ],
+                  TimesheetSpecsColumn(
+                      dayOfWeek: 'Monday',
+                      deadlineDate: openedTask?.deadlineDate ?? '',
+                      startTime: openedTask?.startTime ?? ''
                   ),
 
                   Padding(
@@ -393,10 +378,14 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                 Icons.check, size: 22, color: Colors.indigo,),
             ),
 
+            const SizedBox(width: 8,),
+
             //timer details column
-            Column(
-              
-            )
+            TimesheetSpecsColumn(
+                dayOfWeek: 'Monday',
+                deadlineDate: openedTask?.deadlineDate ?? '',
+                startTime: openedTask?.startTime ?? ''
+            ),
     
             //completion time rounded
           ]
