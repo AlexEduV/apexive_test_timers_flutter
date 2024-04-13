@@ -1,8 +1,7 @@
 
 import 'package:intl/intl.dart';
 
-String getWeekDayFromDate(String date)
-{
+String getWeekDayFromDate(String date) {
   List<String> array = date.split('.');
 
   if (array.length == 3) {
@@ -18,7 +17,6 @@ String getWeekDayFromDate(String date)
   return '';
 }
 
-String getTodayDateString()
-{
+String getTodayDateString() {
   return DateFormat('dd.MM.yyyy').format(DateTime.now());
 }
