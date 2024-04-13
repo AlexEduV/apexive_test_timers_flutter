@@ -55,12 +55,12 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
       //reset 'read more' button state
       readMore = List.filled(DataModel.getAllTimeSheetsForTask(openedTask).length, false);
 
-      //initialize timer
-      if (DataModel.timeSheetList[timerId].timer.isActive) {
-        initTimer();
-      }
-
     });
+
+    //initialize timer
+    if (DataModel.timeSheetList[timerId].timer.isActive) {
+      initTimer();
+    }
   }
 
   @override
@@ -149,8 +149,9 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   @override
   void dispose() {
 
-    //be careful with updating static global info using dispose(),
-    //because it runs the code some time after the window had switched;
+    /// MARK: Warning
+    /// be careful with updating static global info using dispose(),
+    /// because it runs the code some time after the window had switched;
 
     super.dispose();
   }
@@ -478,7 +479,6 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   }
 
   void onPauseButtonPressed() {
-    //todo: global timer does not stop;
 
     //start/stop timer
     //stop timer if active
@@ -512,6 +512,8 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
           DataModel.timeSheetList[timerId].isActive = false;
           DataModel.timeSheetList[timerId].isCompleted = true;
 
+          //todo: update task's .completedDate;
+
           //update listView
           completedTimeSheets = DataModel.getCompletedTimeSheetsForTask(openedTask);
         });
@@ -524,14 +526,11 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
         seconds = startingPoint % 60;
 
         //update time
-        if (mounted)
-        {
-          setState(() {
-            DataModel.timeSheetList[timerId].currentTime =
-            '${minutes.toString().padLeft(2, "0")}'
-                ':${seconds.toString().padLeft(2, "0")}';
-          });
-        }
+        setState(() {
+          DataModel.timeSheetList[timerId].currentTime =
+          '${minutes.toString().padLeft(2, "0")}'
+              ':${seconds.toString().padLeft(2, "0")}';
+        });
       }
     });
   }
