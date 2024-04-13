@@ -8,8 +8,8 @@ import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/d
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/timesheet_specs_column.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
-import 'package:intl/intl.dart';
 
+import '../helpers/date_helper.dart';
 import '../model/task.dart';
 import '../style/typography.dart';
 import '../ui/custom_card.dart';
@@ -420,8 +420,8 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
             //timer details column
             Expanded(
               child: TimesheetSpecsColumn(
-                  dayOfWeek: getWeekDayFromDate(completedTimeSheets[index].dateCreated),
-                  deadlineDate: completedTimeSheets[index].dateCreated,
+                  dayOfWeek: getWeekDayFromDate(completedTimeSheets[index].dateCompleted),
+                  deadlineDate: completedTimeSheets[index].dateCompleted,
                   startTime: openedTask.startTime
               ),
             ),
@@ -464,11 +464,11 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     //stop the timer
     DataModel.timeSheetList[timerId].timer.cancel();
 
-    //todo: update timeSheet's .completedDate field
-
     setState(() {
       DataModel.timeSheetList[timerId].isCompleted = true;
       DataModel.timeSheetList[timerId].isActive = false;
+
+      DataModel.timeSheetList[timerId].dateCompleted = getTodayDateString();
 
       //update listView
       completedTimeSheets = DataModel.getCompletedTimeSheetsForTask(openedTask);
@@ -514,7 +514,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
           DataModel.timeSheetList[timerId].isActive = false;
           DataModel.timeSheetList[timerId].isCompleted = true;
 
-          //todo: update timeSheet's .completedDate;
+          DataModel.timeSheetList[timerId].dateCompleted = getTodayDateString();
 
           //update listView
           completedTimeSheets = DataModel.getCompletedTimeSheetsForTask(openedTask);
@@ -556,26 +556,6 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
       textScaleFactor: textScaleFactor,
     )..layout(minWidth: minWidth, maxWidth: maxWidth);
     return textPainter.didExceedMaxLines;
-  }
-
-  String getWeekDayFromDate(String date)
-  {
-    List<String> array = date.split('.');
-
-    if (array.length == 3)
-    {
-      debugPrint(array.first);
-
-      var day = array.first;
-      var month = array[1];
-      var year = array[2];
-
-      return DateFormat('EEEE').format(
-        DateTime.parse('$year-$month-$day'),
-      );
-    }
-
-    return '';
   }
 
 }

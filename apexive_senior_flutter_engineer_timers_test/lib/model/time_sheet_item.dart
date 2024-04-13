@@ -12,7 +12,7 @@ class TimeSheetItem {
   final Project project;
   final Task task;
   final String dateCreated;
-  final String dateCompleted;
+  late String dateCompleted;
   late String currentTime;
   late bool isActive;
   late bool isCompleted;

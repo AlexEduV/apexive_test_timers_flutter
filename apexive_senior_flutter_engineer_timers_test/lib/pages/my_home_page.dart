@@ -9,6 +9,7 @@ import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_card.dart'
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/timersList/timer_specs_row.dart';
 import 'package:flutter/material.dart';
 
+import '../helpers/date_helper.dart';
 import '../style/typography.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -207,6 +208,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
         setState(() {
           DataModel.timeSheetList[index].isCompleted = true;
+          DataModel.timeSheetList[index].isActive = false;
+
+          DataModel.timeSheetList[index].dateCompleted = getTodayDateString();
         });
 
       }
