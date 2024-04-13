@@ -28,7 +28,6 @@ class _MyHomePageState extends State<MyHomePage> {
   int selectedBottomNavigationIndex = 0;
 
   //persistence init
-  List<TimeSheetItem> listOfTimers = [];
   int listSize = 0;
 
   int timersCount = 0;
@@ -42,13 +41,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
     //init test tasks
     //todo: only for testing
-    listOfTimers = DataModel.getInitTestTimeSheets();
+    DataModel.getInitTestTimeSheets();
 
     //show only not completed timers
-    listSize = listOfTimers.length;
+    listSize = DataModel.timeSheetList.length;
 
     //show all timers count
-    timersCount = listOfTimers.length;
+    timersCount = DataModel.timeSheetList.length;
 
   }
 
@@ -167,10 +166,9 @@ class _MyHomePageState extends State<MyHomePage> {
   void updateTimersList() {
     setState(() {
 
-      listOfTimers = DataModel.timeSheetList;
-      listSize = listOfTimers.length;
+      listSize = DataModel.timeSheetList.length;
 
-      timersCount = listOfTimers.length;
+      timersCount = DataModel.timeSheetList.length;
     });
   }
 
@@ -218,7 +216,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _getTimersListTile(BuildContext context, int index) {
 
     //hide the task if completed
-    if (listOfTimers[index].isCompleted) {
+    if (DataModel.timeSheetList[index].isCompleted) {
       return Container();
     }
 
@@ -234,7 +232,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 2,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
-                  color: listOfTimers[index].project.markerColor,
+                  color: DataModel.timeSheetList[index].project.markerColor,
                 ),
                 margin: const EdgeInsets.only(right: 8.0),
               ),
@@ -247,21 +245,21 @@ class _MyHomePageState extends State<MyHomePage> {
 
                     //timer name
                     TimerSpecsRow(
-                      text: listOfTimers[index].task.title,
+                      text: DataModel.timeSheetList[index].task.title,
                       textStyle: TypographyStyles.getTitleMedium(),
-                      icon: listOfTimers[index].isFavorite ? Icons.star : Icons.star_border,
+                      icon: DataModel.timeSheetList[index].isFavorite ? Icons.star : Icons.star_border,
                       iconSource: '',
                     ),
 
                     //timer project
                     TimerSpecsRow(
-                        text: listOfTimers[index].project.projectName,
+                        text: DataModel.timeSheetList[index].project.projectName,
                         textStyle: TypographyStyles.getBodyMedium(),
                         iconSource: 'assets/images/case.png'),
 
                     //deadline
                     TimerSpecsRow(
-                        text: 'Deadline ${listOfTimers[index].task.deadlineDate}',
+                        text: 'Deadline ${DataModel.timeSheetList[index].task.deadlineDate}',
                         textStyle: TypographyStyles.getBodyMedium(),
                         iconSource: 'assets/images/timer.png'),
 
@@ -276,7 +274,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 48,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(64),
-                    color: listOfTimers[index].isActive ? Colors.white : Colors.white.withOpacity(.08),
+                    color: DataModel.timeSheetList[index].isActive ? Colors.white : Colors.white.withOpacity(.08),
                   ),
                   padding: const EdgeInsets.only(left: 16, top: 8, right: 8, bottom: 8),
                   child: Center(
@@ -286,13 +284,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: [
 
                         //time
-                        Text(listOfTimers[index].currentTime, style: TypographyStyles.getLabelLarge(specifiedColor: listOfTimers[index].isActive ? Colors.black : Colors.white),),
+                        Text(DataModel.timeSheetList[index].currentTime, style: TypographyStyles.getLabelLarge(specifiedColor: DataModel.timeSheetList[index].isActive ? Colors.black : Colors.white),),
 
                         //pause icon
-                        Image.asset(listOfTimers[index].isActive ?
+                        Image.asset(DataModel.timeSheetList[index].isActive ?
                         'assets/images/pause.png' :
                         'assets/images/play_arrow_solid.png',
-                        color: listOfTimers[index].isActive ? Colors.black : Colors.white,
+                        color: DataModel.timeSheetList[index].isActive ? Colors.black : Colors.white,
                         height: 24,
                         width: 24,
                         ),
@@ -356,24 +354,24 @@ class _MyHomePageState extends State<MyHomePage> {
   {
     //start/stop timer
     //stop timer if active
-    if (listOfTimers[index].timer.isActive) {
-      listOfTimers[index].timer.cancel();
+    if (DataModel.timeSheetList[index].timer.isActive) {
+      DataModel.timeSheetList[index].timer.cancel();
     }
     else {
       //start a timer
-      int minutes = int.parse(listOfTimers[index].currentTime.substring(0, 2));
-      int seconds = int.parse(listOfTimers[index].currentTime.substring(3, 5));
+      int minutes = int.parse(DataModel.timeSheetList[index].currentTime.substring(0, 2));
+      int seconds = int.parse(DataModel.timeSheetList[index].currentTime.substring(3, 5));
 
       int startingPoint = minutes * 60 + seconds;
 
-      listOfTimers[index].timer = Timer.periodic(oneSecond, (Timer timer) {
+      DataModel.timeSheetList[index].timer = Timer.periodic(oneSecond, (Timer timer) {
         if (startingPoint == 0) {
 
           //the task is finished
           timer.cancel();
 
           setState(() {
-            listOfTimers[index].isCompleted = true;
+            DataModel.timeSheetList[index].isCompleted = true;
           });
 
         }
@@ -385,7 +383,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           //update time
           setState(() {
-            listOfTimers[index].currentTime =
+            DataModel.timeSheetList[index].currentTime =
             '${minutes.toString().padLeft(2, "0")}'
             ':${seconds.toString().padLeft(2, "0")}';
           });
@@ -396,7 +394,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     //update UI
     setState(() {
-      listOfTimers[index].isActive = !listOfTimers[index].isActive;
+      DataModel.timeSheetList[index].isActive = !DataModel.timeSheetList[index].isActive;
     });
   }
 }

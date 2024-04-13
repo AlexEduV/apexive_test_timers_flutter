@@ -40,12 +40,6 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   List<bool> readMore = [];
 
   @override
-  void initState() {
-    super.initState();
-
-  }
-
-  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
 
@@ -57,9 +51,14 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
       mainItem = DataModel.timeSheetList[timerId];
       openedTask = mainItem.task;
 
+      //get 'completed' list items
       completedTimeSheets = DataModel.getCompletedTimeSheetsForTask(openedTask);
 
+      //reset 'read more' button state
       readMore = List.filled(DataModel.getAllTimeSheetsForTask(openedTask).length, false);
+
+      //initialize timer
+      initTimer();
 
     });
   }
@@ -147,6 +146,15 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     );
   }
 
+  @override
+  void dispose() {
+
+    //todo: pass new timer specs to the base
+    //DataModel.timeSheetList[timerId] = mainItem;
+
+    super.dispose();
+  }
+
   Widget getTabPage(int selectedIndex) {
 
     //timesheets view
@@ -181,7 +189,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
                             //time text
                             Text(
-                              mainItem.currentTime,
+                              DataModel.timeSheetList[timerId].currentTime,
                               style: TypographyStyles.getDisplaySmall(),
                             ),
 
@@ -471,43 +479,47 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
       DataModel.timeSheetList[timerId].timer.cancel();
     }
     else {
-      //start a timer
-      int minutes = int.parse(DataModel.timeSheetList[timerId].currentTime.substring(0, 2));
-      int seconds = int.parse(DataModel.timeSheetList[timerId].currentTime.substring(3, 5));
-
-      int startingPoint = minutes * 60 + seconds;
-
-      DataModel.timeSheetList[timerId].timer = Timer.periodic(oneSecond, (Timer timer) {
-        if (startingPoint == 0) {
-
-          //the task is finished
-          timer.cancel();
-
-          setState(() {
-            DataModel.timeSheetList[timerId].isCompleted = true;
-          });
-
-        }
-        else {
-          startingPoint--;
-
-          minutes = startingPoint ~/ 60;
-          seconds = startingPoint % 60;
-
-          //update time
-          setState(() {
-            DataModel.timeSheetList[timerId].currentTime =
-            '${minutes.toString().padLeft(2, "0")}'
-                ':${seconds.toString().padLeft(2, "0")}';
-          });
-        }
-      });
-
+      initTimer();
     }
 
     //update UI
     setState(() {
       DataModel.timeSheetList[timerId].isActive = !DataModel.timeSheetList[timerId].isActive;
+      mainItem = DataModel.timeSheetList[timerId];
+    });
+  }
+
+  void initTimer() {
+    //start a timer
+    int minutes = int.parse(DataModel.timeSheetList[timerId].currentTime.substring(0, 2));
+    int seconds = int.parse(DataModel.timeSheetList[timerId].currentTime.substring(3, 5));
+
+    int startingPoint = minutes * 60 + seconds;
+
+    DataModel.timeSheetList[timerId].timer = Timer.periodic(oneSecond, (Timer timer) {
+      if (startingPoint == 0) {
+
+        //the task is finished
+        timer.cancel();
+
+        setState(() {
+          DataModel.timeSheetList[timerId].isCompleted = true;
+        });
+
+      }
+      else {
+        startingPoint--;
+
+        minutes = startingPoint ~/ 60;
+        seconds = startingPoint % 60;
+
+        //update time
+        setState(() {
+          DataModel.timeSheetList[timerId].currentTime =
+          '${minutes.toString().padLeft(2, "0")}'
+              ':${seconds.toString().padLeft(2, "0")}';
+        });
+      }
     });
   }
 
