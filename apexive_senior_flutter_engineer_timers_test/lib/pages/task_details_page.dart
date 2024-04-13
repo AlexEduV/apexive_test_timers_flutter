@@ -160,167 +160,165 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     //timesheets view
     if (selectedIndex == 0) {
 
-      return SingleChildScrollView(
-        child: Column(
-          children: [
+      return Column(
+        children: [
 
-            //task detail view
-            Visibility(
-              visible: !DataModel.timeSheetList[timerId].isCompleted,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: CustomCard(
+          //task detail view
+          Visibility(
+            visible: !DataModel.timeSheetList[timerId].isCompleted,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: CustomCard(
 
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
 
-                      TimesheetSpecsColumn(
-                        dayOfWeek: getWeekDayFromDate(DataModel.timeSheetList[timerId].dateCreated),
-                        deadlineDate: DataModel.timeSheetList[timerId].dateCreated,
-                        startTime: openedTask.startTime,
-                      ),
+                    TimesheetSpecsColumn(
+                      dayOfWeek: getWeekDayFromDate(DataModel.timeSheetList[timerId].dateCreated),
+                      deadlineDate: DataModel.timeSheetList[timerId].dateCreated,
+                      startTime: openedTask.startTime,
+                    ),
 
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
 
-                            //time text
-                            Text(
-                              DataModel.timeSheetList[timerId].currentTime,
-                              style: TypographyStyles.getDisplaySmall(),
-                            ),
+                          //time text
+                          Text(
+                            DataModel.timeSheetList[timerId].currentTime,
+                            style: TypographyStyles.getDisplaySmall(),
+                          ),
 
-                            //control buttons
-                            Wrap(
-                              spacing: 16,
-                              children: [
-
-                                //stop button
-                                RoundButton(
-                                  backgroundColor: Colors.white.withOpacity(.16),
-                                  tintColor: Colors.white,
-                                  iconSource: 'assets/images/stop_fill.png',
-                                  onButtonPressed: onStopButtonPressed
-                                ),
-
-                                //pause button
-                                RoundButton(
-                                  backgroundColor: DataModel.timeSheetList[timerId].isActive
-                                      ? Colors.white : Colors.white.withOpacity(.16),
-                                  tintColor: DataModel.timeSheetList[timerId].isActive
-                                      ? Colors.black : Colors.white,
-                                  iconSource: DataModel.timeSheetList[timerId].isActive
-                                      ? 'assets/images/pause-1.png'
-                                      : 'assets/images/play_arrow_solid.png',
-                                  onButtonPressed: onPauseButtonPressed,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      //Description section
-                      Divider(height: 1, color: Colors.white.withOpacity(.16),),
-
-                      const SizedBox(height: 16.0,),
-
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children:[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //control buttons
+                          Wrap(
+                            spacing: 16,
                             children: [
-                              Text(
-                                'Description',
-                                style: TypographyStyles.getBodySmall(),
+
+                              //stop button
+                              RoundButton(
+                                backgroundColor: Colors.white.withOpacity(.16),
+                                tintColor: Colors.white,
+                                iconSource: 'assets/images/stop_fill.png',
+                                onButtonPressed: onStopButtonPressed
                               ),
 
-                              IconButton(
-                                onPressed: onEditDescriptionButtonPressed,
-                                icon: Image.asset(
-                                  'assets/images/pencil.png',
-                                  height: 24,
-                                  width: 24,
-                                  color: Colors.white,
-                                ),
+                              //pause button
+                              RoundButton(
+                                backgroundColor: DataModel.timeSheetList[timerId].isActive
+                                    ? Colors.white : Colors.white.withOpacity(.16),
+                                tintColor: DataModel.timeSheetList[timerId].isActive
+                                    ? Colors.black : Colors.white,
+                                iconSource: DataModel.timeSheetList[timerId].isActive
+                                    ? 'assets/images/pause-1.png'
+                                    : 'assets/images/play_arrow_solid.png',
+                                onButtonPressed: onPauseButtonPressed,
                               ),
                             ],
                           ),
+                        ],
+                      ),
+                    ),
 
-                          const SizedBox(height: 4,),
+                    //Description section
+                    Divider(height: 1, color: Colors.white.withOpacity(.16),),
 
-                          Text(
-                            DataModel.timeSheetList[timerId].description,
-                            style: TypographyStyles.getBodyMedium(),
-                            maxLines: readMore[0] ? 10 : 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                    const SizedBox(height: 16.0,),
 
-                          const SizedBox(height: 4,),
-
-                          Visibility(
-                            visible: !readMore[0] && hasTextOverflow(
-                              DataModel.timeSheetList[timerId].description,
-                              TypographyStyles.getBodyMedium(),
-                              MediaQuery.of(context).textScaleFactor,
-                              maxWidth: MediaQuery.of(context).size.width,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children:[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Description',
+                              style: TypographyStyles.getBodySmall(),
                             ),
-                            child: GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  readMore[0] = !readMore[0];
-                                });
-                              },
-                              child: Text(
-                                'Read More',
-                                style: TypographyStyles.getBodySmall(),
+
+                            IconButton(
+                              onPressed: onEditDescriptionButtonPressed,
+                              icon: Image.asset(
+                                'assets/images/pencil.png',
+                                height: 24,
+                                width: 24,
+                                color: Colors.white,
                               ),
                             ),
-                          ),
+                          ],
+                        ),
 
-                         ]
-                      ),
+                        const SizedBox(height: 4,),
 
-                    ],
-                  ),
-                ),
-              ),
-            ),
-
-            //completed records listview
-            Visibility(
-              visible: completedTimeSheets.isNotEmpty,
-              child: Expanded(
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
                         Text(
-                          'Completed Records',
-                          style: TypographyStyles.getBodySmall(),
-                        )
-                      ],
+                          DataModel.timeSheetList[timerId].description,
+                          style: TypographyStyles.getBodyMedium(),
+                          maxLines: readMore[0] ? 10 : 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+
+                        const SizedBox(height: 4,),
+
+                        Visibility(
+                          visible: !readMore[0] && hasTextOverflow(
+                            DataModel.timeSheetList[timerId].description,
+                            TypographyStyles.getBodyMedium(),
+                            MediaQuery.of(context).textScaleFactor,
+                            maxWidth: MediaQuery.of(context).size.width,
+                          ),
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                readMore[0] = !readMore[0];
+                              });
+                            },
+                            child: Text(
+                              'Read More',
+                              style: TypographyStyles.getBodySmall(),
+                            ),
+                          ),
+                        ),
+
+                       ]
                     ),
 
-                    const SizedBox(height: 8,),
-
-                    Expanded(
-                      child: ListView.builder(
-                        itemBuilder: _getCompletedItemListTile,
-                        itemCount: completedTimeSheets.length,
-                      ),
-                    ),
                   ],
                 ),
               ),
-            )
+            ),
+          ),
 
-          ],
-        ),
+          //completed records listview
+          Visibility(
+            visible: completedTimeSheets.isNotEmpty,
+            child: Expanded(
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        'Completed Records',
+                        style: TypographyStyles.getBodySmall(),
+                      )
+                    ],
+                  ),
+
+                  const SizedBox(height: 8,),
+
+                  Expanded(
+                    child: ListView.builder(
+                      itemBuilder: _getCompletedItemListTile,
+                      itemCount: completedTimeSheets.length,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
+
+        ],
       );
 
     }
@@ -463,6 +461,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
       //update listView
       completedTimeSheets = DataModel.getCompletedTimeSheetsForTask(openedTask);
+      debugPrint('completed list length: ${completedTimeSheets.length}');
 
       //todo: maybe we don't need to reset descriptions when stopping the timer;
       //readMore = List.filled(DataModel.getAllTimeSheetsForTask(openedTask).length, false);
@@ -514,11 +513,14 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
         seconds = startingPoint % 60;
 
         //update time
-        setState(() {
-          DataModel.timeSheetList[timerId].currentTime =
-          '${minutes.toString().padLeft(2, "0")}'
-              ':${seconds.toString().padLeft(2, "0")}';
-        });
+        if (mounted)
+        {
+          setState(() {
+            DataModel.timeSheetList[timerId].currentTime =
+            '${minutes.toString().padLeft(2, "0")}'
+                ':${seconds.toString().padLeft(2, "0")}';
+          });
+        }
       }
     });
   }
