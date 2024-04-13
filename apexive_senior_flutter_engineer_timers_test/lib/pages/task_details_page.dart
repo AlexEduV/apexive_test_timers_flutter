@@ -31,12 +31,12 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
   int selectedTabPageIndex = 0;
 
-  int timerId = 0;
+  late int timerId;
   late Task openedTask;
 
-  List<TimeSheetItem> completedTimeSheets = [];
-
   List<bool> readMore = [];
+
+  List<TimeSheetItem> completedTimeSheets = [];
 
   @override
   void didChangeDependencies() {
