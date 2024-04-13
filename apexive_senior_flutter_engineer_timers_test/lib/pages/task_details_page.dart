@@ -464,6 +464,8 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     //stop the timer
     DataModel.timeSheetList[timerId].timer.cancel();
 
+    //todo: update timeSheet's .completedDate field
+
     setState(() {
       DataModel.timeSheetList[timerId].isCompleted = true;
       DataModel.timeSheetList[timerId].isActive = false;
@@ -512,7 +514,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
           DataModel.timeSheetList[timerId].isActive = false;
           DataModel.timeSheetList[timerId].isCompleted = true;
 
-          //todo: update task's .completedDate;
+          //todo: update timeSheet's .completedDate;
 
           //update listView
           completedTimeSheets = DataModel.getCompletedTimeSheetsForTask(openedTask);
