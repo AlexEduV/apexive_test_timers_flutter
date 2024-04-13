@@ -164,14 +164,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void updateTimersList() {
     setState(() {
-
       listSize = DataModel.timeSheetList.length;
-
       timersCount = DataModel.timeSheetList.length;
-
-      initTimers();
-
     });
+
+    initTimers();
   }
 
   void initTimers() {
