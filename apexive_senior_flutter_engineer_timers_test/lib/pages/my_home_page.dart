@@ -2,7 +2,6 @@
 import 'dart:async';
 
 import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dart';
-import 'package:apexive_senior_flutter_engineer_timers_test/model/time_sheet_item.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/pages/create_timer_page.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/pages/task_details_page.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/app_bar_button.dart';
@@ -169,6 +168,64 @@ class _MyHomePageState extends State<MyHomePage> {
       listSize = DataModel.timeSheetList.length;
 
       timersCount = DataModel.timeSheetList.length;
+
+      initTimers();
+
+    });
+  }
+
+  void initTimers() {
+
+    //start every timer where the timesheet is active;
+    for (int sheetIndex = 0; sheetIndex < DataModel.timeSheetList.length; sheetIndex++)
+    {
+      if (DataModel.timeSheetList[sheetIndex].isActive) {
+        startTimerByIndex(sheetIndex);
+      }
+      else {
+        DataModel.timeSheetList[sheetIndex].timer.cancel();
+      }
+    }
+
+  }
+
+  void startTimerByIndex(int index)
+  {
+
+    //clear a timer
+    DataModel.timeSheetList[index].timer.cancel();
+
+    //start a timer
+    DataModel.timeSheetList[index].timer = Timer.periodic(oneSecond, (Timer timer) {
+
+      int minutes = int.parse(DataModel.timeSheetList[index].currentTime.substring(0, 2));
+      int seconds = int.parse(DataModel.timeSheetList[index].currentTime.substring(3, 5));
+
+      int startingPoint = minutes * 60 + seconds;
+
+      if (startingPoint == 0) {
+
+        //the task is finished
+        timer.cancel();
+
+        setState(() {
+          DataModel.timeSheetList[index].isCompleted = true;
+        });
+
+      }
+      else {
+        startingPoint--;
+
+        minutes = startingPoint ~/ 60;
+        seconds = startingPoint % 60;
+
+        //update time
+        setState(() {
+          DataModel.timeSheetList[index].currentTime =
+          '${minutes.toString().padLeft(2, "0")}'
+              ':${seconds.toString().padLeft(2, "0")}';
+        });
+      }
     });
   }
 
@@ -352,6 +409,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void onPauseButtonPressed(int index)
   {
+
     //start/stop timer
     //stop timer if active
     if (DataModel.timeSheetList[index].timer.isActive) {
@@ -359,37 +417,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     else {
       //start a timer
-      int minutes = int.parse(DataModel.timeSheetList[index].currentTime.substring(0, 2));
-      int seconds = int.parse(DataModel.timeSheetList[index].currentTime.substring(3, 5));
-
-      int startingPoint = minutes * 60 + seconds;
-
-      DataModel.timeSheetList[index].timer = Timer.periodic(oneSecond, (Timer timer) {
-        if (startingPoint == 0) {
-
-          //the task is finished
-          timer.cancel();
-
-          setState(() {
-            DataModel.timeSheetList[index].isCompleted = true;
-          });
-
-        }
-        else {
-          startingPoint--;
-
-          minutes = startingPoint ~/ 60;
-          seconds = startingPoint % 60;
-
-          //update time
-          setState(() {
-            DataModel.timeSheetList[index].currentTime =
-            '${minutes.toString().padLeft(2, "0")}'
-            ':${seconds.toString().padLeft(2, "0")}';
-          });
-        }
-      });
-
+      startTimerByIndex(index);
     }
 
     //update UI

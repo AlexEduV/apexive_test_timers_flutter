@@ -149,8 +149,11 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   @override
   void dispose() {
 
-    //todo: pass new timer specs to the base
+    //maybe pass new timer specs to the base
     //DataModel.timeSheetList[timerId] = mainItem;
+
+    //reset current timer because of setState functions in this window
+    DataModel.timeSheetList[timerId].timer = Timer(Duration.zero, (){});
 
     super.dispose();
   }
