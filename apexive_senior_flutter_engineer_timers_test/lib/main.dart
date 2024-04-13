@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Odoo',
       theme: ThemeData(
+
         tabBarTheme: TabBarTheme(
           dividerColor: Colors.white.withOpacity(.16),
           labelStyle: TypographyStyles.getLabelLarge(),
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
           //this property is needed to prevent tab label clipping:
           labelPadding: const EdgeInsets.symmetric(horizontal: 0.0),
         ),
+
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           elevation: 0,
           backgroundColor: Colors.transparent,

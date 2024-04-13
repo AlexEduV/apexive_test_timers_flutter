@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/model/time_sheet_item.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/custom_app_bar.dart';
@@ -23,6 +25,9 @@ class TaskDetailsPage extends StatefulWidget {
 }
 
 class _TaskDetailsPageState extends State<TaskDetailsPage> {
+
+  //time constants
+  static const oneSecond = Duration(seconds: 1);
 
   int selectedTabPageIndex = 0;
 
@@ -458,8 +463,51 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   }
 
   void onPauseButtonPressed() {
+    //todo: needs refactoring;
+
+    //start/stop timer
+    //stop timer if active
+    if (DataModel.timeSheetList[timerId].timer.isActive) {
+      DataModel.timeSheetList[timerId].timer.cancel();
+    }
+    else {
+      //start a timer
+      int minutes = int.parse(DataModel.timeSheetList[timerId].currentTime.substring(0, 2));
+      int seconds = int.parse(DataModel.timeSheetList[timerId].currentTime.substring(3, 5));
+
+      int startingPoint = minutes * 60 + seconds;
+
+      DataModel.timeSheetList[timerId].timer = Timer.periodic(oneSecond, (Timer timer) {
+        if (startingPoint == 0) {
+
+          //the task is finished
+          timer.cancel();
+
+          setState(() {
+            DataModel.timeSheetList[timerId].isCompleted = true;
+          });
+
+        }
+        else {
+          startingPoint--;
+
+          minutes = startingPoint ~/ 60;
+          seconds = startingPoint % 60;
+
+          //update time
+          setState(() {
+            DataModel.timeSheetList[timerId].currentTime =
+            '${minutes.toString().padLeft(2, "0")}'
+                ':${seconds.toString().padLeft(2, "0")}';
+          });
+        }
+      });
+
+    }
+
+    //update UI
     setState(() {
-      mainItem.isActive = !mainItem.isActive;
+      DataModel.timeSheetList[timerId].isActive = !DataModel.timeSheetList[timerId].isActive;
     });
   }
 

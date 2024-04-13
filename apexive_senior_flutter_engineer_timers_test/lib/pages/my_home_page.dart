@@ -40,8 +40,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
 
-    //testing
     //init test tasks
+    //todo: only for testing
     listOfTimers = DataModel.getInitTestTimeSheets();
 
     //show only not completed timers
