@@ -58,7 +58,9 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
       readMore = List.filled(DataModel.getAllTimeSheetsForTask(openedTask).length, false);
 
       //initialize timer
-      initTimer();
+      if (mainItem.timer.isActive) {
+        initTimer();
+      }
 
     });
   }
@@ -471,7 +473,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   }
 
   void onPauseButtonPressed() {
-    //todo: needs refactoring;
+    //todo: global timer does not stop;
 
     //start/stop timer
     //stop timer if active
@@ -503,6 +505,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
         timer.cancel();
 
         setState(() {
+          DataModel.timeSheetList[timerId].isActive = false;
           DataModel.timeSheetList[timerId].isCompleted = true;
         });
 
