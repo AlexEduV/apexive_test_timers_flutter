@@ -147,165 +147,167 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     //timesheets view
     if (selectedIndex == 0) {
 
-      return Column(
-        children: [
+      return SingleChildScrollView(
+        child: Column(
+          children: [
 
-          //task detail view
-          Visibility(
-            visible: !mainItem.isCompleted,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: CustomCard(
+            //task detail view
+            Visibility(
+              visible: !mainItem.isCompleted,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: CustomCard(
 
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
 
-                    TimesheetSpecsColumn(
-                      dayOfWeek: getWeekDayFromDate(mainItem.dateCreated),
-                      deadlineDate: mainItem.dateCreated,
-                      startTime: openedTask.startTime,
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-
-                          //time text
-                          Text(
-                            mainItem.currentTime,
-                            style: TypographyStyles.getDisplaySmall(),
-                          ),
-
-                          //control buttons
-                          Wrap(
-                            spacing: 16,
-                            children: [
-
-                              //stop button
-                              RoundButton(
-                                backgroundColor: Colors.white.withOpacity(.16),
-                                tintColor: Colors.white,
-                                iconSource: 'assets/images/stop_fill.png',
-                                onButtonPressed: onStopButtonPressed
-                              ),
-
-                              //pause button
-                              RoundButton(
-                                backgroundColor: mainItem.isActive
-                                    ? Colors.white : Colors.white.withOpacity(.16),
-                                tintColor: mainItem.isActive
-                                    ? Colors.black : Colors.white,
-                                iconSource: mainItem.isActive
-                                    ? 'assets/images/pause-1.png'
-                                    : 'assets/images/play_arrow_solid.png',
-                                onButtonPressed: onPauseButtonPressed,
-                              ),
-                            ],
-                          ),
-                        ],
+                      TimesheetSpecsColumn(
+                        dayOfWeek: getWeekDayFromDate(mainItem.dateCreated),
+                        deadlineDate: mainItem.dateCreated,
+                        startTime: openedTask.startTime,
                       ),
-                    ),
 
-                    //Description section
-                    Divider(height: 1, color: Colors.white.withOpacity(.16),),
-
-                    const SizedBox(height: 16.0,),
-
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children:[
-                        Row(
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+
+                            //time text
                             Text(
-                              'Description',
-                              style: TypographyStyles.getBodySmall(),
+                              mainItem.currentTime,
+                              style: TypographyStyles.getDisplaySmall(),
                             ),
 
-                            IconButton(
-                              onPressed: onEditDescriptionButtonPressed,
-                              icon: Image.asset(
-                                'assets/images/pencil.png',
-                                height: 24,
-                                width: 24,
-                                color: Colors.white,
-                              ),
+                            //control buttons
+                            Wrap(
+                              spacing: 16,
+                              children: [
+
+                                //stop button
+                                RoundButton(
+                                  backgroundColor: Colors.white.withOpacity(.16),
+                                  tintColor: Colors.white,
+                                  iconSource: 'assets/images/stop_fill.png',
+                                  onButtonPressed: onStopButtonPressed
+                                ),
+
+                                //pause button
+                                RoundButton(
+                                  backgroundColor: mainItem.isActive
+                                      ? Colors.white : Colors.white.withOpacity(.16),
+                                  tintColor: mainItem.isActive
+                                      ? Colors.black : Colors.white,
+                                  iconSource: mainItem.isActive
+                                      ? 'assets/images/pause-1.png'
+                                      : 'assets/images/play_arrow_solid.png',
+                                  onButtonPressed: onPauseButtonPressed,
+                                ),
+                              ],
                             ),
                           ],
                         ),
+                      ),
 
-                        const SizedBox(height: 4,),
+                      //Description section
+                      Divider(height: 1, color: Colors.white.withOpacity(.16),),
 
-                        Text(
-                          mainItem.description,
-                          style: TypographyStyles.getBodyMedium(),
-                          maxLines: readMore[0] ? 10 : 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                      const SizedBox(height: 16.0,),
 
-                        const SizedBox(height: 4,),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children:[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Description',
+                                style: TypographyStyles.getBodySmall(),
+                              ),
 
-                        Visibility(
-                          visible: !readMore[0] && hasTextOverflow(
-                            mainItem.description,
-                            TypographyStyles.getBodyMedium(),
-                            MediaQuery.of(context).textScaleFactor,
-                            maxWidth: MediaQuery.of(context).size.width,
+                              IconButton(
+                                onPressed: onEditDescriptionButtonPressed,
+                                icon: Image.asset(
+                                  'assets/images/pencil.png',
+                                  height: 24,
+                                  width: 24,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
                           ),
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                readMore[0] = !readMore[0];
-                              });
-                            },
-                            child: Text(
-                              'Read More',
-                              style: TypographyStyles.getBodySmall(),
+
+                          const SizedBox(height: 4,),
+
+                          Text(
+                            mainItem.description,
+                            style: TypographyStyles.getBodyMedium(),
+                            maxLines: readMore[0] ? 10 : 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+
+                          const SizedBox(height: 4,),
+
+                          Visibility(
+                            visible: !readMore[0] && hasTextOverflow(
+                              mainItem.description,
+                              TypographyStyles.getBodyMedium(),
+                              MediaQuery.of(context).textScaleFactor,
+                              maxWidth: MediaQuery.of(context).size.width,
+                            ),
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  readMore[0] = !readMore[0];
+                                });
+                              },
+                              child: Text(
+                                'Read More',
+                                style: TypographyStyles.getBodySmall(),
+                              ),
                             ),
                           ),
-                        ),
 
-                       ]
-                    ),
+                         ]
+                      ),
 
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
 
-          //completed records listview
-          Visibility(
-            visible: completedTimeSheets.isNotEmpty,
-            child: Expanded(
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        'Completed Records',
-                        style: TypographyStyles.getBodySmall(),
-                      )
-                    ],
-                  ),
-
-                  const SizedBox(height: 8,),
-
-                  Expanded(
-                    child: ListView.builder(
-                      itemBuilder: _getCompletedItemListTile,
-                      itemCount: completedTimeSheets.length,
+            //completed records listview
+            Visibility(
+              visible: completedTimeSheets.isNotEmpty,
+              child: Expanded(
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Completed Records',
+                          style: TypographyStyles.getBodySmall(),
+                        )
+                      ],
                     ),
-                  ),
-                ],
-              ),
-            ),
-          )
 
-        ],
+                    const SizedBox(height: 8,),
+
+                    Expanded(
+                      child: ListView.builder(
+                        itemBuilder: _getCompletedItemListTile,
+                        itemCount: completedTimeSheets.length,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
+
+          ],
+        ),
       );
 
     }
@@ -313,68 +315,70 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     else if (selectedIndex == 1) {
 
       //task overview
-      return Column(
-        children: [
+      return SingleChildScrollView(
+        child: Column(
+          children: [
 
-          Padding(
-            padding: const EdgeInsets.only(top: 16),
-            child: CustomCard(
+            Padding(
+              padding: const EdgeInsets.only(top: 16),
+              child: CustomCard(
 
-              //task details
+                //task details
+                child: Wrap(
+                  runSpacing: 16,
+                  children: [
+
+                    //Project
+                    DetailRow(
+                      detailTitle: 'Project',
+                      detailValue: mainItem.project.projectName,
+                      leadingColor: mainItem.project.markerColor,
+                    ),
+
+                    //Deadline
+                    DetailRow(
+                      detailTitle: 'Deadline',
+                      detailValue: openedTask.deadlineDate,
+                    ),
+
+                    //Assign To
+                    DetailRow(
+                      detailTitle: 'Assigned to',
+                      detailValue: openedTask.assignedTo,
+                    ),
+
+                  ],
+                ),
+              ),
+            ),
+
+            //task description
+            CustomCard(
+
               child: Wrap(
-                runSpacing: 16,
+                runSpacing: 4,
                 children: [
 
-                  //Project
-                  DetailRow(
-                    detailTitle: 'Project',
-                    detailValue: mainItem.project.projectName,
-                    leadingColor: mainItem.project.markerColor,
+                  Row(
+                    children: [
+                      Text(
+                        'Description',
+                        style: TypographyStyles.getBodyMedium(),
+                      ),
+                    ],
                   ),
 
-                  //Deadline
-                  DetailRow(
-                    detailTitle: 'Deadline',
-                    detailValue: openedTask.deadlineDate,
-                  ),
-
-                  //Assign To
-                  DetailRow(
-                    detailTitle: 'Assigned to',
-                    detailValue: openedTask.assignedTo,
-                  ),
+                  Text(
+                    openedTask.description,
+                    style: TypographyStyles.getTitleSmall(),
+                  )
 
                 ],
               ),
             ),
-          ),
 
-          //task description
-          CustomCard(
-
-            child: Wrap(
-              runSpacing: 4,
-              children: [
-
-                Row(
-                  children: [
-                    Text(
-                      'Description',
-                      style: TypographyStyles.getBodyMedium(),
-                    ),
-                  ],
-                ),
-
-                Text(
-                  openedTask.description,
-                  style: TypographyStyles.getTitleSmall(),
-                )
-
-              ],
-            ),
-          ),
-
-        ],
+          ],
+        ),
       );
     }
 
