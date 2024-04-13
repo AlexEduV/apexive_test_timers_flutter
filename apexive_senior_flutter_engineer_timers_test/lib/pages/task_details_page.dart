@@ -458,6 +458,10 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   }
 
   void onStopButtonPressed() {
+
+    //stop the timer
+    DataModel.timeSheetList[timerId].timer.cancel();
+
     setState(() {
       DataModel.timeSheetList[timerId].isCompleted = true;
       DataModel.timeSheetList[timerId].isActive = false;
@@ -510,7 +514,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
           //update listView
           completedTimeSheets = DataModel.getCompletedTimeSheetsForTask(openedTask);
         });
-        
+
       }
       else {
         startingPoint--;
