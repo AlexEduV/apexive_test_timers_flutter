@@ -149,11 +149,8 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   @override
   void dispose() {
 
-    //maybe pass new timer specs to the base
-    //DataModel.timeSheetList[timerId] = mainItem;
-
-    //reset current timer because of setState functions in this window
-    DataModel.timeSheetList[timerId].timer = Timer(Duration.zero, (){});
+    //be careful with updating static global info using dispose(),
+    //because it runs the code some time after the window had switched;
 
     super.dispose();
   }
@@ -449,6 +446,10 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   }
 
   void onBackButtonPressed() {
+
+    //cancel the timer
+    DataModel.timeSheetList[timerId].timer.cancel();
+
     //route back to the home page;
     Navigator.pop(context);
   }
