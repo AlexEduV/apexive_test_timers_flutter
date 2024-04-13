@@ -32,7 +32,6 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   int selectedTabPageIndex = 0;
 
   int timerId = 0;
-  late TimeSheetItem mainItem;
   late Task openedTask;
 
   List<TimeSheetItem> completedTimeSheets = [];
@@ -48,8 +47,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
     //set current timer data
     setState(() {
-      mainItem = DataModel.timeSheetList[timerId];
-      openedTask = mainItem.task;
+      openedTask = DataModel.timeSheetList[timerId].task;
 
       //get 'completed' list items
       completedTimeSheets = DataModel.getCompletedTimeSheetsForTask(openedTask);
@@ -58,7 +56,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
       readMore = List.filled(DataModel.getAllTimeSheetsForTask(openedTask).length, false);
 
       //initialize timer
-      if (mainItem.timer.isActive) {
+      if (DataModel.timeSheetList[timerId].timer.isActive) {
         initTimer();
       }
 
@@ -168,7 +166,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
             //task detail view
             Visibility(
-              visible: !mainItem.isCompleted,
+              visible: !DataModel.timeSheetList[timerId].isCompleted,
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: CustomCard(
@@ -178,8 +176,8 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                     children: [
 
                       TimesheetSpecsColumn(
-                        dayOfWeek: getWeekDayFromDate(mainItem.dateCreated),
-                        deadlineDate: mainItem.dateCreated,
+                        dayOfWeek: getWeekDayFromDate(DataModel.timeSheetList[timerId].dateCreated),
+                        deadlineDate: DataModel.timeSheetList[timerId].dateCreated,
                         startTime: openedTask.startTime,
                       ),
 
@@ -210,11 +208,11 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
                                 //pause button
                                 RoundButton(
-                                  backgroundColor: mainItem.isActive
+                                  backgroundColor: DataModel.timeSheetList[timerId].isActive
                                       ? Colors.white : Colors.white.withOpacity(.16),
-                                  tintColor: mainItem.isActive
+                                  tintColor: DataModel.timeSheetList[timerId].isActive
                                       ? Colors.black : Colors.white,
-                                  iconSource: mainItem.isActive
+                                  iconSource: DataModel.timeSheetList[timerId].isActive
                                       ? 'assets/images/pause-1.png'
                                       : 'assets/images/play_arrow_solid.png',
                                   onButtonPressed: onPauseButtonPressed,
@@ -256,7 +254,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                           const SizedBox(height: 4,),
 
                           Text(
-                            mainItem.description,
+                            DataModel.timeSheetList[timerId].description,
                             style: TypographyStyles.getBodyMedium(),
                             maxLines: readMore[0] ? 10 : 2,
                             overflow: TextOverflow.ellipsis,
@@ -266,7 +264,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
                           Visibility(
                             visible: !readMore[0] && hasTextOverflow(
-                              mainItem.description,
+                              DataModel.timeSheetList[timerId].description,
                               TypographyStyles.getBodyMedium(),
                               MediaQuery.of(context).textScaleFactor,
                               maxWidth: MediaQuery.of(context).size.width,
@@ -346,8 +344,8 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                     //Project
                     DetailRow(
                       detailTitle: 'Project',
-                      detailValue: mainItem.project.projectName,
-                      leadingColor: mainItem.project.markerColor,
+                      detailValue: DataModel.timeSheetList[timerId].project.projectName,
+                      leadingColor: DataModel.timeSheetList[timerId].project.markerColor,
                     ),
 
                     //Deadline
@@ -487,7 +485,6 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     //update UI
     setState(() {
       DataModel.timeSheetList[timerId].isActive = !DataModel.timeSheetList[timerId].isActive;
-      mainItem = DataModel.timeSheetList[timerId];
     });
   }
 
