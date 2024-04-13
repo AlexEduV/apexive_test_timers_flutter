@@ -180,7 +180,7 @@ class _MyHomePageState extends State<MyHomePage> {
     for (int sheetIndex = 0; sheetIndex < DataModel.timeSheetList.length; sheetIndex++)
     {
       if (DataModel.timeSheetList[sheetIndex].isActive) {
-        startTimerByIndex(sheetIndex);
+        resetTimerByIndex(sheetIndex);
       }
       else {
         DataModel.timeSheetList[sheetIndex].timer.cancel();
@@ -189,7 +189,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   }
 
-  void startTimerByIndex(int index)
+  void resetTimerByIndex(int index)
   {
 
     //clear a timer
@@ -409,20 +409,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void onPauseButtonPressed(int index)
   {
-
     //start/stop timer
-    //stop timer if active
-    if (DataModel.timeSheetList[index].timer.isActive) {
-      DataModel.timeSheetList[index].timer.cancel();
-    }
-    else {
-      //start a timer
-      startTimerByIndex(index);
-    }
-
     //update UI
     setState(() {
       DataModel.timeSheetList[index].isActive = !DataModel.timeSheetList[index].isActive;
     });
+
+    //stop timer if not active
+    if (!DataModel.timeSheetList[index].isActive) {
+      debugPrint('stopping the timer');
+      DataModel.timeSheetList[index].timer.cancel();
+    }
+    else {
+      //restart a timer
+      resetTimerByIndex(index);
+    }
   }
 }
