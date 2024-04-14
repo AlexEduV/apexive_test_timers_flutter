@@ -5,7 +5,11 @@ class AppBarButton extends StatelessWidget {
   final String iconSource;
   final Function() onTap;
 
-  const AppBarButton({super.key, required this.iconSource, required this.onTap});
+  const AppBarButton({
+    super.key,
+    required this.iconSource,
+    required this.onTap
+  });
 
   @override
   Widget build(BuildContext context) {
