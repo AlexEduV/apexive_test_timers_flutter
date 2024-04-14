@@ -374,9 +374,9 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
             //timer details column
             Expanded(
               child: TimesheetSpecsColumn(
-                  dayOfWeek: getWeekDayFromDate(completedTimeSheets[index].dateCompleted),
-                  deadlineDate: completedTimeSheets[index].dateCompleted,
-                  startTime: openedTask.startTime
+                dayOfWeek: getWeekDayFromDate(completedTimeSheets[index].dateCompleted),
+                deadlineDate: completedTimeSheets[index].dateCompleted,
+                startTime: openedTask.startTime,
               ),
             ),
     
