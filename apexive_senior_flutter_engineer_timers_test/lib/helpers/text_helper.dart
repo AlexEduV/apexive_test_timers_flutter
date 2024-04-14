@@ -16,5 +16,6 @@ bool hasTextOverflow(
     textDirection: ui.TextDirection.ltr,
     textScaleFactor: textScaleFactor,
   )..layout(minWidth: minWidth, maxWidth: maxWidth);
+
   return textPainter.didExceedMaxLines;
 }

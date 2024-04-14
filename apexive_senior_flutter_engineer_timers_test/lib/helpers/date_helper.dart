@@ -18,5 +18,6 @@ String getWeekDayFromDate(String date) {
 }
 
 String getTodayDateString() {
+
   return DateFormat('dd.MM.yyyy').format(DateTime.now());
 }
