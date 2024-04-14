@@ -6,6 +6,7 @@ import 'package:apexive_senior_flutter_engineer_timers_test/style/typography.dar
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/buttons/splash_button.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/check_box_labeled.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/custom_app_bar.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_page_background.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_text_field.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/drop_down_selector.dart';
 import 'package:flutter/material.dart';
@@ -86,17 +87,8 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
       backgroundColor: Colors.indigo,
       extendBodyBehindAppBar: true,
       body: SafeArea(
-        child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter, // Start direction
-              end: Alignment.bottomCenter, // End direction
-              colors: [
-                Color(0xff1c2658), // Start Color
-                Color(0xff364fc7),// End Color
-              ], // Customize your colors here
-            ),
-          ),
+
+        child: CustomPageBackground(
 
           child: Padding(
             padding: const EdgeInsets.only(right: 16, left: 16),

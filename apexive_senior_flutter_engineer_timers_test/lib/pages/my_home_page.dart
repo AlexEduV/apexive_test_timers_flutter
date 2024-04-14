@@ -6,6 +6,7 @@ import 'package:apexive_senior_flutter_engineer_timers_test/pages/create_timer_p
 import 'package:apexive_senior_flutter_engineer_timers_test/pages/task_details_page.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/app_bar_button.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_card.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_page_background.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/timersList/timer_specs_row.dart';
 import 'package:flutter/material.dart';
 
@@ -56,17 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: Colors.indigo,
       body: SafeArea(
-        child: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter, // Start direction
-                end: Alignment.bottomCenter, // End direction
-                colors: [
-                  Color(0xff1c2658), // Start Color
-                  Color(0xff364fc7),// End Color
-                ], // Customize your colors here
-              ),
-            ),
+        child: CustomPageBackground(
             child: Column(
               children: [
 

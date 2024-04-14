@@ -5,6 +5,7 @@ import 'package:apexive_senior_flutter_engineer_timers_test/model/time_sheet_ite
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/custom_app_bar.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/buttons/round_button.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_badge.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_page_background.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/description_section.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/detail_row.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/timesheet_specs_column.dart';
@@ -69,17 +70,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     return Scaffold(
       backgroundColor: Colors.indigo,
       body: SafeArea(
-        child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter, // Start direction
-              end: Alignment.bottomCenter, // End direction
-              colors: [
-                Color(0xff1c2658), // Start Color
-                Color(0xff364fc7),// End Color
-              ], // Customize your colors here
-            ),
-          ),
+        child: CustomPageBackground(
           child: Padding(
             padding: const EdgeInsets.only(right: 16, left: 16),
             child: Column(
