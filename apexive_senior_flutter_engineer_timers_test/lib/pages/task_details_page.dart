@@ -4,14 +4,13 @@ import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dar
 import 'package:apexive_senior_flutter_engineer_timers_test/model/time_sheet_item.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/custom_app_bar.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/buttons/round_button.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/description_section.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/detail_row.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/timesheet_specs_column.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'dart:ui' as ui;
 
 import '../helpers/date_helper.dart';
+import '../helpers/text_helper.dart';
 import '../model/task.dart';
 import '../style/typography.dart';
 import '../ui/custom_card.dart';
@@ -231,61 +230,15 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
                       const SizedBox(height: 16.0,),
 
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children:[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Description',
-                                style: TypographyStyles.getBodySmall(),
-                              ),
-
-                              IconButton(
-                                onPressed: onEditDescriptionButtonPressed,
-                                icon: Image.asset(
-                                  'assets/images/pencil.png',
-                                  height: 24,
-                                  width: 24,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-
-                          const SizedBox(height: 4,),
-
-                          Text(
-                            DataModel.timeSheetList[timerId].description,
-                            style: TypographyStyles.getBodyMedium(),
-                            maxLines: readMore[0] ? 10 : 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-
-                          const SizedBox(height: 4,),
-
-                          Visibility(
-                            visible: !readMore[0] && hasTextOverflow(
-                              DataModel.timeSheetList[timerId].description,
-                              TypographyStyles.getBodyMedium(),
-                              MediaQuery.of(context).textScaleFactor,
-                              maxWidth: MediaQuery.of(context).size.width,
-                            ),
-                            child: GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  readMore[0] = !readMore[0];
-                                });
-                              },
-                              child: Text(
-                                'Read More',
-                                style: TypographyStyles.getBodySmall(),
-                              ),
-                            ),
-                          ),
-
-                         ]
+                      DescriptionSection(
+                          onEditButtonPressed: onEditDescriptionButtonPressed,
+                          descriptionText: DataModel.timeSheetList[timerId].description,
+                          isReadMoreExpanded: readMore[0],
+                          onReadMoreButtonPressed: () {
+                            setState(() {
+                              readMore[0] = !readMore[0];
+                            });
+                          },
                       ),
 
                     ],
@@ -540,23 +493,6 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
   void onEditDescriptionButtonPressed() {
 
-  }
-
-  bool hasTextOverflow(
-      String text,
-      TextStyle style,
-      double textScaleFactor,
-      {double minWidth = 0,
-        double maxWidth = double.infinity,
-        int maxLines = 2
-      }) {
-    final TextPainter textPainter = TextPainter(
-      text: TextSpan(text: text, style: style),
-      maxLines: maxLines,
-      textDirection: ui.TextDirection.ltr,
-      textScaleFactor: textScaleFactor,
-    )..layout(minWidth: minWidth, maxWidth: maxWidth);
-    return textPainter.didExceedMaxLines;
   }
 
 }
