@@ -16,12 +16,12 @@ class CustomPageBackground extends StatelessWidget {
     return Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topCenter, // Start direction
-            end: Alignment.bottomCenter, // End direction
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
             colors: [
               Color(0xff1c2658), // Start Color
-              Color(0xff364fc7),// End Color
-            ], // Customize your colors here
+              Color(0xff364fc7), // End Color
+            ],
           ),
         ),
       child: child,
