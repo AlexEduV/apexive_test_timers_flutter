@@ -28,6 +28,5 @@ class CustomBadge extends StatelessWidget {
         ),
       ),
     );
-
   }
 }

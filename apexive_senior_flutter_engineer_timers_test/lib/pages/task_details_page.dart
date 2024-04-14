@@ -70,7 +70,9 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     return Scaffold(
       backgroundColor: Colors.indigo,
       body: SafeArea(
+
         child: CustomPageBackground(
+
           child: Padding(
             padding: const EdgeInsets.only(right: 16, left: 16),
             child: Column(

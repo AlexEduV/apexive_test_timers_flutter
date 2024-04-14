@@ -9,6 +9,7 @@ class AppBarButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
    return Container(
      height: 48,
      width: 48,
@@ -16,7 +17,6 @@ class AppBarButton extends StatelessWidget {
          borderRadius: BorderRadius.circular(12),
          color: Colors.white.withOpacity(.16),
      ),
-     //padding: const EdgeInsets.all(8.0),
      child: IconButton(
        icon: Image.asset(
          iconSource,
@@ -27,6 +27,5 @@ class AppBarButton extends StatelessWidget {
        onPressed: onTap,
      ),
    );
-
   }
 }

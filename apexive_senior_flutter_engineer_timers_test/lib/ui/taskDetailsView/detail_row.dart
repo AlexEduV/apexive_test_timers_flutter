@@ -18,6 +18,7 @@ class DetailRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Wrap(
       runSpacing: 4,
       children: [

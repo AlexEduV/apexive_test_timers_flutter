@@ -18,6 +18,7 @@ class TimesheetSpecsColumn extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+
     return Wrap(
       direction: Axis.vertical,
       spacing: 4,
@@ -40,5 +41,4 @@ class TimesheetSpecsColumn extends StatelessWidget {
       ],
     );
   }
-  
 }

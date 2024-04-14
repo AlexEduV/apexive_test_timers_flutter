@@ -23,5 +23,4 @@ class CustomCard extends StatelessWidget {
       child: child,
     );
   }
-
 }

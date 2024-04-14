@@ -19,6 +19,7 @@ class TimerSpecsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -33,10 +34,13 @@ class TimerSpecsRow extends StatelessWidget {
 
   Widget getImageOrIcon(IconData? icon, String? iconSource)
   {
+
     if (icon != null) {
+
       return Icon(icon, size: 24, color: Colors.white);
     }
     else {
+
       return SizedBox(
         height: 24,
         width: 24,
