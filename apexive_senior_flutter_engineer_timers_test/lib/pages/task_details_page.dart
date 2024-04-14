@@ -10,7 +10,6 @@ import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/t
 import 'package:flutter/material.dart';
 
 import '../helpers/date_helper.dart';
-import '../helpers/text_helper.dart';
 import '../model/task.dart';
 import '../style/typography.dart';
 import '../ui/custom_card.dart';
