@@ -63,33 +63,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/arrow_2_circlepath.png
-    - assets/images/bookmark.png
-    - assets/images/case.png
-    - assets/images/case_fill.png
-    - assets/images/chevron_down.png
-    - assets/images/chevron_forward.png
-    - assets/images/chevron_left.png
-    - assets/images/eye.png
-    - assets/images/eye_slash.png
-    - assets/images/gear.png
-    - assets/images/moon_fill.png
-    - assets/images/pause.png
-    - assets/images/pause-1.png
-    - assets/images/pencil.png
-    - assets/images/play.png
-    - assets/images/play_arrow_solid.png
-    - assets/images/plus.png
-    - assets/images/plus-1.png
-    - assets/images/plus-2.png
-    - assets/images/settings.png
-    - assets/images/settings_fill.png
-    - assets/images/sort.png
-    - assets/images/stop_fill.png
-    - assets/images/sun_min_fill.png
-    - assets/images/timer.png
-    - assets/images/timer_fill.png
-    - assets/images/trash.png
+    - assets/images/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
