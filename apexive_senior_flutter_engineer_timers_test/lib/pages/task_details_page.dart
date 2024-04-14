@@ -393,8 +393,9 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                   style: TypographyStyles.getLabelLarge(),
                 ),
               ),
-            )
-          ]
+            ),
+
+          ],
         ),
     );
   }
