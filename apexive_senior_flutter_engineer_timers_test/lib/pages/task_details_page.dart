@@ -4,6 +4,7 @@ import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dar
 import 'package:apexive_senior_flutter_engineer_timers_test/model/time_sheet_item.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/custom_app_bar.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/buttons/round_button.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_badge.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/description_section.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/detail_row.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/taskDetailsView/timesheet_specs_column.dart';
@@ -380,19 +381,8 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
             ),
     
             //completion time rounded
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(64.0),
-                color: Colors.white.withOpacity(.16),
-              ),
-              height: 32,
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Center(
-                child: Text(
-                  completedTimeSheets[index].currentTime,
-                  style: TypographyStyles.getLabelLarge(),
-                ),
-              ),
+            CustomBadge(
+              text: completedTimeSheets[index].currentTime,
             ),
 
           ],
