@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
-import '../../style/typography.dart';
 
 class DetailRow extends StatelessWidget {
 
@@ -28,7 +25,7 @@ class DetailRow extends StatelessWidget {
           children: [
             Text(
               detailTitle,
-              style: TypographyStyles.getBodySmall(),
+              style: Theme.of(context).textTheme.bodySmall,
             ),
           ],
         ),
@@ -55,7 +52,7 @@ class DetailRow extends StatelessWidget {
               //item value
               Text(
                 detailValue,
-                style: TypographyStyles.getTitleMedium(),
+                style: Theme.of(context).textTheme.titleMedium,
               ),
             ],
           ),

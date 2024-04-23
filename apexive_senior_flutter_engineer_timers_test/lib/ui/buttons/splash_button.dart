@@ -1,8 +1,6 @@
 
 import 'package:flutter/material.dart';
 
-import '../../style/typography.dart';
-
 class SplashButton extends StatelessWidget {
 
   final Function() onTap;
@@ -29,7 +27,7 @@ class SplashButton extends StatelessWidget {
         child: Center(
           child: Text(
             title,
-            style: TypographyStyles.getLabelLarge(),
+            style: Theme.of(context).textTheme.labelLarge,
           ),
         ),
       ),

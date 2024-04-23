@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 import '../../helpers/text_helper.dart';
-import '../../style/typography.dart';
 
 class DescriptionSection extends StatelessWidget {
 
@@ -31,7 +30,7 @@ class DescriptionSection extends StatelessWidget {
             children: [
               Text(
                 'Description',
-                style: TypographyStyles.getBodySmall(),
+                style:  Theme.of(context).textTheme.bodySmall,
               ),
 
               IconButton(
@@ -50,7 +49,7 @@ class DescriptionSection extends StatelessWidget {
 
           Text(
             descriptionText,
-            style: TypographyStyles.getBodyMedium(),
+            style: Theme.of(context).textTheme.bodyMedium,
             maxLines: isReadMoreExpanded ? 10 : 2,
             overflow: TextOverflow.ellipsis,
           ),
@@ -60,7 +59,7 @@ class DescriptionSection extends StatelessWidget {
           Visibility(
             visible: !isReadMoreExpanded && hasTextOverflow(
               descriptionText,
-              TypographyStyles.getBodyMedium(),
+              Theme.of(context).textTheme.bodyMedium!,
               MediaQuery.of(context).textScaleFactor,
               maxWidth: MediaQuery.of(context).size.width,
             ),
@@ -68,7 +67,7 @@ class DescriptionSection extends StatelessWidget {
               onTap: onReadMoreButtonPressed,
               child: Text(
                 'Read More',
-                style: TypographyStyles.getBodySmall(),
+                style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
           ),

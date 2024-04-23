@@ -1,7 +1,5 @@
 
-import 'package:flutter/cupertino.dart';
-
-import '../../style/typography.dart';
+import 'package:flutter/material.dart';
 
 class TimesheetSpecsColumn extends StatelessWidget {
   
@@ -26,17 +24,17 @@ class TimesheetSpecsColumn extends StatelessWidget {
       children: [
         Text(
           dayOfWeek,
-          style: TypographyStyles.getBodySmall(),
+          style: Theme.of(context).textTheme.bodySmall,
         ),
 
         Text(
           deadlineDate,
-          style: TypographyStyles.getTitleMedium(),
+          style: Theme.of(context).textTheme.titleMedium,
         ),
 
         Text(
           'Start Time $startTime',
-          style: TypographyStyles.getBodySmall(),
+          style: Theme.of(context).textTheme.bodySmall,
         ),
       ],
     );

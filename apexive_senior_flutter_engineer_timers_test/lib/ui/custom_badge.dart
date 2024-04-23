@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import '../style/typography.dart';
 
 class CustomBadge extends StatelessWidget {
 
@@ -24,7 +23,7 @@ class CustomBadge extends StatelessWidget {
       child: Center(
         child: Text(
           text,
-          style: TypographyStyles.getLabelLarge(),
+          style:  Theme.of(context).textTheme.labelLarge,
         ),
       ),
     );

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../style/typography.dart';
 
 class CheckBoxLabeled extends StatefulWidget {
 
@@ -49,7 +48,7 @@ class _CheckBoxLabeledState extends State<CheckBoxLabeled> {
 
         Text(
           widget.label,
-          style: TypographyStyles.getBodyLarge(),
+          style: Theme.of(context).textTheme.bodyLarge,
         )
       ],
     );

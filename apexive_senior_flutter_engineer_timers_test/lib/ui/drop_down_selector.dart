@@ -1,8 +1,6 @@
 
 import 'package:flutter/material.dart';
 
-import '../style/typography.dart';
-
 class DropDownSelector extends StatelessWidget {
 
   final List<DropdownMenuEntry<String>> menuItems;
@@ -35,12 +33,12 @@ class DropDownSelector extends StatelessWidget {
         dropdownMenuEntries: menuItems,
         onSelected: onSelected,
         label: Text(hintText),
-        textStyle: TypographyStyles.getBodyLarge(),
+        textStyle: Theme.of(context).textTheme.bodyLarge,
         trailingIcon: getTrailingIcon(),
         selectedTrailingIcon: getTrailingIcon(),
         inputDecorationTheme: InputDecorationTheme(
-          labelStyle: TypographyStyles.getBodyLarge(),
-          hintStyle: TypographyStyles.getBodyLarge(),
+          labelStyle: Theme.of(context).textTheme.bodyLarge,
+          hintStyle: Theme.of(context).textTheme.bodyLarge,
           border: InputBorder.none,
           contentPadding: const EdgeInsets.symmetric(
               horizontal: 16,

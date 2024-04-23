@@ -1,8 +1,6 @@
 
 import 'package:flutter/material.dart';
 
-import '../style/typography.dart';
-
 class CustomTextField extends StatefulWidget {
   
   final TextEditingController textEditingController;
@@ -22,8 +20,6 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
-
-  static TextStyle defaultTextStyle = TypographyStyles.getBodyLarge();
   
   @override
   Widget build(BuildContext context) {
@@ -44,15 +40,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
           focusedBorder: const UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.transparent),
           ),
-          hintStyle: defaultTextStyle,
+          hintStyle:Theme.of(context).textTheme.bodyLarge,
           labelText: widget.hintText,
-          labelStyle: defaultTextStyle,
+          labelStyle: Theme.of(context).textTheme.bodyLarge,
           contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         ),
         maxLength: widget.maxLength,
         textInputAction: TextInputAction.next,
         controller: widget.textEditingController,
-        style: defaultTextStyle,
+        style: Theme.of(context).textTheme.bodyLarge,
         cursorColor: Colors.white,
       ),
     );
