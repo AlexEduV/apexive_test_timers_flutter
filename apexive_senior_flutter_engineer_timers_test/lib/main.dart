@@ -17,6 +17,68 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Odoo',
       theme: ThemeData(
+        textTheme: const TextTheme(
+          displaySmall: TextStyle(
+            fontSize: 36.0,
+            fontWeight: FontWeight.w600,
+            height: 44.0 / 36.0,
+            fontFamily: 'Inter',
+          ),
+          headlineLarge: TextStyle(
+            fontSize: 32.0,
+            fontWeight: FontWeight.w700,
+            height: 40.0 / 32.0,
+            fontFamily: 'Inter',
+          ),
+          headlineSmall: TextStyle(
+            fontSize: 24.0,
+            fontWeight: FontWeight.w700,
+            height: 32.0 / 24.0,
+            fontFamily: 'Inter',
+          ),
+          titleMedium: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.w600,
+            height: 24.0 / 16.0,
+            fontFamily: 'Inter',
+            letterSpacing: 0.15,
+          ),
+          titleSmall: TextStyle(
+            fontSize: 14.0,
+            fontWeight: FontWeight.w500,
+            height: 20.0 / 14.0,
+            fontFamily: 'Inter',
+            letterSpacing: 0.1,
+          ),
+          labelLarge: TextStyle(
+            fontSize: 14.0,
+            fontWeight: FontWeight.w400,
+            height: 20.0 / 14.0,
+            fontFamily: 'Inter',
+            letterSpacing: 0.1,
+          ),
+          bodyLarge: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.w400,
+            height: 24.0 / 16.0,
+            fontFamily: 'Inter',
+            letterSpacing: 0.15,
+          ),
+          bodyMedium: TextStyle(
+            fontSize: 14.0,
+            fontWeight: FontWeight.w400,
+            height: 20.0 / 14.0,
+            fontFamily: 'Inter',
+            letterSpacing: 0.25,
+          ),
+          bodySmall: TextStyle(
+            fontSize: 12.0,
+            fontWeight: FontWeight.w400,
+            height: 16.0 / 12.0,
+            fontFamily: 'Inter',
+            letterSpacing: 0.4,
+          ),
+        ),
 
         tabBarTheme: TabBarTheme(
           dividerColor: Colors.white.withOpacity(.16),
@@ -28,19 +90,29 @@ class MyApp extends StatelessWidget {
           labelPadding: const EdgeInsets.symmetric(horizontal: 0.0),
         ),
 
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           elevation: 0,
           backgroundColor: Colors.transparent,
-          selectedIconTheme: const IconThemeData(
+          selectedIconTheme: IconThemeData(
             color: Colors.white,
           ),
-          unselectedIconTheme: const IconThemeData(
+          unselectedIconTheme: IconThemeData(
             color: Colors.white,
           ),
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.white,
-          selectedLabelStyle: TypographyStyles.getBottomNavigationNormal(),
-          unselectedLabelStyle: TypographyStyles.getBottomNavigationNormal(),
+          selectedLabelStyle: TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w500,
+                                height: 12.0 / 10.0,
+                                fontFamily: 'SF Pro',
+                              ),
+          unselectedLabelStyle: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w500,
+                                  height: 12.0 / 10.0,
+                                  fontFamily: 'SF Pro',
+                                ),
         ),
 
       ),
