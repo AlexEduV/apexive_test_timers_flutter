@@ -30,7 +30,7 @@ class DescriptionSection extends StatelessWidget {
             children: [
               Text(
                 'Description',
-                style:  Theme.of(context).textTheme.bodySmall,
+                style: Theme.of(context).textTheme.bodySmall,
               ),
 
               IconButton(

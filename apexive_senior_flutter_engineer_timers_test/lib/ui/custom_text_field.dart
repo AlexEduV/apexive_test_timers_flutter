@@ -40,7 +40,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           focusedBorder: const UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.transparent),
           ),
-          hintStyle:Theme.of(context).textTheme.bodyLarge,
+          hintStyle: Theme.of(context).textTheme.bodyLarge,
           labelText: widget.hintText,
           labelStyle: Theme.of(context).textTheme.bodyLarge,
           contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),

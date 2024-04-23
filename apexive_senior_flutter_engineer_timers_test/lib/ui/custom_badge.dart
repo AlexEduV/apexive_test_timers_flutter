@@ -23,7 +23,7 @@ class CustomBadge extends StatelessWidget {
       child: Center(
         child: Text(
           text,
-          style:  Theme.of(context).textTheme.labelLarge,
+          style: Theme.of(context).textTheme.labelLarge,
         ),
       ),
     );
