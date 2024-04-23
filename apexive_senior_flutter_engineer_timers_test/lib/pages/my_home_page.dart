@@ -11,7 +11,6 @@ import 'package:apexive_senior_flutter_engineer_timers_test/ui/timersList/timer_
 import 'package:flutter/material.dart';
 
 import '../helpers/date_helper.dart';
-import '../style/typography.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -69,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
 
                       //title
-                      Text(widget.title, style: TypographyStyles.getHeadlineLarge(),),
+                      Text(widget.title, style: Theme.of(context).textTheme.headlineLarge,),
 
                       //buttons
                       Padding(
@@ -238,7 +237,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Text(
                   'You have $timersCount Timers',
-                  style: TypographyStyles.getLabelLarge(),
+                  style: Theme.of(context).textTheme.labelLarge,
                   textAlign: TextAlign.start,
                 ),
               ),
@@ -295,7 +294,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     //timer name
                     TimerSpecsRow(
                       text: DataModel.timeSheetList[index].task.title,
-                      textStyle: TypographyStyles.getTitleMedium(),
+                      textStyle: Theme.of(context).textTheme.titleMedium,
                       icon: DataModel.timeSheetList[index].isFavorite ? Icons.star : Icons.star_border,
                       iconSource: '',
                     ),
@@ -303,13 +302,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     //timer project
                     TimerSpecsRow(
                         text: DataModel.timeSheetList[index].project.projectName,
-                        textStyle: TypographyStyles.getBodyMedium(),
+                        textStyle:Theme.of(context).textTheme.bodyMedium,
                         iconSource: 'assets/images/case.png'),
 
                     //deadline
                     TimerSpecsRow(
                         text: 'Deadline ${DataModel.timeSheetList[index].task.deadlineDate}',
-                        textStyle: TypographyStyles.getBodyMedium(),
+                        textStyle:Theme.of(context).textTheme.bodyMedium,
                         iconSource: 'assets/images/timer.png'),
 
                   ],
@@ -333,7 +332,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: [
 
                         //time
-                        Text(DataModel.timeSheetList[index].currentTime, style: TypographyStyles.getLabelLarge(specifiedColor: DataModel.timeSheetList[index].isActive ? Colors.black : Colors.white),),
+                        Text(
+                          DataModel.timeSheetList[index].currentTime,
+                          style: Theme.of(context).textTheme.labelLarge?.apply(color: DataModel.timeSheetList[index].isActive ? Colors.black : Colors.white),
+                        ),
 
                         //pause icon
                         Image.asset(DataModel.timeSheetList[index].isActive ?

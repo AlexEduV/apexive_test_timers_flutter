@@ -13,7 +13,6 @@ import 'package:flutter/material.dart';
 
 import '../helpers/date_helper.dart';
 import '../model/task.dart';
-import '../style/typography.dart';
 import '../ui/custom_card.dart';
 
 
@@ -82,7 +81,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                 CustomAppBar(
                   onBackButtonPressed: onBackButtonPressed,
                   title: '${openedTask.title} - ${openedTask.assignedTo}',
-                  titleTextStyle: TypographyStyles.getTitleMedium(),
+                  titleTextStyle: Theme.of(context).textTheme.titleMedium!,
                   actions: [
                     IconButton(
                       onPressed: onMoreButtonPressed,
@@ -185,7 +184,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                             //time text
                             Text(
                               DataModel.timeSheetList[timerId].currentTime,
-                              style: TypographyStyles.getDisplaySmall(),
+                              style: Theme.of(context).textTheme.displaySmall,
                             ),
 
                             //control buttons
@@ -249,7 +248,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                     children: [
                       Text(
                         'Completed Records',
-                        style: TypographyStyles.getBodySmall(),
+                        style: Theme.of(context).textTheme.bodySmall,
                       )
                     ],
                   ),
@@ -322,14 +321,14 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                     children: [
                       Text(
                         'Description',
-                        style: TypographyStyles.getBodyMedium(),
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ],
                   ),
 
                   Text(
                     openedTask.description,
-                    style: TypographyStyles.getTitleSmall(),
+                    style: Theme.of(context).textTheme.titleSmall,
                   )
 
                 ],

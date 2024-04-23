@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/model/time_sheet_item.dart';
-import 'package:apexive_senior_flutter_engineer_timers_test/style/typography.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/buttons/splash_button.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/check_box_labeled.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/custom_app_bar.dart';
@@ -60,7 +59,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
             label: projectName,
             style: MenuItemButton.styleFrom(
               foregroundColor: Colors.white,
-              textStyle: TypographyStyles.getBodyLarge(),
+              textStyle: Theme.of(context).textTheme.bodyLarge,
             ),
           ),
       );
@@ -74,7 +73,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
           label: taskName,
           style: MenuItemButton.styleFrom(
             foregroundColor: Colors.white,
-            textStyle: TypographyStyles.getBodyLarge(),
+            textStyle: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
       );
@@ -109,7 +108,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                             CustomAppBar(
                               onBackButtonPressed: onBackButtonPressed,
                               title: 'Create Timer',
-                              titleTextStyle: TypographyStyles.getHeadlineSmall(),
+                              titleTextStyle: Theme.of(context).textTheme.headlineSmall!,
                               actions: null,
                             ),
 
