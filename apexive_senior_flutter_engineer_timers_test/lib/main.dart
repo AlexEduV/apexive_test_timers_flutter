@@ -89,7 +89,7 @@ class MyApp extends StatelessWidget {
         ),
 
         tabBarTheme: TabBarTheme(
-          dividerColor: Colors.white.withOpacity(.16),
+          dividerColor: Colors.white.withOpacity(0.16),
           labelStyle: Theme.of(context).textTheme.labelLarge,
           indicatorColor: Colors.white,
           unselectedLabelColor: Colors.white,
@@ -127,8 +127,8 @@ class MyApp extends StatelessWidget {
       ),
       home: const MyHomePage(title: 'Timesheets'),
       routes: {
-        CreateTimerPage.routeName: (context) => const CreateTimerPage(),
-        TaskDetailsPage.routeName: (context) => const TaskDetailsPage(),
+        CreateTimerPage.routeName: (_) => const CreateTimerPage(),
+        TaskDetailsPage.routeName: (_) => const TaskDetailsPage(),
       },
       debugShowCheckedModeBanner: false,
     );

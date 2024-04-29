@@ -1,6 +1,7 @@
 
 import 'dart:async';
 
+import 'package:apexive_senior_flutter_engineer_timers_test/helpers/date_helper.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/pages/create_timer_page.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/pages/task_details_page.dart';
@@ -9,8 +10,6 @@ import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_card.dart'
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_page_background.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/timersList/timer_specs_row.dart';
 import 'package:flutter/material.dart';
-
-import '../helpers/date_helper.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -74,7 +73,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8),
                         child: Wrap(
-                          direction: Axis.horizontal,
                           spacing: 8,
                           children: [
                             Visibility(
@@ -135,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 //bottom navigation
                 _getBottomNavigationBar(),
               ],
-            )
+            ),
         ),
       ),
     );
@@ -149,9 +147,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void onSortListButtonPressed() {
-
-  }
+  void onSortListButtonPressed() {}
 
   void updateTimersList() {
     setState(() {
@@ -207,8 +203,8 @@ class _MyHomePageState extends State<MyHomePage> {
       else {
         startingPoint--;
 
-        minutes = startingPoint ~/ 60;
-        seconds = startingPoint % 60;
+        minutes = startingPoint ~/ Duration.minutesPerHour;
+        seconds = startingPoint % Duration.secondsPerMinute;
 
         //update time
         setState(() {
@@ -252,7 +248,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 itemBuilder: _getTimersListTile,
                 itemCount: listSize,
             ),
-          )
+          ),
 
         ],
       );
@@ -303,13 +299,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     TimerSpecsRow(
                         text: DataModel.timeSheetList[index].project.projectName,
                         textStyle:Theme.of(context).textTheme.bodyMedium,
-                        iconSource: 'assets/images/case.png'),
+                        iconSource: 'assets/images/case.png',
+                    ),
 
                     //deadline
                     TimerSpecsRow(
                         text: 'Deadline ${DataModel.timeSheetList[index].task.deadlineDate}',
                         textStyle:Theme.of(context).textTheme.bodyMedium,
-                        iconSource: 'assets/images/timer.png'),
+                        iconSource: 'assets/images/timer.png',
+                    ),
 
                   ],
                 ),

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -8,10 +7,10 @@ class CustomTextField extends StatefulWidget {
   final int? maxLength;
 
   const CustomTextField({
-    super.key,
     required this.textEditingController,
     required this.hintText,
     this.maxLength,
+    super.key,
   });
 
   @override
@@ -24,7 +23,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
 
-    return Container(
+    return DecoratedBox(
       decoration: BoxDecoration(
         border: Border.all(
           width: 2.0,

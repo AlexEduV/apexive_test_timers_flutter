@@ -13,17 +13,17 @@ class DataModel {
   static List<TimeSheetItem> getInitTestTimeSheets() {
     timeSheetList = [];
 
-    Project testProject = Project(
+    final Project testProject = Project(
         projectName: 'SO056 - Booqio V2',
         markerColor: const Color(0xffFFC629),
     );
 
-    User testUser = const User(
+    const User testUser = User(
       firstName: 'Alex',
       lastName: 'Ivanov',
     );
 
-    Task testTask = Task(
+    final Task testTask = Task(
       title: 'iOS App Deployment with odd',
       description: 'Sync with Client, communicate, '
           'work on the new design with designer, '
@@ -33,7 +33,7 @@ class DataModel {
       startTime: '00:30',
     );
 
-    Task testTask1 = Task(
+    final Task testTask1 = Task(
       title: 'iOS App Deployment',
       description: 'Sync with Client, communicate, '
           'work on the new design with designer, '
@@ -55,8 +55,8 @@ class DataModel {
           isActive: false,
           isCompleted: false,
           isFavorite: false,
-          timer:  Timer(Duration.zero, (){}),
-      )
+          timer:  Timer(Duration.zero, () {}),
+      ),
     );
 
     timeSheetList.add(
@@ -71,7 +71,7 @@ class DataModel {
         isCompleted: false,
         isFavorite: true,
         timer:  Timer(Duration.zero, (){}),
-      )
+      ),
     );
 
     return timeSheetList;
@@ -125,7 +125,7 @@ class DataModel {
 
   static List<TimeSheetItem> getAllTimeSheetsForTask(Task task)
   {
-    List<TimeSheetItem> result = [];
+    final List<TimeSheetItem> result = [];
 
     for (final timeSheet in timeSheetList)
     {
@@ -140,7 +140,7 @@ class DataModel {
 
   static List<TimeSheetItem> getCompletedTimeSheetsForTask(Task task)
   {
-    List<TimeSheetItem> result = [];
+    final List<TimeSheetItem> result = [];
 
     for (final timeSheet in timeSheetList)
     {

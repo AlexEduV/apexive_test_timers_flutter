@@ -5,15 +5,15 @@ class CustomPageBackground extends StatelessWidget {
   final Widget child;
 
   const CustomPageBackground({
-    super.key,
     required this.child,
+    super.key,
   });
 
 
   @override
   Widget build(BuildContext context) {
 
-    return Container(
+    return DecoratedBox(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,

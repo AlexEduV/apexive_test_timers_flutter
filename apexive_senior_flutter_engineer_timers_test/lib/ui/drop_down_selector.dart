@@ -11,21 +11,21 @@ class DropDownSelector extends StatelessWidget {
   final Function(String?) onSelected;
 
   DropDownSelector({
-    super.key,
     required this.menuItems,
     required this.selectedValue,
     required this.hintText,
     required this.onSelected,
+    super.key,
   });
 
   @override
   Widget build(BuildContext context) {
 
-    return Container(
+    return DecoratedBox(
       decoration: BoxDecoration(
         border: Border.all(
           width: 2.0,
-          color: Colors.white.withOpacity(.16),
+          color: Colors.white.withOpacity(0.16),
         ),
         borderRadius: BorderRadius.circular(8),
       ),
@@ -46,10 +46,10 @@ class DropDownSelector extends StatelessWidget {
           ),
         ),
         menuStyle: MenuStyle(
-          backgroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-            return Colors.white.withOpacity(.12);
+          backgroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> _) {
+            return Colors.white.withOpacity(0.12);
           }),
-          surfaceTintColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+          surfaceTintColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> _) {
             return Colors.white;
           }),
         ),

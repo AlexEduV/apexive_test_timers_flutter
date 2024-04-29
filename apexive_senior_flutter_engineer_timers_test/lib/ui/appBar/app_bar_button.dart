@@ -8,7 +8,7 @@ class AppBarButton extends StatelessWidget {
   const AppBarButton({
     super.key,
     required this.iconSource,
-    required this.onTap
+    required this.onTap,
   });
 
   @override
@@ -19,7 +19,7 @@ class AppBarButton extends StatelessWidget {
      width: 48,
      decoration: BoxDecoration(
          borderRadius: BorderRadius.circular(12),
-         color: Colors.white.withOpacity(.16),
+         color: Colors.white.withOpacity(0.16),
      ),
      child: IconButton(
        icon: Image.asset(

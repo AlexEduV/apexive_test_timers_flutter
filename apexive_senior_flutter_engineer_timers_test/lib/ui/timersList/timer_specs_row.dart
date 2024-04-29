@@ -27,7 +27,7 @@ class TimerSpecsRow extends StatelessWidget {
 
         const SizedBox(width: 4,),
 
-        Flexible(child: Text(text, style: textStyle,),),
+        Flexible(child: Text(text, style: textStyle as TextStyle,),),
       ],
     );
   }

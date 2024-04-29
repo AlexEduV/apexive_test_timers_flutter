@@ -8,10 +8,10 @@ class TimesheetSpecsColumn extends StatelessWidget {
   final String startTime;
 
   const TimesheetSpecsColumn({
-    super.key,
     required this.dayOfWeek,
     required this.deadlineDate,
     required this.startTime,
+    super.key,
   });
   
   @override

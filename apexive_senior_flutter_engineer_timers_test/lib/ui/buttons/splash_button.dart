@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class SplashButton extends StatelessWidget {
@@ -21,8 +20,8 @@ class SplashButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 16.0),
         margin: const EdgeInsets.symmetric(vertical: 16.0),
         decoration: BoxDecoration(
-            color: Colors.white.withOpacity(.16),
-            borderRadius: BorderRadius.circular(12.0)
+            color: Colors.white.withOpacity(0.16),
+            borderRadius: BorderRadius.circular(12.0),
         ),
         child: Center(
           child: Text(

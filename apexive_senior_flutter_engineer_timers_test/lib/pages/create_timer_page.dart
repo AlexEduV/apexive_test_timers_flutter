@@ -1,17 +1,16 @@
 import 'dart:async';
 
 import 'package:apexive_senior_flutter_engineer_timers_test/model/data_model.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/model/project.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/model/task.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/model/time_sheet_item.dart';
+import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/custom_app_bar.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/buttons/splash_button.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/check_box_labeled.dart';
-import 'package:apexive_senior_flutter_engineer_timers_test/ui/appBar/custom_app_bar.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_page_background.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/custom_text_field.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/ui/drop_down_selector.dart';
 import 'package:flutter/material.dart';
-
-import '../model/project.dart';
-import '../model/task.dart';
 
 class CreateTimerPage extends StatefulWidget {
   const CreateTimerPage({super.key});
@@ -108,7 +107,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                             CustomAppBar(
                               onBackButtonPressed: onBackButtonPressed,
                               title: 'Create Timer',
-                              titleTextStyle: Theme.of(context).textTheme.headlineSmall!,
+                              titleTextStyle: Theme.of(context).textTheme.headlineSmall,
                               actions: null,
                             ),
 
@@ -152,7 +151,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                               label: 'Make Favorite',
                               onChanged: (bool? value) {
                                 setState(() {
-                                  isFavorite = value!;
+                                  isFavorite = value ?? false;
                                 });
                               },
                             ),
@@ -199,8 +198,8 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
       debugPrint('input check passed');
 
       //get data based on the inputs
-      Project? selectedProject = DataModel.getProjectByName(_selectedProjectNameValue!);
-      Task selectedTask = DataModel.getTaskByName(_selectedTaskNameValue!);
+      final Project selectedProject = DataModel.getProjectByName(_selectedProjectNameValue!);
+      final Task selectedTask = DataModel.getTaskByName(_selectedTaskNameValue!);
 
       //add a new timer to the task list with specified parameters
       DataModel.timeSheetList.add(
@@ -215,7 +214,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
           isCompleted: false,
           isFavorite: isFavorite,
           timer: Timer(Duration.zero, (){}),
-        )
+        ),
       );
 
       //go forward to the list page

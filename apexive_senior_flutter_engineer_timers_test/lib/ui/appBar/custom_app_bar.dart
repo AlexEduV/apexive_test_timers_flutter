@@ -4,7 +4,7 @@ class CustomAppBar extends StatelessWidget {
 
   final Function() onBackButtonPressed;
   final String title;
-  final TextStyle titleTextStyle;
+  final TextStyle? titleTextStyle;
   final List<Widget>? actions;
 
   const CustomAppBar({

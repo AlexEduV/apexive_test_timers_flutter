@@ -2,12 +2,12 @@
 import 'package:intl/intl.dart';
 
 String getWeekDayFromDate(String date) {
-  List<String> array = date.split('.');
+  final List<String> array = date.split('.');
 
   if (array.length == 3) {
-    var day = array.first;
-    var month = array[1];
-    var year = array[2];
+    final day = array.first;
+    final month = array[1];
+    final year = array[2];
 
     return DateFormat('EEEE').format(
       DateTime.parse('$year-$month-$day'),

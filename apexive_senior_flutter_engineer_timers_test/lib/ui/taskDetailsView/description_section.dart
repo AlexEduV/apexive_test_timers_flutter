@@ -1,7 +1,6 @@
 
+import 'package:apexive_senior_flutter_engineer_timers_test/helpers/text_helper.dart';
 import 'package:flutter/material.dart';
-
-import '../../helpers/text_helper.dart';
 
 class DescriptionSection extends StatelessWidget {
 
@@ -71,7 +70,7 @@ class DescriptionSection extends StatelessWidget {
               ),
             ),
           ),
-        ]
+        ],
     );
   }
 }

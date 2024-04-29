@@ -40,31 +40,6 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   List<TimeSheetItem> completedTimeSheets = [];
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    //get timer id from the route arguments;
-    timerId = ModalRoute.of(context)?.settings.arguments as int;
-
-    //set current timer data
-    setState(() {
-      openedTask = DataModel.timeSheetList[timerId].task;
-
-      //get 'completed' list items
-      completedTimeSheets = DataModel.getCompletedTimeSheetsForTask(openedTask);
-
-      //reset 'read more' button state
-      readMore = List.filled(DataModel.getAllTimeSheetsForTask(openedTask).length, false);
-
-    });
-
-    //initialize timer
-    if (DataModel.timeSheetList[timerId].timer.isActive) {
-      initTimer();
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.indigo,
@@ -140,6 +115,31 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    //get timer id from the route arguments;
+    timerId = ModalRoute.of(context)?.settings.arguments as int;
+
+    //set current timer data
+    setState(() {
+      openedTask = DataModel.timeSheetList[timerId].task;
+
+      //get 'completed' list items
+      completedTimeSheets = DataModel.getCompletedTimeSheetsForTask(openedTask);
+
+      //reset 'read more' button state
+      readMore = List.filled(DataModel.getAllTimeSheetsForTask(openedTask).length, false);
+
+    });
+
+    //initialize timer
+    if (DataModel.timeSheetList[timerId].timer.isActive) {
+      initTimer();
+    }
+  }
+
+  @override
   void dispose() {
 
     /// MARK: Warning
@@ -194,16 +194,16 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
 
                                 //stop button
                                 RoundButton(
-                                  backgroundColor: Colors.white.withOpacity(.16),
+                                  backgroundColor: Colors.white.withOpacity(0.16),
                                   tintColor: Colors.white,
                                   iconSource: 'assets/images/stop_fill.png',
-                                  onButtonPressed: onStopButtonPressed
+                                  onButtonPressed: onStopButtonPressed,
                                 ),
 
                                 //pause button
                                 RoundButton(
                                   backgroundColor: DataModel.timeSheetList[timerId].isActive
-                                      ? Colors.white : Colors.white.withOpacity(.16),
+                                      ? Colors.white : Colors.white.withOpacity(0.16),
                                   tintColor: DataModel.timeSheetList[timerId].isActive
                                       ? Colors.black : Colors.white,
                                   iconSource: DataModel.timeSheetList[timerId].isActive
@@ -218,7 +218,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                       ),
 
                       //Description section
-                      Divider(height: 1, color: Colors.white.withOpacity(.16),),
+                      Divider(height: 1, color: Colors.white.withOpacity(0.16),),
 
                       const SizedBox(height: 16.0,),
 
@@ -249,7 +249,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                       Text(
                         'Completed Records',
                         style: Theme.of(context).textTheme.bodySmall,
-                      )
+                      ),
                     ],
                   ),
 
@@ -262,7 +262,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                   ),
                 ],
               ),
-            )
+            ),
 
           ],
         ),
@@ -329,7 +329,7 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                   Text(
                     openedTask.description,
                     style: Theme.of(context).textTheme.titleSmall,
-                  )
+                  ),
 
                 ],
               ),
@@ -460,8 +460,8 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
       else {
         startingPoint--;
 
-        minutes = startingPoint ~/ 60;
-        seconds = startingPoint % 60;
+        minutes = startingPoint ~/ Duration.minutesPerHour;
+        seconds = startingPoint % Duration.secondsPerMinute;
 
         //update time
         setState(() {
@@ -473,8 +473,6 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
     });
   }
 
-  void onEditDescriptionButtonPressed() {
-
-  }
+  void onEditDescriptionButtonPressed() {}
 
 }

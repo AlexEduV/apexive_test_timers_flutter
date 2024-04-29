@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class CustomBadge extends StatelessWidget {
@@ -16,7 +15,7 @@ class CustomBadge extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(64.0),
-        color: Colors.white.withOpacity(.16),
+        color: Colors.white.withOpacity(0.16),
       ),
       height: 32,
       padding: const EdgeInsets.symmetric(horizontal: 12),

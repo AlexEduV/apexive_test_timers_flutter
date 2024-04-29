@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class CheckBoxLabeled extends StatefulWidget {
 
   final bool isFavorite;
@@ -49,7 +48,7 @@ class _CheckBoxLabeledState extends State<CheckBoxLabeled> {
         Text(
           widget.label,
           style: Theme.of(context).textTheme.bodyLarge,
-        )
+        ),
       ],
     );
   }
