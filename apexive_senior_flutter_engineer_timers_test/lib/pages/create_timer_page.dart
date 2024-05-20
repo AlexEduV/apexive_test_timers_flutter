@@ -81,6 +81,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.indigo,
       extendBodyBehindAppBar: true,
@@ -178,22 +179,19 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
     );
   }
 
-  void onBackButtonPressed()
-  {
+  void onBackButtonPressed() {
     //route back to the home page;
     Navigator.pop(context);
   }
 
-  void onCreateTimerButtonPressed()
-  {
+  void onCreateTimerButtonPressed() {
     debugPrint('create timer button pressed');
 
     //check user inputs
     if (_selectedProjectNameValue != null
         && _selectedTaskNameValue != null
         && descriptionTextController.text.isNotEmpty
-    )
-    {
+    ) {
 
       debugPrint('input check passed');
 
