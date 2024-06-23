@@ -261,7 +261,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     //hide the task if completed
     if (DataModel.timeSheetList[index].isCompleted) {
-      return Container();
+      return const SizedBox.shrink();
     }
 
     return GestureDetector(

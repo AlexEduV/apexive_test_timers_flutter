@@ -75,12 +75,11 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                   decoration: BoxDecoration(
                     border: BorderDirectional(
                       bottom: BorderSide(
-                        width: 1.0,
                         color: Colors.white.withOpacity(.16),
-                      ),),
+                      ),
+                    ),
                   ),
                   child: DefaultTabController(
-                    initialIndex: 0,
                     length: 2,
                     child: TabBar(
                       onTap: (int index) {
