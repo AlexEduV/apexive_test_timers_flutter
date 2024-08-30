@@ -86,9 +86,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
       backgroundColor: Colors.indigo,
       extendBodyBehindAppBar: true,
       body: SafeArea(
-
         child: CustomPageBackground(
-
           child: Padding(
             padding: const EdgeInsets.only(right: 16, left: 16),
 
@@ -125,7 +123,7 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
                                 }
                               },
                             ),
-
+                            
                             //task selector
                             DropDownSelector(
                               menuItems: taskMenuItems,

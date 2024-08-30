@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:apexive_senior_flutter_engineer_timers_test/helpers/date_helper.dart';
@@ -42,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //todo: only for testing
     DataModel.getInitTestTimeSheets();
 
-    //show only not completed timers
+    //show only incomplete timers
     listSize = DataModel.timeSheetList.length;
 
     //show all timers count
