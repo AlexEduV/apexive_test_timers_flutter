@@ -14,8 +14,8 @@ class DataModel {
     timeSheetList = [];
 
     final Project testProject = Project(
-        projectName: 'SO056 - Booqio V2',
-        markerColor: const Color(0xffFFC629),
+      projectName: 'SO056 - Booqio V2',
+      markerColor: const Color(0xffFFC629),
     );
 
     const User testUser = User(
@@ -77,12 +77,11 @@ class DataModel {
     return timeSheetList;
   }
 
-  static Task getTaskByName(String taskName)
-  {
-    for (final timeSheet in timeSheetList)
-    {
-      if (timeSheet.task.title == taskName)
-      {
+  static Task getTaskByName(String taskName) {
+
+    for (final timeSheet in timeSheetList) {
+      if (timeSheet.task.title == taskName) {
+
         return timeSheet.task;
       }
     }
@@ -90,12 +89,11 @@ class DataModel {
     return timeSheetList.first.task;
   }
 
-  static Project getProjectByName(String projectName)
-  {
-    for (final timeSheet in timeSheetList)
-    {
-      if (timeSheet.project.projectName == projectName)
-      {
+  static Project getProjectByName(String projectName) {
+
+    for (final timeSheet in timeSheetList) {
+      if (timeSheet.project.projectName == projectName) {
+
         return timeSheet.project;
       }
     }
@@ -103,19 +101,16 @@ class DataModel {
     return timeSheetList.first.project;
   }
 
-  static int getTimersCount()
-  {
+  static int getTimersCount() {
     return timeSheetList.length;
   }
 
-  static int getNotCompletedTimersCount()
-  {
+  static int getNotCompletedTimersCount() {
+
     int result = 0;
 
-    for (final timeSheet in timeSheetList)
-    {
-      if (!timeSheet.isCompleted)
-      {
+    for (final timeSheet in timeSheetList) {
+      if (!timeSheet.isCompleted) {
         result++;
       }
     }
@@ -123,14 +118,12 @@ class DataModel {
     return result;
   }
 
-  static List<TimeSheetItem> getAllTimeSheetsForTask(Task task)
-  {
+  static List<TimeSheetItem> getAllTimeSheetsForTask(Task task) {
     final List<TimeSheetItem> result = [];
 
-    for (final timeSheet in timeSheetList)
-    {
-      if (timeSheet.task == task)
-      {
+    for (final timeSheet in timeSheetList) {
+
+      if (timeSheet.task == task) {
         result.add(timeSheet);
       }
     }
@@ -138,14 +131,12 @@ class DataModel {
     return result;
   }
 
-  static List<TimeSheetItem> getCompletedTimeSheetsForTask(Task task)
-  {
+  static List<TimeSheetItem> getCompletedTimeSheetsForTask(Task task) {
+
     final List<TimeSheetItem> result = [];
 
-    for (final timeSheet in timeSheetList)
-    {
-      if (timeSheet.isCompleted && timeSheet.task == task)
-      {
+    for (final timeSheet in timeSheetList) {
+      if (timeSheet.isCompleted && timeSheet.task == task) {
         result.add(timeSheet);
       }
     }
