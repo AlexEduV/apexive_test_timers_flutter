@@ -1,3 +1,5 @@
+part of 'timer_blocs.dart';
+
 sealed class TimerEvent {
   const TimerEvent();
 }
