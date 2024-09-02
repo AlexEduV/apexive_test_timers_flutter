@@ -1,13 +1,19 @@
+import 'package:apexive_senior_flutter_engineer_timers_test/bloc/timer_blocs.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/pages/create_timer_page.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/pages/my_home_page.dart';
 import 'package:apexive_senior_flutter_engineer_timers_test/pages/task_details_page.dart';
-import 'package:apexive_senior_flutter_engineer_timers_test/time_sheet_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'helpers/ticker.dart';
+
 void main() {
-  Bloc.observer = const TimeSheetObserver();
-  runApp(const MyApp());
+  runApp(
+    BlocProvider(
+      create: (_) => TimerBloc(ticker: const Ticker()),
+      child: const MyApp(),
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
