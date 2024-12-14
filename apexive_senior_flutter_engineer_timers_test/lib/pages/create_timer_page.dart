@@ -50,8 +50,8 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
     taskNames = taskNames.toSet().toList();
 
     //populate the menu list
-    for (final projectName in projectNames)
-    {
+    for (final projectName in projectNames) {
+
       projectMenuItems.add(
           DropdownMenuEntry<String>(
             value: projectName,
@@ -64,8 +64,8 @@ class _CreateTimerPageState extends State<CreateTimerPage> {
       );
     }
 
-    for (final taskName in taskNames)
-    {
+    for (final taskName in taskNames) {
+
       taskMenuItems.add(
         DropdownMenuEntry<String>(
           value: taskName,
