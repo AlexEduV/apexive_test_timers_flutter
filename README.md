@@ -2,15 +2,29 @@
 
 A test Timers app for Apexive, the position of Senior Flutter Engineer.
 
-## Getting Started
+## 🚀 **Features**
 
-This project is a starting point for a Flutter application.
+- Custom Fonts and typography, based on a Figma Design
+- Bloc State Management
+- clean architecture, with custom components and separation of concerns
+- static model for temporary storage, as per project requirements
 
-A few resources to get you started if this is your first Flutter project:
+## 📸 **Screenshots**
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+The Screenshots for the project are available [here](https://www.behance.net/gallery/196225265/Timers-Flutter-App)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🛠️ **Technologies Used**
+
+- **Frontend:** Flutter, Dart
+- **State Management:** Bloc, setState
+- **Database:** local static model
+- **Navigation:** Navigator v2.0
+
+## 🏗️ **Architecture**
+
+The app follows **Clean Architecture**, ensuring separation of concerns:
+- `bloc`- state management logic.
+- `helpers` - helper classes with business logic
+- `model` - static data model with initial values
+- `pages` - full pages, built from custom components
+- `ui` - custom components
