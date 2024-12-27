@@ -1,4 +1,4 @@
-# apexive_senior_flutter_engineer_timers_test
+# apexive_odoo_timers
 
 A test Timers app for Apexive, the position of Senior Flutter Engineer.
 
