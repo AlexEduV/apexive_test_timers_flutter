@@ -1,0 +1,4 @@
+#Tue Apr 23 13:20:31 EEST 2024
+base.0=/Users/alex/Development/Repositories/apexive_timers_test_flutter/apexive_test_timers_flutter/apexive_senior_flutter_engineer_timers_test/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
